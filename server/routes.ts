@@ -124,7 +124,7 @@ async function processImageEditJob(jobId: string, imageData: { imagePath: string
       formData.append('prompt', prompt);
       formData.append('quality', 'medium'); // Use medium quality for better results
       formData.append('size', '1024x1024');
-      formData.append('response_format', 'b64_json'); // Request base64 format
+      // Note: gpt-image-1 with images/edits doesn't support response_format parameter
       
       // Get file stats for logging
       const fileStats = fs.statSync(imageData.tempPngPath);
