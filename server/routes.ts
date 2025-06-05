@@ -858,63 +858,90 @@ export async function registerRoutes(app: Application) {
           }
         };
         
-        log('Job added to queue, starting processing...');
+        log('Processing image directly without job queue...');
         
-        // Start processing the job asynchronously
-        processImageEditJob(jobId, { imagePath, tempPngPath }, prompt, modelName)
-          .catch(error => {
-            log(`Job processing error: ${error.message}`);
+        // Process the image directly to avoid content-length mismatch issues
+        try {
+          // Call OpenAI API directly
+          log(`Making direct OpenAI API call...`);
+          
+          const FormData = (await import('form-data')).default;
+          const formData = new FormData();
+          
+          // Add model and prompt fields
+          formData.append('model', modelName);
+          formData.append('prompt', prompt);
+          formData.append('quality', 'medium');
+          formData.append('size', '1024x1024');
+          
+          // Add image file
+          formData.append('image', fs.createReadStream(tempPngPath), {
+            filename: 'image.png',
+            contentType: 'image/png'
           });
-        
-        // Poll the job until it completes or fails (max 3 minutes for emojify)
-        const maxWaitTime = 3 * 60 * 1000; // 3 minutes
-        const pollInterval = 2000; // 2 seconds
-        const startTime = Date.now();
-        
-        log('Starting job polling...');
-        
-        const checkJobCompletion = async () => {
-          // Get the latest job status
-          const job = jobQueue[jobId];
           
-          if (!job) {
-            log('ERROR: Job disappeared from queue');
-            return res.status(500).json({
-              message: 'Job was unexpectedly removed from the queue'
-            });
+          const axios = (await import('axios')).default;
+          const apiKey = process.env.OPENAI_API_KEY;
+          
+          const axiosResponse = await axios.post('https://api.openai.com/v1/images/edits', formData, {
+            headers: {
+              ...formData.getHeaders(),
+              'Authorization': `Bearer ${apiKey}`,
+            },
+            maxBodyLength: Infinity,
+            maxContentLength: Infinity,
+            timeout: 180000, // 3 minute timeout
+          });
+          
+          log(`Received API response: status=${axiosResponse.status}`);
+          
+          if (axiosResponse.status !== 200) {
+            throw new Error(`OpenAI API returned status ${axiosResponse.status}: ${JSON.stringify(axiosResponse.data)}`);
           }
           
-          log(`Job status: ${job.status}`);
-          
-          // If job is complete, return the result
-          if (job.status === 'completed') {
-            log('Job completed successfully, returning result');
-            return res.status(200).json(job.result);
+          // Process response to get image URL
+          let imageUrl;
+          if (axiosResponse.data && axiosResponse.data.data && Array.isArray(axiosResponse.data.data) && axiosResponse.data.data.length > 0) {
+            const imageData = axiosResponse.data.data[0];
+            if (imageData.url) {
+              imageUrl = imageData.url;
+            } else if (imageData.b64_json) {
+              imageUrl = `data:image/png;base64,${imageData.b64_json}`;
+            }
           }
           
-          // If job failed, return the error
-          if (job.status === 'failed') {
-            log(`Job failed: ${job.error}`);
-            return res.status(500).json({
-              message: `OpenAI API Error: ${job.error}`
-            });
+          if (!imageUrl) {
+            log(`No image URL found in response. Response structure: ${JSON.stringify(axiosResponse.data)}`);
+            throw new Error('No image URL found in OpenAI response');
           }
           
-          // Check if we've waited too long
-          if (Date.now() - startTime > maxWaitTime) {
-            log('Job timed out');
-            return res.status(504).json({
-              message: 'Request timed out after 3 minutes. Try again with a smaller image or simpler prompt.',
-              jobId
-            });
+          log(`Successfully got image URL: ${imageUrl.substring(0, 50)}...`);
+          
+          // Store image in our database
+          const image = await storage.createImage({
+            prompt: `Emojify: ${prompt}`,
+            url: imageUrl,
+            size: "1024x1024",
+            userId: null,
+          });
+          
+          log('Image stored in database successfully');
+          
+          // Clean up temporary files
+          try {
+            if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
+            if (fs.existsSync(tempPngPath)) fs.unlinkSync(tempPngPath);
+          } catch (e) {
+            log(`Warning: Failed to clean up files: ${e}`);
           }
           
-          // Wait and check again
-          setTimeout(checkJobCompletion, pollInterval);
-        };
-        
-        // Start polling
-        setTimeout(checkJobCompletion, pollInterval);
+          // Return result directly
+          return res.status(200).json(image);
+          
+        } catch (apiError: any) {
+          log(`Direct API call failed: ${apiError.message}`);
+          throw apiError;
+        }
         
       } catch (error: any) {
         log(`EMOJIFY ERROR: ${error.message}`);

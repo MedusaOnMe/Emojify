@@ -263,27 +263,34 @@ export default function ImageGenerator() {
       <div className="container px-6 mx-auto max-w-3xl">
         {/* Streamlined Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-7xl font-display gradient-text mb-8">
-            emojify anything! 🎭
+          <div className="flex justify-center gap-4 mb-8">
+            <span className="text-6xl bouncy" style={{animationDelay: '0s'}}>🎨</span>
+            <span className="text-6xl bouncy" style={{animationDelay: '0.3s'}}>✨</span>
+            <span className="text-6xl bouncy" style={{animationDelay: '0.6s'}}>🎭</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-display gradient-text mb-6">
+            transform your photos! 
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-body">
-            drop an image, get an emoji. it's that simple! ✨
-          </p>
         </div>
         
-        {/* Single Unified Card */}
-        <Card className="modern-card border-4 border-primary/20 overflow-hidden">
-          <CardContent className="p-0">
-            {/* Upload Section */}
-            <div className="p-12 border-b-4 border-primary/10">
-              <form onSubmit={handleSubmit} className="space-y-8">
+        {/* Split Layout - Upload and Result Side by Side */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Left Side - Upload */}
+          <Card className="modern-card border-4 border-primary/20">
+            <CardContent className="p-8">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-display gradient-text mb-2">Upload Image</h3>
+                <p className="text-foreground font-body">Choose a photo to transform</p>
+              </div>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div 
-                  className={`border-4 border-dashed rounded-3xl p-12 text-center transition-all duration-300 ${
+                  className={`border-4 border-dashed rounded-2xl p-8 text-center transition-all duration-300 ${
                     dragActive 
                       ? 'border-primary bg-primary/10 scale-105' 
                       : imagePreview 
                         ? 'border-green-400 bg-green-400/10' 
-                        : 'border-border hover:border-primary hover:bg-primary/5 hover:scale-102'
+                        : 'border-border hover:border-primary hover:bg-primary/5'
                   }`}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
@@ -294,11 +301,11 @@ export default function ImageGenerator() {
                       <img 
                         src={imagePreview} 
                         alt="Image to emojify" 
-                        className="max-h-80 mx-auto rounded-3xl shadow-2xl border-4 border-white"
+                        className="max-h-64 mx-auto rounded-2xl shadow-xl border-2 border-primary/20"
                       />
                       <button 
                         type="button"
-                        className="absolute top-4 right-4 w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-all hover:scale-110 font-bold text-xl shadow-lg"
+                        className="absolute top-2 right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-all hover:scale-110 font-bold shadow-lg"
                         onClick={() => {
                           if (imagePreview) {
                             URL.revokeObjectURL(imagePreview);
@@ -313,15 +320,15 @@ export default function ImageGenerator() {
                     </div>
                   ) : (
                     <>
-                      <div className="text-9xl mb-8 bouncy">📸</div>
-                      <h3 className="text-3xl font-display gradient-text mb-6">drag & drop your image</h3>
-                      <p className="text-muted-foreground mb-10 font-body text-xl">or click below to browse</p>
+                      <div className="text-6xl mb-4 bouncy">📸</div>
+                      <h4 className="text-lg font-display text-foreground font-semibold mb-3">Upload or Drag Image</h4>
+                      <p className="text-muted-foreground mb-6 font-body">PNG, JPG, or other image formats</p>
                       <button 
                         type="button" 
-                        className="emoji-gradient text-white px-12 py-6 rounded-full hover:scale-105 transition-all text-2xl font-display font-bold shadow-2xl hover:shadow-primary/50"
+                        className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-full hover:scale-105 transition-all font-display font-bold shadow-lg"
                         onClick={() => fileInputRef.current?.click()}
                       >
-                        🖼️ Choose Image
+                        Choose File
                       </button>
                     </>
                   )}
@@ -337,114 +344,123 @@ export default function ImageGenerator() {
                 
                 {/* Transform Button */}
                 {imagePreview && (
-                  <div className="flex justify-center pt-4">
+                  <div className="flex justify-center">
                     <Button 
                       type="submit" 
-                      className="emoji-gradient text-white text-2xl font-display font-bold py-8 px-16 rounded-full hover:scale-105 transition-all shadow-2xl hover:shadow-primary/50 disabled:opacity-50 disabled:scale-100"
+                      className="emoji-gradient text-white text-xl font-display font-bold py-6 px-12 rounded-full hover:scale-105 transition-all shadow-xl disabled:opacity-50 disabled:scale-100"
                       disabled={processMutation.isPending || !imageFile}
                     >
                       {processMutation.isPending ? (
-                        <span className="flex items-center gap-4">
-                          <div className="w-6 h-6 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
-                          ✨ Creating Magic...
+                        <span className="flex items-center gap-3">
+                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          Creating...
                         </span>
                       ) : (
-                        <span className="flex items-center gap-4">
-                          🎭 Transform to Emoji!
+                        <span className="flex items-center gap-3">
+                          🎭 Transform!
                         </span>
                       )}
                     </Button>
                   </div>
                 )}
               </form>
-            </div>
-            
-            {/* Result Section */}
-            <div className="p-12 min-h-[400px] flex items-center justify-center">
-              {processMutation.isPending || isUpdating ? (
-                <div className="text-center py-16">
-                  <div className="text-9xl mb-8 bouncy">🎨</div>
-                  <div className="w-24 h-24 border-6 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-8"></div>
-                  <h4 className="text-3xl font-display gradient-text mb-6">✨ creating your emoji...</h4>
-                  <p className="text-muted-foreground font-body text-xl">ai magic in progress! 🚀</p>
-                </div>
-              ) : processMutation.isError ? (
-                <div className="text-center py-16">
-                  <div className="text-9xl mb-8 wiggle">😵</div>
-                  <h4 className="text-3xl font-display text-red-500 mb-6">oops! something went wrong 💔</h4>
-                  <p className="text-muted-foreground font-body text-xl mb-8">
-                    {processMutation.error instanceof Error ? processMutation.error.message : "don't worry, try again!"}
-                  </p>
-                  <button 
-                    onClick={() => processMutation.reset()}
-                    className="emoji-gradient text-white px-10 py-5 rounded-full font-display font-bold hover:scale-105 transition-all text-xl"
-                  >
-                    🔄 Try Again
-                  </button>
-                </div>
-              ) : processMutation.data ? (
-                <div className="text-center py-16 w-full">
-                  <div className="flex justify-center gap-4 mb-10">
-                    <span className="text-7xl bouncy" style={{animationDelay: '0s'}}>🎉</span>
-                    <span className="text-7xl bouncy" style={{animationDelay: '0.2s'}}>✨</span>
-                    <span className="text-7xl bouncy" style={{animationDelay: '0.4s'}}>😍</span>
+            </CardContent>
+          </Card>
+          
+          {/* Right Side - Result */}
+          <Card className="modern-card border-4 border-primary/20">
+            <CardContent className="p-8">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-display gradient-text mb-2">Your Result</h3>
+                <p className="text-foreground font-body">Your emoji will appear here</p>
+              </div>
+              
+              <div className="min-h-[400px] flex items-center justify-center">
+                {processMutation.isPending || isUpdating ? (
+                  <div className="text-center py-12">
+                    <div className="text-7xl mb-6 bouncy">🎨</div>
+                    <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
+                    <h4 className="text-xl font-display gradient-text mb-4">Creating your emoji...</h4>
+                    <p className="text-foreground font-body">This may take a moment</p>
                   </div>
-                  <h3 className="text-4xl font-display gradient-text mb-10">tada! your emoji is ready!</h3>
-                  
-                  <div className="inline-block rounded-3xl overflow-hidden p-8 bg-gradient-to-br from-primary/10 to-secondary/10 shadow-2xl border-4 border-white mb-10">
-                    <img 
-                      src={processMutation.data?.url} 
-                      alt="emojify Creation"
-                      className="max-w-full max-h-80 rounded-3xl shadow-xl"
-                    />
+                ) : processMutation.isError ? (
+                  <div className="text-center py-12">
+                    <div className="text-7xl mb-6 wiggle">😵</div>
+                    <h4 className="text-xl font-display text-red-500 mb-4">Something went wrong</h4>
+                    <p className="text-foreground font-body mb-6">
+                      {processMutation.error instanceof Error ? processMutation.error.message : "Please try again"}
+                    </p>
+                    <button 
+                      onClick={() => processMutation.reset()}
+                      className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full font-display font-bold hover:scale-105 transition-all"
+                    >
+                      🔄 Try Again
+                    </button>
                   </div>
-                  
-                  <button 
-                    className="success-gradient text-white px-12 py-6 rounded-full hover:scale-105 transition-all text-2xl font-display font-bold shadow-2xl hover:shadow-green-500/50"
-                    onClick={async () => {
-                      try {
-                        const imageUrl = processMutation.data?.url;
-                        const imageId = processMutation.data?.id || 'emoji';
-                        
-                        if (!imageUrl) {
+                ) : processMutation.data ? (
+                  <div className="text-center py-12 w-full">
+                    <div className="flex justify-center gap-3 mb-6">
+                      <span className="text-5xl bouncy" style={{animationDelay: '0s'}}>🎉</span>
+                      <span className="text-5xl bouncy" style={{animationDelay: '0.2s'}}>✨</span>
+                      <span className="text-5xl bouncy" style={{animationDelay: '0.4s'}}>😍</span>
+                    </div>
+                    <h3 className="text-2xl font-display gradient-text mb-6">Perfect! Here's your emoji</h3>
+                    
+                    <div className="inline-block rounded-2xl overflow-hidden p-6 bg-gradient-to-br from-primary/10 to-secondary/10 shadow-xl border-2 border-primary/20 mb-6">
+                      <img 
+                        src={processMutation.data?.url} 
+                        alt="emojify Creation"
+                        className="max-w-full max-h-64 rounded-xl shadow-lg"
+                      />
+                    </div>
+                    
+                    <button 
+                      className="success-gradient text-white px-8 py-4 rounded-full hover:scale-105 transition-all text-lg font-display font-bold shadow-xl"
+                      onClick={async () => {
+                        try {
+                          const imageUrl = processMutation.data?.url;
+                          const imageId = processMutation.data?.id || 'emoji';
+                          
+                          if (!imageUrl) {
+                            toast({
+                              title: "Download failed",
+                              description: "No image URL available for download",
+                              variant: "destructive"
+                            });
+                            return;
+                          }
+                          
+                          await downloadImage(imageUrl, `emoji-${imageId}`);
+                          
                           toast({
-                            title: "Download failed",
-                            description: "No image URL available for download",
+                            title: "Download successful! 🎉",
+                            description: "Your amazing emoji has been saved!"
+                          });
+                        } catch (error) {
+                          toast({
+                            title: "Download failed 😞",
+                            description: error instanceof Error ? error.message : "Failed to download image",
                             variant: "destructive"
                           });
-                          return;
                         }
-                        
-                        await downloadImage(imageUrl, `emoji-${imageId}`);
-                        
-                        toast({
-                          title: "Download successful! 🎉",
-                          description: "Your amazing emoji has been saved!"
-                        });
-                      } catch (error) {
-                        toast({
-                          title: "Download failed 😞",
-                          description: error instanceof Error ? error.message : "Failed to download image",
-                          variant: "destructive"
-                        });
-                      }
-                    }}
-                  >
-                    💾 Download Your Emoji!
-                  </button>
-                </div>
-              ) : (
-                <div className="text-center py-16">
-                  <div className="text-9xl mb-8 bouncy">🎭</div>
-                  <h4 className="text-3xl font-display gradient-text mb-6">upload an image to get started!</h4>
-                  <p className="text-muted-foreground font-body text-xl max-w-lg mx-auto">
-                    your amazing emoji will appear here once you upload something above 📸
-                  </p>
-                </div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
+                      }}
+                    >
+                      💾 Download Emoji
+                    </button>
+                  </div>
+                ) : (
+                  <div className="text-center py-12">
+                    <div className="text-7xl mb-6 bouncy">🎭</div>
+                    <h4 className="text-xl font-display gradient-text mb-4">Ready for magic?</h4>
+                    <p className="text-foreground font-body max-w-sm mx-auto">
+                      Upload an image on the left to see your emoji appear here! 
+                    </p>
+                  </div>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </section>
   );
