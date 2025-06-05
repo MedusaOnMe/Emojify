@@ -9,7 +9,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
+    <section className="relative py-12 md:py-16 overflow-hidden">
       {/* Floating emoji decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 text-4xl opacity-30 float" style={{animationDelay: '0s'}}>🎨</div>
@@ -22,51 +22,26 @@ export default function HeroSection() {
 
       <div className="container mx-auto px-6 text-center relative z-10">
         {/* Hero content */}
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Fun emoji intro */}
-          <div className="flex justify-center gap-4 mb-8">
-            <span className="text-6xl bouncy" style={{animationDelay: '0s'}}>😄</span>
-            <span className="text-6xl bouncy" style={{animationDelay: '0.2s'}}>📸</span>
-            <span className="text-6xl bouncy" style={{animationDelay: '0.4s'}}>➡️</span>
-            <span className="text-6xl bouncy" style={{animationDelay: '0.6s'}}>😎</span>
+          <div className="flex justify-center gap-4 mb-6">
+            <span className="text-5xl bouncy" style={{animationDelay: '0s'}}>😄</span>
+            <span className="text-5xl bouncy" style={{animationDelay: '0.2s'}}>📸</span>
+            <span className="text-5xl bouncy" style={{animationDelay: '0.4s'}}>➡️</span>
+            <span className="text-5xl bouncy" style={{animationDelay: '0.6s'}}>😎</span>
           </div>
 
-          {/* Main title */}
-          <h1 className="text-7xl md:text-9xl font-display gradient-text mb-8 tracking-tight text-bounce">
-            emojify
-          </h1>
+          {/* Main title with proper height to prevent clipping */}
+          <div className="mb-6" style={{lineHeight: '1.1', paddingBottom: '0.2em'}}>
+            <h1 className="text-6xl md:text-8xl font-display gradient-text tracking-tight text-bounce">
+              emojify
+            </h1>
+          </div>
 
           {/* Subtitle */}
-          <p className="text-2xl md:text-4xl text-foreground mb-4 font-display font-semibold">
-            turn your photos into fun emojis! 🎭
-          </p>
-          
-          <p className="text-lg md:text-xl text-muted-foreground mb-12 font-body max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-foreground mb-6 font-body font-semibold max-w-2xl mx-auto">
             upload any image and watch our ai transform it into a cute, expressive emoji that captures the essence of your photo ✨
           </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
-            <Button
-              onClick={scrollToGenerator}
-              className="btn-primary text-xl px-12 py-6 font-display font-bold rounded-full hover:bouncy"
-            >
-              🎨 Start Creating!
-            </Button>
-            <Button
-              onClick={() =>
-                window.scrollTo({
-                  top: document.body.scrollHeight,
-                  behavior: "smooth",
-                })
-              }
-              variant="outline"
-              className="glass border-2 border-primary text-foreground text-xl px-12 py-6 font-display font-bold rounded-full hover:bg-primary/10"
-            >
-              🖼️ View Gallery
-            </Button>
-          </div>
-
         </div>
       </div>
 

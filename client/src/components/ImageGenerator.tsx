@@ -259,18 +259,20 @@ export default function ImageGenerator() {
   };
 
   return (
-    <section id="image-generator" className="py-20 relative">
-      <div className="container px-6 mx-auto max-w-3xl">
+    <section id="image-generator" className="py-8 relative">
+      <div className="container px-6 mx-auto max-w-5xl">
         {/* Streamlined Header */}
-        <div className="text-center mb-16">
-          <div className="flex justify-center gap-4 mb-8">
-            <span className="text-6xl bouncy" style={{animationDelay: '0s'}}>🎨</span>
-            <span className="text-6xl bouncy" style={{animationDelay: '0.3s'}}>✨</span>
-            <span className="text-6xl bouncy" style={{animationDelay: '0.6s'}}>🎭</span>
+        <div className="text-center mb-8">
+          <div className="flex justify-center gap-3 mb-4">
+            <span className="text-4xl bouncy" style={{animationDelay: '0s'}}>🎨</span>
+            <span className="text-4xl bouncy" style={{animationDelay: '0.3s'}}>✨</span>
+            <span className="text-4xl bouncy" style={{animationDelay: '0.6s'}}>🎭</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-display gradient-text mb-6">
-            transform your photos! 
-          </h2>
+          <div className="mb-4" style={{lineHeight: '1.1', paddingBottom: '0.15em'}}>
+            <h2 className="text-3xl md:text-5xl font-display gradient-text">
+              transform your photos!
+            </h2>
+          </div>
         </div>
         
         {/* Split Layout - Upload and Result Side by Side */}

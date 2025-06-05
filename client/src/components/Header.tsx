@@ -15,7 +15,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
             <div className="w-14 h-14 emoji-gradient rounded-full flex items-center justify-center emoji-shadow group-hover:bouncy transition-all">
               <span className="text-3xl">😄</span>
             </div>
-            <span className="font-display text-3xl font-bold gradient-text hover:scale-105 transition-transform">
+            <span className="font-display text-3xl font-bold text-foreground hover:scale-105 transition-transform">
               emojify
             </span>
           </Link>
