@@ -353,6 +353,8 @@ body::before {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: rainbow 3s ease infinite;
+  line-height: 1.2;
+  overflow: visible;
 }
 
 .gradient-text-secondary {
@@ -371,6 +373,8 @@ body::before {
 
 .text-bounce {
   animation: bounce 2s infinite;
+  line-height: 1.2;
+  overflow: visible;
 }
 
 .text-wiggle {
