@@ -122,7 +122,13 @@ async function processImageEditJob(jobId: string, imageData: { imagePath: string
       // Add model and prompt fields
       formData.append('model', modelName);
       formData.append('prompt', prompt);
-      formData.append('quality', 'low');
+      formData.append('quality', 'medium'); // Use medium quality for better results
+      formData.append('size', '1024x1024');
+      formData.append('response_format', 'b64_json'); // Request base64 format
+      
+      // Get file stats for logging
+      const fileStats = fs.statSync(imageData.tempPngPath);
+      log(`File stats: ${fileStats.size} bytes, exists: ${fs.existsSync(imageData.tempPngPath)}`);
       
       // Add image file - important: use append for the file with the correct filename
       formData.append('image', fs.createReadStream(imageData.tempPngPath), {
@@ -130,7 +136,7 @@ async function processImageEditJob(jobId: string, imageData: { imagePath: string
         contentType: 'image/png'
       });
       
-      log(`Creating direct FormData API request with model=${modelName}`);
+      log(`Creating direct FormData API request with model=${modelName}, file size: ${fileStats.size} bytes`);
       
       // Make a direct API call without the SDK transformations
       const axios = (await import('axios')).default;
@@ -138,18 +144,29 @@ async function processImageEditJob(jobId: string, imageData: { imagePath: string
       response = await retryOperation(async () => {
         const apiKey = process.env.OPENAI_API_KEY;
         
-        log(`Making direct API call to OpenAI for image editing with model=${modelName}`);
+        log(`Making direct API call to OpenAI images/edits endpoint...`);
         
         const axiosResponse = await axios.post('https://api.openai.com/v1/images/edits', formData, {
           headers: {
             ...formData.getHeaders(),
             'Authorization': `Bearer ${apiKey}`,
-            'Content-Type': 'multipart/form-data' // This might be set by formData.getHeaders()
           },
-          maxBodyLength: Infinity
+          maxBodyLength: Infinity,
+          maxContentLength: Infinity,
+          timeout: 180000, // 3 minute timeout
+          validateStatus: function (status) {
+            return status < 500; // Accept any status code less than 500
+          }
         });
         
-        log(`Received direct API response with status ${axiosResponse.status}`);
+        log(`Received API response: status=${axiosResponse.status}, headers=${JSON.stringify(axiosResponse.headers)}`);
+        
+        if (axiosResponse.status !== 200) {
+          log(`API error response: ${JSON.stringify(axiosResponse.data)}`);
+          throw new Error(`OpenAI API returned status ${axiosResponse.status}: ${JSON.stringify(axiosResponse.data)}`);
+        }
+        
+        log(`Response data keys: ${Object.keys(axiosResponse.data || {})}`);
         return axiosResponse.data;
       });
     } else {
@@ -737,6 +754,186 @@ export async function registerRoutes(app: Application) {
               });
             });
             
+  // Emojify endpoint (specific for emoji creation)
+  app.post('/api/images/emojify', (req, res) => {
+    log('=== EMOJIFY ENDPOINT CALLED ===');
+    
+    // Check API key status upfront
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+      log('ERROR: No OpenAI API key configured');
+      return res.status(500).json({
+        message: 'Server configuration error: OpenAI API key is not configured',
+        api_configured: false
+      });
+    }
+    
+    // Validate API key format
+    if (!apiKey.startsWith('sk-') || apiKey.length < 20) {
+      log('ERROR: Invalid OpenAI API key format');
+      return res.status(500).json({
+        message: 'Server configuration error: OpenAI API key appears invalid',
+        api_configured: false
+      });
+    }
+    
+    log('OpenAI API key validated successfully');
+    
+    // Set up response content type for consistency
+    res.setHeader('Content-Type', 'application/json');
+    
+    // Use multer to handle file upload
+    upload(req, res, async (uploadErr) => {
+      let imagePath = '';
+      let tempPngPath = '';
+      
+      try {
+        log('Processing file upload...');
+        
+        // Check for upload errors
+        if (uploadErr) {
+          log(`Upload error: ${uploadErr.message}`);
+          return res.status(400).json({ message: uploadErr.message || 'File upload failed' });
+        }
+
+        // Validate request
+        if (!req.file) {
+          log('ERROR: No file uploaded');
+          return res.status(400).json({ message: 'No image uploaded' });
+        }
+        
+        log(`File uploaded successfully: ${req.file.originalname}, size: ${req.file.size} bytes`);
+        
+        const prompt = req.body.prompt;
+        if (!prompt) {
+          log('ERROR: No prompt provided');
+          return res.status(400).json({ message: 'Prompt is required' });
+        }
+        
+        log(`Prompt received: "${prompt.substring(0, 50)}..."`);
+        
+        // Save the image path
+        imagePath = req.file.path;
+        
+        // Ensure the image is in PNG format with transparency
+        tempPngPath = `${imagePath}.png`;
+        
+        log('Converting image to PNG format...');
+        
+        // Convert to PNG with alpha channel
+        await sharp(imagePath)
+          .ensureAlpha()
+          .resize(1024, 1024, { fit: 'inside' }) // Keep larger size for emojis
+          .toFormat('png')
+          .withMetadata()
+          .toFile(tempPngPath);
+        
+        log('Image conversion completed');
+        
+        // Verify PNG file exists and has content
+        if (!fs.existsSync(tempPngPath) || fs.statSync(tempPngPath).size === 0) {
+          log('ERROR: Failed to create valid PNG');
+          throw new Error('Failed to create valid PNG image');
+        }
+        
+        const fileStats = fs.statSync(tempPngPath);
+        log(`PNG file created: ${fileStats.size} bytes`);
+        
+        // Define model explicitly
+        const modelName = "gpt-image-1";
+        log(`Using model: ${modelName}`);
+        
+        // Create a job ID
+        const jobId = crypto.randomBytes(16).toString('hex');
+        log(`Created job ID: ${jobId}`);
+        
+        // Add job to the queue
+        jobQueue[jobId] = {
+          id: jobId,
+          status: 'pending',
+          created: new Date(),
+          imageData: {
+            imagePath,
+            tempPngPath
+          }
+        };
+        
+        log('Job added to queue, starting processing...');
+        
+        // Start processing the job asynchronously
+        processImageEditJob(jobId, { imagePath, tempPngPath }, prompt, modelName)
+          .catch(error => {
+            log(`Job processing error: ${error.message}`);
+          });
+        
+        // Poll the job until it completes or fails (max 3 minutes for emojify)
+        const maxWaitTime = 3 * 60 * 1000; // 3 minutes
+        const pollInterval = 2000; // 2 seconds
+        const startTime = Date.now();
+        
+        log('Starting job polling...');
+        
+        const checkJobCompletion = async () => {
+          // Get the latest job status
+          const job = jobQueue[jobId];
+          
+          if (!job) {
+            log('ERROR: Job disappeared from queue');
+            return res.status(500).json({
+              message: 'Job was unexpectedly removed from the queue'
+            });
+          }
+          
+          log(`Job status: ${job.status}`);
+          
+          // If job is complete, return the result
+          if (job.status === 'completed') {
+            log('Job completed successfully, returning result');
+            return res.status(200).json(job.result);
+          }
+          
+          // If job failed, return the error
+          if (job.status === 'failed') {
+            log(`Job failed: ${job.error}`);
+            return res.status(500).json({
+              message: `OpenAI API Error: ${job.error}`
+            });
+          }
+          
+          // Check if we've waited too long
+          if (Date.now() - startTime > maxWaitTime) {
+            log('Job timed out');
+            return res.status(504).json({
+              message: 'Request timed out after 3 minutes. Try again with a smaller image or simpler prompt.',
+              jobId
+            });
+          }
+          
+          // Wait and check again
+          setTimeout(checkJobCompletion, pollInterval);
+        };
+        
+        // Start polling
+        setTimeout(checkJobCompletion, pollInterval);
+        
+      } catch (error: any) {
+        log(`EMOJIFY ERROR: ${error.message}`);
+        
+        // Clean up any files
+        if (imagePath && fs.existsSync(imagePath)) {
+          try { fs.unlinkSync(imagePath); } catch (e) {}
+        }
+        if (tempPngPath && fs.existsSync(tempPngPath)) {
+          try { fs.unlinkSync(tempPngPath); } catch (e) {}
+        }
+        
+        return res.status(500).json({ 
+          message: error.message || 'Error processing image'
+        });
+      }
+    });
+  });
+
   // Legacy endpoint for direct image editing (keeping for compatibility)
   app.post('/api/images/edit', (req, res) => {
     
