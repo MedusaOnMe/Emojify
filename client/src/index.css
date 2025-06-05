@@ -331,6 +331,8 @@ body::before {
 .font-display {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
+  line-height: 1.2;
+  overflow: visible;
 }
 
 .font-body {

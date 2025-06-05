@@ -268,8 +268,8 @@ export default function ImageGenerator() {
             <span className="text-4xl bouncy" style={{animationDelay: '0.3s'}}>✨</span>
             <span className="text-4xl bouncy" style={{animationDelay: '0.6s'}}>🎭</span>
           </div>
-          <div className="mb-4" style={{lineHeight: '1.0', paddingBottom: '0.25em', paddingTop: '0.1em'}}>
-            <h2 className="text-3xl md:text-5xl font-display gradient-text">
+          <div className="mb-4" style={{lineHeight: '1.2', paddingBottom: '0.5em', paddingTop: '0.2em', overflow: 'visible'}}>
+            <h2 className="text-3xl md:text-5xl font-display gradient-text" style={{overflow: 'visible'}}>
               transform your photos!
             </h2>
           </div>

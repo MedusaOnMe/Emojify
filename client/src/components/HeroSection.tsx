@@ -32,16 +32,12 @@ export default function HeroSection() {
           </div>
 
           {/* Main title with proper height to prevent clipping */}
-          <div className="mb-6" style={{lineHeight: '1.0', paddingBottom: '0.3em', paddingTop: '0.1em'}}>
-            <h1 className="text-6xl md:text-8xl font-display gradient-text tracking-tight text-bounce">
+          <div className="mb-6" style={{lineHeight: '1.2', paddingBottom: '0.5em', paddingTop: '0.2em', overflow: 'visible'}}>
+            <h1 className="text-6xl md:text-8xl font-display gradient-text tracking-tight text-bounce" style={{overflow: 'visible'}}>
               emojify
             </h1>
           </div>
 
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-gray-800 mb-6 font-body font-semibold max-w-2xl mx-auto">
-            upload any image and watch our ai transform it into a cute, expressive emoji that captures the essence of your photo ✨
-          </p>
         </div>
       </div>
 
