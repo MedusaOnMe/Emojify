@@ -67,24 +67,6 @@ export default function HeroSection() {
             </Button>
           </div>
 
-          {/* Fun stats or features */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center p-6 glass rounded-3xl hover:scale-105 transition-transform">
-              <div className="text-4xl mb-3">⚡</div>
-              <h3 className="font-display font-bold text-lg mb-2">super fast</h3>
-              <p className="text-muted-foreground font-body">ai magic in seconds</p>
-            </div>
-            <div className="text-center p-6 glass rounded-3xl hover:scale-105 transition-transform">
-              <div className="text-4xl mb-3">🎯</div>
-              <h3 className="font-display font-bold text-lg mb-2">perfect quality</h3>
-              <p className="text-muted-foreground font-body">high-res emoji output</p>
-            </div>
-            <div className="text-center p-6 glass rounded-3xl hover:scale-105 transition-transform">
-              <div className="text-4xl mb-3">💖</div>
-              <h3 className="font-display font-bold text-lg mb-2">totally free</h3>
-              <p className="text-muted-foreground font-body">no limits, no signup</p>
-            </div>
-          </div>
         </div>
       </div>
 

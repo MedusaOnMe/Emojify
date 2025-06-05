@@ -63,98 +63,122 @@ export default function GallerySection() {
   };
 
   return (
-    <section id="gallery" className="py-16 relative dot-pattern">
-      <div className="container px-6 mx-auto relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-display gradient-text mb-4">
-            IconicDuo Gallery
+    <section id="gallery" className="py-20 relative">
+      <div className="container px-6 mx-auto relative z-10 max-w-6xl">
+        {/* Gallery Header */}
+        <div className="text-center mb-16">
+          <div className="flex justify-center gap-4 mb-8">
+            <span className="text-6xl bouncy" style={{animationDelay: '0s'}}>🎨</span>
+            <span className="text-6xl bouncy" style={{animationDelay: '0.3s'}}>🖼️</span>
+            <span className="text-6xl bouncy" style={{animationDelay: '0.6s'}}>✨</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-display gradient-text mb-6">
+            emoji gallery! 
           </h2>
+          <p className="text-xl text-muted-foreground font-body max-w-2xl mx-auto">
+            check out all the amazing emojis created by our community! 🤩
+          </p>
         </div>
       
         {isLoading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {[...Array(8)].map((_, index) => (
-              <div key={index} className="iconic-card p-0 overflow-hidden interactive-hover">
-                <Skeleton className="w-full aspect-square" style={{background: 'hsl(var(--muted))'}} />
-                <div className="p-4">
-                  <Skeleton className="h-4 w-full mb-2" style={{background: 'hsl(var(--muted))'}} />
-                  <Skeleton className="h-4 w-3/4" style={{background: 'hsl(var(--muted))'}} />
-                </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[...Array(12)].map((_, index) => (
+              <div key={index} className="modern-card p-4 overflow-hidden">
+                <Skeleton className="w-full aspect-square rounded-2xl" style={{background: 'hsl(var(--muted))'}} />
               </div>
             ))}
           </div>
         ) : isError ? (
-          <div className="text-center p-8 max-w-md mx-auto iconic-card">
-            <div className="text-6xl mb-4">💔</div>
-            <p className="text-red-400 mb-2 font-display text-lg">Failed to load gallery</p>
-            <p className="text-hsl(var(--muted-foreground)) text-sm">
-              {error ? error.message : "Unknown error"}
+          <div className="text-center p-12 max-w-lg mx-auto modern-card">
+            <div className="text-8xl mb-6 wiggle">💔</div>
+            <h3 className="text-2xl font-display text-red-500 mb-4">oops! gallery won't load</h3>
+            <p className="text-muted-foreground font-body">
+              {error ? error.message : "something went wrong loading the emojis"}
             </p>
           </div>
         ) : images && images.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {images.map((image: Image) => (
-              <div key={image.id} className="iconic-card p-0 overflow-hidden cursor-pointer" onClick={() => handleImageClick(image)}>
-                <div className="aspect-square overflow-hidden finger-gradient p-2">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {images.map((image: Image, index) => (
+              <div 
+                key={image.id} 
+                className="modern-card p-4 overflow-hidden cursor-pointer hover:scale-105 transition-all duration-300 group"
+                onClick={() => handleImageClick(image)}
+                style={{animationDelay: `${index * 0.1}s`}}
+              >
+                <div className="aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 p-2">
                   <img 
                     src={image.url} 
-                    alt="IconicDuo creation" 
-                    className="w-full h-full object-cover iconic-rounded"
+                    alt="emojify creation" 
+                    className="w-full h-full object-cover rounded-xl group-hover:scale-110 transition-transform duration-300"
                     loading="lazy" 
                   />
+                </div>
+                <div className="pt-3 text-center">
+                  <p className="text-xs text-muted-foreground font-body">
+                    {new Date(image.timestamp).toLocaleDateString()}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="text-center p-8 max-w-md mx-auto iconic-card">
-            <div className="text-8xl mb-6">👥</div>
-            <p className="text-hsl(var(--foreground)) mb-2 font-display text-xl">
-              No IconicDuos yet!
+          <div className="text-center p-16 max-w-lg mx-auto modern-card">
+            <div className="text-9xl mb-8 bouncy">🎭</div>
+            <h3 className="text-3xl font-display gradient-text mb-4">
+              no emojis yet!
+            </h3>
+            <p className="text-muted-foreground font-body text-lg mb-8">
+              be the first to create an amazing emoji! 
             </p>
-            <p className="text-hsl(var(--muted-foreground))">
-              Create some IconicDuos to see them here!
-            </p>
+            <Button 
+              className="emoji-gradient text-white px-8 py-4 rounded-full font-display font-bold hover:scale-105 transition-all"
+              onClick={() => document.getElementById('image-generator')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              🎨 Create First Emoji!
+            </Button>
           </div>
         )}
       </div>
       
       {/* Image details modal */}
       {selectedImage && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{background: 'hsl(var(--background) / 0.8)'}}>
-          <div className="iconic-card max-w-4xl w-full max-h-[90vh] overflow-hidden">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm" style={{background: 'rgba(0,0,0,0.7)'}}>
+          <div className="modern-card max-w-2xl w-full max-h-[90vh] overflow-hidden border-4 border-primary/30">
             <div className="relative">
               <button 
-                className="absolute top-4 right-4 w-10 h-10 bg-red-500 text-white rounded-full flex items-center justify-center z-10 hover:bg-red-600 transition-colors"
+                className="absolute top-6 right-6 w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center z-10 hover:bg-red-600 transition-all hover:scale-110 font-bold text-xl shadow-lg"
                 onClick={closeDetails}
               >
                 ×
               </button>
               
-              <div className="overflow-hidden max-h-[60vh] finger-gradient p-4">
+              <div className="overflow-hidden max-h-[60vh] bg-gradient-to-br from-primary/10 to-secondary/10 p-8">
                 <img 
                   src={selectedImage.url} 
-                  alt="ditofied image" 
-                  className="w-full object-contain iconic-rounded finger-shadow"
+                  alt="emojify creation" 
+                  className="w-full object-contain rounded-3xl shadow-2xl"
                 />
               </div>
               
-              <div className="p-8">
-                <h3 className="text-2xl font-display gradient-text mb-2">
-                  IconicDuo Creation
+              <div className="p-8 text-center">
+                <div className="flex justify-center gap-3 mb-6">
+                  <span className="text-4xl bouncy" style={{animationDelay: '0s'}}>🎉</span>
+                  <span className="text-4xl bouncy" style={{animationDelay: '0.2s'}}>✨</span>
+                  <span className="text-4xl bouncy" style={{animationDelay: '0.4s'}}>😍</span>
+                </div>
+                <h3 className="text-3xl font-display gradient-text mb-4">
+                  amazing emoji!
                 </h3>
-                <p className="text-sm text-hsl(var(--muted-foreground)) mb-6 font-mono">
-                  Created: {new Date(selectedImage.timestamp).toLocaleString()}
+                <p className="text-muted-foreground font-body mb-8">
+                  Created: {new Date(selectedImage.timestamp).toLocaleDateString()}
                 </p>
                 
-                <div className="flex gap-4">
-                  <Button 
-                    className="btn-accent"
-                    onClick={() => downloadImage(selectedImage.url, `iconicduo-${selectedImage.id.split('/').pop() || 'creation'}`)}
-                  >
-                    Download
-                  </Button>
-                </div>
+                <Button 
+                  className="success-gradient text-white px-8 py-4 rounded-full font-display font-bold hover:scale-105 transition-all text-lg"
+                  onClick={() => downloadImage(selectedImage.url, `emoji-${selectedImage.id.split('/').pop() || 'creation'}`)}
+                >
+                  💾 Download This Emoji!
+                </Button>
               </div>
             </div>
           </div>
@@ -163,8 +187,10 @@ export default function GallerySection() {
       
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 right-10 w-40 h-40 rounded-full bg-gradient-to-br from-purple-500/5 to-pink-500/5 blur-3xl"></div>
-        <div className="absolute bottom-20 left-10 w-32 h-32 rounded-full bg-gradient-to-br from-blue-500/5 to-cyan-500/5 blur-3xl"></div>
+        <div className="absolute top-20 left-10 text-5xl opacity-20 float" style={{animationDelay: '0s'}}>🎨</div>
+        <div className="absolute top-40 right-16 text-4xl opacity-25 float" style={{animationDelay: '1s'}}>😊</div>
+        <div className="absolute bottom-40 left-1/4 text-6xl opacity-15 float" style={{animationDelay: '2s'}}>✨</div>
+        <div className="absolute bottom-60 right-20 text-3xl opacity-30 float" style={{animationDelay: '1.5s'}}>🎭</div>
       </div>
     </section>
   );
