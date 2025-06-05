@@ -15,7 +15,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
             <div className="w-14 h-14 emoji-gradient rounded-full flex items-center justify-center emoji-shadow group-hover:bouncy transition-all">
               <span className="text-3xl">😄</span>
             </div>
-            <span className="font-display text-3xl font-bold text-foreground hover:scale-105 transition-transform">
+            <span className="font-display text-3xl font-bold gradient-text hover:scale-105 transition-transform">
               emojify
             </span>
           </Link>
@@ -24,13 +24,13 @@ export default function Header({ onMenuClick }: HeaderProps) {
           <nav className="hidden md:flex items-center gap-8">
             <Link
               href="/"
-              className="text-foreground hover:text-primary transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-primary/10"
+              className="text-gray-800 hover:text-primary transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-primary/10"
             >
               Create ✨
             </Link>
             <Link
               href="/gallery"
-              className="text-foreground hover:text-primary transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-primary/10"
+              className="text-gray-800 hover:text-primary transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-primary/10"
             >
               Gallery 🎨
             </Link>
@@ -38,7 +38,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
               href="https://x.com/i/communities/1930184588879335841"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground hover:text-primary transition-all p-3 glass rounded-full hover:scale-110 transform hover:bg-primary/10"
+              className="text-gray-800 hover:text-primary transition-all p-3 glass rounded-full hover:scale-110 transform hover:bg-primary/10"
               aria-label="Follow us on X (Twitter)"
             >
               <svg
@@ -54,7 +54,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-4 text-foreground hover:text-primary glass rounded-full transition-all hover:scale-110 transform hover:bg-primary/10"
+            className="md:hidden p-4 text-gray-800 hover:text-primary glass rounded-full transition-all hover:scale-110 transform hover:bg-primary/10"
             onClick={onMenuClick}
           >
             <svg

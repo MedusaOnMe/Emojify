@@ -72,12 +72,12 @@ export default function GallerySection() {
             <span className="text-6xl bouncy" style={{animationDelay: '0.3s'}}>🖼️</span>
             <span className="text-6xl bouncy" style={{animationDelay: '0.6s'}}>✨</span>
           </div>
-          <div className="mb-6" style={{lineHeight: '1.1', paddingBottom: '0.2em'}}>
+          <div className="mb-6" style={{lineHeight: '1.0', paddingBottom: '0.3em', paddingTop: '0.1em'}}>
             <h2 className="text-5xl md:text-7xl font-display gradient-text">
               emoji gallery!
             </h2>
           </div>
-          <p className="text-xl text-foreground font-body max-w-2xl mx-auto">
+          <p className="text-xl text-gray-800 font-body max-w-2xl mx-auto">
             check out all the amazing emojis created by our community! 🤩
           </p>
         </div>
