@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { downloadImage } from "@/lib/image-utils";
 import { uploadImageToFirebase, onStorageChange } from "@/lib/firebase";
-import { toast } from "@/components/ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 // Interface for image data
 interface ImageData {
@@ -16,6 +16,7 @@ interface ImageData {
 }
 
 export default function ImageGenerator() {
+  const { toast } = useToast();
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
