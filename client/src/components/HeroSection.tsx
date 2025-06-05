@@ -32,8 +32,8 @@ export default function HeroSection() {
           </div>
 
           {/* Main title with proper height to prevent clipping */}
-          <div className="mb-6" style={{lineHeight: '1.2', paddingBottom: '0.5em', paddingTop: '0.2em', overflow: 'visible'}}>
-            <h1 className="text-6xl md:text-8xl font-display gradient-text tracking-tight text-bounce" style={{overflow: 'visible'}}>
+          <div className="mb-6" style={{lineHeight: '1.6', paddingBottom: '1em', paddingTop: '0.5em', overflow: 'visible', minHeight: '150px'}}>
+            <h1 className="text-6xl md:text-8xl font-display gradient-text tracking-tight text-bounce" style={{overflow: 'visible', lineHeight: '1.4', paddingBottom: '0.3em'}}>
               emojify
             </h1>
           </div>

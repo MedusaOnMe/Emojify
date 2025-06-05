@@ -73,6 +73,11 @@ body {
   position: relative;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  overflow: visible !important;
+  line-height: 1.4 !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
@@ -353,8 +358,10 @@ body::before {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: rainbow 3s ease infinite;
-  line-height: 1.2;
-  overflow: visible;
+  line-height: 1.4 !important;
+  overflow: visible !important;
+  display: inline-block !important;
+  padding-bottom: 0.2em !important;
 }
 
 .gradient-text-secondary {
