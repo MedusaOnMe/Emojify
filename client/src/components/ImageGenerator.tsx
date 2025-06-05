@@ -16,12 +16,9 @@ interface ImageData {
 }
 
 export default function ImageGenerator() {
-  const [imageFile1, setImageFile1] = useState<File | null>(null);
-  const [imagePreview1, setImagePreview1] = useState<string | null>(null);
-  const [imageFile2, setImageFile2] = useState<File | null>(null);
-  const [imagePreview2, setImagePreview2] = useState<string | null>(null);
-  const fileInputRef1 = useRef<HTMLInputElement>(null);
-  const fileInputRef2 = useRef<HTMLInputElement>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [currentImage, setCurrentImage] = useState<ImageData | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -45,34 +42,30 @@ export default function ImageGenerator() {
   // Cleanup function for when component unmounts or when preview changes
   useEffect(() => {
     return () => {
-      if (imagePreview1) {
-        URL.revokeObjectURL(imagePreview1);
-      }
-      if (imagePreview2) {
-        URL.revokeObjectURL(imagePreview2);
+      if (imagePreview) {
+        URL.revokeObjectURL(imagePreview);
       }
     };
-  }, [imagePreview1, imagePreview2]);
+  }, [imagePreview]);
   
-  // Dual image processing mutation
+  // Single image to emoji processing mutation
   const processMutation = useMutation({
     mutationFn: async () => {
       setIsUpdating(true);
       
-      if (!imageFile1 || !imageFile2) {
-        throw new Error("Both images are required");
+      if (!imageFile) {
+        throw new Error("Image is required");
       }
       
       const formData = new FormData();
-      formData.append("image1", imageFile1);
-      formData.append("image2", imageFile2);
+      formData.append("image", imageFile);
       
-      // Hardcoded prompt for combining two images
-      const hardcodedPrompt = "Create a stunning artistic scene that seamlessly combines these two characters into one cohesive image. The characters should appear naturally together in various poses like standing side by side, sitting on a bench, in a car, at a diner, or any other natural setting. Make it look like they belong in the same world and are interacting in a believable way.";
+      // Hardcoded prompt for converting image to emoji
+      const hardcodedPrompt = "Convert this image into a cute, simple emoji style. Make it round, colorful, and expressive like a standard emoji. Remove any complex details and focus on the main subject with bold, clear features that would work well as a small emoji icon.";
       
       formData.append("prompt", hardcodedPrompt);
       
-      const response = await fetch("/api/images/combine", {
+      const response = await fetch("/api/images/emojify", {
         method: "POST",
         body: formData,
       });
@@ -96,7 +89,7 @@ export default function ImageGenerator() {
           const stableUrl = URL.createObjectURL(imageBlob);
           
           try {
-            await uploadImageToFirebase(stableUrl, "IconicDuo Creation");
+            await uploadImageToFirebase(stableUrl, "emojify Creation");
           } finally {
             URL.revokeObjectURL(stableUrl);
           }
@@ -119,10 +112,10 @@ export default function ImageGenerator() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!imageFile1 || !imageFile2) {
+    if (!imageFile) {
       toast({
-        title: "Missing Images",
-        description: "Please upload both images before creating your IconicDuo",
+        title: "Missing Image",
+        description: "Please upload an image before creating your emoji",
         variant: "destructive"
       });
       return;
@@ -133,17 +126,12 @@ export default function ImageGenerator() {
     processMutation.mutate();
   };
   
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, imageNumber: 1 | 2) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
     
-    const currentPreview = imageNumber === 1 ? imagePreview1 : imagePreview2;
-    if (currentPreview) {
-      URL.revokeObjectURL(currentPreview);
-      if (imageNumber === 1) {
-        setImagePreview1(null);
-      } else {
-        setImagePreview2(null);
-      }
+    if (imagePreview) {
+      URL.revokeObjectURL(imagePreview);
+      setImagePreview(null);
     }
     
     if (file) {
@@ -180,13 +168,8 @@ export default function ImageGenerator() {
         };
         
         img.onload = () => {
-          if (imageNumber === 1) {
-            setImageFile1(file);
-            setImagePreview1(objectUrl);
-          } else {
-            setImageFile2(file);
-            setImagePreview2(objectUrl);
-          }
+          setImageFile(file);
+          setImagePreview(objectUrl);
         };
         
         img.src = objectUrl;
@@ -198,13 +181,8 @@ export default function ImageGenerator() {
         });
       }
     } else {
-      if (imageNumber === 1) {
-        setImageFile1(null);
-        setImagePreview1(null);
-      } else {
-        setImageFile2(null);
-        setImagePreview2(null);
-      }
+      setImageFile(null);
+      setImagePreview(null);
     }
   };
   
@@ -218,19 +196,14 @@ export default function ImageGenerator() {
     setDragActive(false);
   };
   
-  const handleDrop = (e: React.DragEvent, imageNumber: 1 | 2) => {
+  const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setDragActive(false);
     const file = e.dataTransfer.files?.[0] || null;
     
-    const currentPreview = imageNumber === 1 ? imagePreview1 : imagePreview2;
-    if (currentPreview) {
-      URL.revokeObjectURL(currentPreview);
-      if (imageNumber === 1) {
-        setImagePreview1(null);
-      } else {
-        setImagePreview2(null);
-      }
+    if (imagePreview) {
+      URL.revokeObjectURL(imagePreview);
+      setImagePreview(null);
     }
     
     if (file) {
@@ -267,13 +240,8 @@ export default function ImageGenerator() {
         };
         
         img.onload = () => {
-          if (imageNumber === 1) {
-            setImageFile1(file);
-            setImagePreview1(objectUrl);
-          } else {
-            setImageFile2(file);
-            setImagePreview2(objectUrl);
-          }
+          setImageFile(file);
+          setImagePreview(objectUrl);
         };
         
         img.src = objectUrl;
@@ -285,70 +253,72 @@ export default function ImageGenerator() {
         });
       }
     } else {
-      if (imageNumber === 1) {
-        setImageFile1(null);
-        setImagePreview1(null);
-      } else {
-        setImageFile2(null);
-        setImagePreview2(null);
-      }
+      setImageFile(null);
+      setImagePreview(null);
     }
   };
 
   return (
     <section id="image-generator" className="py-16 relative">
       <div className="container px-6 mx-auto max-w-4xl">
-        {/* Simple Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-display gradient-text mb-4">
-            Create Your IconicDuo
+        {/* Fun Header */}
+        <div className="text-center mb-12">
+          <div className="flex justify-center gap-3 mb-6">
+            <span className="text-5xl bouncy" style={{animationDelay: '0s'}}>🎨</span>
+            <span className="text-5xl bouncy" style={{animationDelay: '0.3s'}}>✨</span>
+            <span className="text-5xl bouncy" style={{animationDelay: '0.6s'}}>😊</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-display gradient-text mb-6 text-bounce">
+            create your emoji!
           </h2>
-          <p className="text-lg text-hsl(var(--muted-foreground)) max-w-2xl mx-auto">
-            Upload two character images and watch as AI seamlessly merges them into one stunning scene
+          <p className="text-xl md:text-2xl text-foreground font-display font-semibold mb-4">
+            ready to transform your photo? 🚀
+          </p>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto font-body">
+            simply upload any image below and watch as our ai works its magic to turn it into an adorable, expressive emoji! 
           </p>
         </div>
         
         {/* Main Card */}
-        <Card className="glass border-border/20">
-          <CardContent className="p-8">
+        <Card className="modern-card border-4 border-primary/20">
+          <CardContent className="p-10">
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Upload Section */}
-              <div className="grid md:grid-cols-2 gap-6">
-                {/* First Image Upload */}
+              <div className="max-w-md mx-auto">
                 <div className="space-y-3">
-                  <Label htmlFor="upload-image1" className="text-lg font-display gradient-text">
-                    Character 1
+                  <Label htmlFor="upload-image" className="text-2xl font-display gradient-text text-center block mb-4">
+                    📸 Upload Your Image
                   </Label>
                   
                   <div 
-                    className={`border-2 border-dashed rounded-lg p-6 text-center transition-all duration-300 ${
+                    className={`border-4 border-dashed rounded-3xl p-10 text-center transition-all duration-300 ${
                       dragActive 
-                        ? 'border-purple-400 bg-purple-500/5' 
-                        : imagePreview1 
-                          ? 'border-green-400 bg-green-500/5' 
-                          : 'border-border hover:border-purple-400 hover:bg-purple-500/5'
+                        ? 'border-primary bg-primary/10 scale-105' 
+                        : imagePreview 
+                          ? 'border-green-400 bg-green-400/10' 
+                          : 'border-border hover:border-primary hover:bg-primary/5 hover:scale-102'
                     }`}
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
-                    onDrop={(e) => handleDrop(e, 1)}
+                    onDrop={handleDrop}
                   >
-                    {imagePreview1 ? (
+                    {imagePreview ? (
                       <div className="relative">
                         <img 
-                          src={imagePreview1} 
-                          alt="Character 1" 
-                          className="max-h-48 mx-auto rounded-lg shadow-lg"
+                          src={imagePreview} 
+                          alt="Image to emojify" 
+                          className="max-h-72 mx-auto rounded-2xl shadow-2xl border-4 border-white"
                         />
                         <button 
                           type="button"
-                          className="absolute top-2 right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
+                          className="absolute top-4 right-4 w-10 h-10 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-all hover:scale-110 font-bold text-lg"
                           onClick={() => {
-                            if (imagePreview1) {
-                              URL.revokeObjectURL(imagePreview1);
+                            if (imagePreview) {
+                              URL.revokeObjectURL(imagePreview);
                             }
-                            setImageFile1(null);
-                            setImagePreview1(null);
-                            if (fileInputRef1.current) fileInputRef1.current.value = '';
+                            setImageFile(null);
+                            setImagePreview(null);
+                            if (fileInputRef.current) fileInputRef.current.value = '';
                           }}
                         >
                           ×
@@ -356,109 +326,44 @@ export default function ImageGenerator() {
                       </div>
                     ) : (
                       <>
-                        <div className="text-4xl mb-3">👤</div>
-                        <h3 className="text-lg font-display gradient-text mb-2">Drop first character here</h3>
-                        <p className="text-muted-foreground mb-4">or click to browse</p>
+                        <div className="text-8xl mb-6 bouncy">📸</div>
+                        <h3 className="text-2xl font-display gradient-text mb-4">Drop your image here</h3>
+                        <p className="text-muted-foreground mb-8 font-body text-lg">or click the button below to browse your files</p>
                         <button 
                           type="button" 
-                          className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all"
-                          onClick={() => fileInputRef1.current?.click()}
+                          className="emoji-gradient text-white px-10 py-5 rounded-full hover:scale-105 transition-all text-xl font-display font-bold shadow-2xl hover:shadow-primary/50"
+                          onClick={() => fileInputRef.current?.click()}
                         >
-                          Choose Image
+                          🖼️ Choose Image
                         </button>
                       </>
                     )}
                     <input 
-                      ref={fileInputRef1}
-                      id="upload-image1" 
+                      ref={fileInputRef}
+                      id="upload-image" 
                       type="file" 
                       className="hidden" 
                       accept="image/*"
-                      onChange={(e) => handleFileChange(e, 1)}
-                    />
-                  </div>
-                </div>
-
-                {/* Second Image Upload */}
-                <div className="space-y-3">
-                  <Label htmlFor="upload-image2" className="text-lg font-display gradient-text">
-                    Character 2
-                  </Label>
-                  
-                  <div 
-                    className={`border-2 border-dashed rounded-lg p-6 text-center transition-all duration-300 ${
-                      dragActive 
-                        ? 'border-purple-400 bg-purple-500/5' 
-                        : imagePreview2 
-                          ? 'border-green-400 bg-green-500/5' 
-                          : 'border-border hover:border-purple-400 hover:bg-purple-500/5'
-                    }`}
-                    onDragOver={handleDragOver}
-                    onDragLeave={handleDragLeave}
-                    onDrop={(e) => handleDrop(e, 2)}
-                  >
-                    {imagePreview2 ? (
-                      <div className="relative">
-                        <img 
-                          src={imagePreview2} 
-                          alt="Character 2" 
-                          className="max-h-48 mx-auto rounded-lg shadow-lg"
-                        />
-                        <button 
-                          type="button"
-                          className="absolute top-2 right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
-                          onClick={() => {
-                            if (imagePreview2) {
-                              URL.revokeObjectURL(imagePreview2);
-                            }
-                            setImageFile2(null);
-                            setImagePreview2(null);
-                            if (fileInputRef2.current) fileInputRef2.current.value = '';
-                          }}
-                        >
-                          ×
-                        </button>
-                      </div>
-                    ) : (
-                      <>
-                        <div className="text-4xl mb-3">👤</div>
-                        <h3 className="text-lg font-display gradient-text mb-2">Drop second character here</h3>
-                        <p className="text-muted-foreground mb-4">or click to browse</p>
-                        <button 
-                          type="button" 
-                          className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all"
-                          onClick={() => fileInputRef2.current?.click()}
-                        >
-                          Choose Image
-                        </button>
-                      </>
-                    )}
-                    <input 
-                      ref={fileInputRef2}
-                      id="upload-image2" 
-                      type="file" 
-                      className="hidden" 
-                      accept="image/*"
-                      onChange={(e) => handleFileChange(e, 2)}
+                      onChange={handleFileChange}
                     />
                   </div>
                 </div>
               </div>
               
-              {/* Merge Button */}
+              {/* Emojify Button */}
               <Button 
                 type="submit" 
-                className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 text-white text-lg font-display py-4 hover:from-purple-600 hover:via-pink-600 hover:to-blue-600 transition-all"
-                disabled={processMutation.isPending || !imageFile1 || !imageFile2}
+                className="w-full max-w-lg mx-auto emoji-gradient text-white text-2xl font-display font-bold py-8 px-12 rounded-full hover:scale-105 transition-all shadow-2xl hover:shadow-primary/50 disabled:opacity-50 disabled:scale-100"
+                disabled={processMutation.isPending || !imageFile}
               >
                 {processMutation.isPending ? (
-                  <span className="flex items-center gap-2">
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Creating IconicDuo...
+                  <span className="flex items-center gap-3">
+                    <div className="w-6 h-6 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
+                    ✨ Creating Your Emoji...
                   </span>
                 ) : (
-                  <span className="flex items-center gap-2">
-                    👥 Create IconicDuo
+                  <span className="flex items-center gap-3">
+                    🎭 Transform to Emoji!
                   </span>
                 )}
               </Button>
@@ -467,41 +372,55 @@ export default function ImageGenerator() {
         </Card>
         
         {/* Result Display */}
-        <div className="mt-8">
-          <Card className="glass border-border/20">
-            <CardContent className="p-8">
+        <div className="mt-12">
+          <Card className="modern-card border-4 border-primary/20">
+            <CardContent className="p-10">
               {processMutation.isPending || isUpdating ? (
-                <div className="text-center py-16">
-                  <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                  <h4 className="text-lg font-display gradient-text mb-2">Creating your IconicDuo...</h4>
-                  <p className="text-muted-foreground">This may take a moment as we merge your characters seamlessly</p>
+                <div className="text-center py-20">
+                  <div className="text-8xl mb-6 bouncy">🎨</div>
+                  <div className="w-20 h-20 border-6 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
+                  <h4 className="text-2xl font-display gradient-text mb-4">✨ Creating Your Emoji...</h4>
+                  <p className="text-muted-foreground font-body text-lg">our ai is working its magic! this should only take a few seconds 🚀</p>
                 </div>
               ) : processMutation.isError ? (
-                <div className="text-center py-16">
-                  <div className="text-6xl mb-4">💔</div>
-                  <h4 className="text-lg font-display text-red-400 mb-2">Oops! Something went wrong</h4>
-                  <p className="text-muted-foreground">
-                    {processMutation.error instanceof Error ? processMutation.error.message : "An unexpected error occurred"}
+                <div className="text-center py-20">
+                  <div className="text-8xl mb-6 wiggle">😵</div>
+                  <h4 className="text-2xl font-display text-red-500 mb-4">Oops! Something went wrong 💔</h4>
+                  <p className="text-muted-foreground font-body text-lg mb-6">
+                    {processMutation.error instanceof Error ? processMutation.error.message : "don't worry, these things happen! try again in a moment"}
                   </p>
+                  <button 
+                    onClick={() => processMutation.reset()}
+                    className="emoji-gradient text-white px-8 py-4 rounded-full font-display font-bold hover:scale-105 transition-all"
+                  >
+                    🔄 Try Again
+                  </button>
                 </div>
               ) : processMutation.data ? (
-                <div className="text-center">
-                  <div className="inline-block rounded-lg overflow-hidden p-4 bg-gradient-to-br from-purple-500/10 to-pink-500/10 shadow-lg">
+                <div className="text-center py-12">
+                  <div className="flex justify-center gap-4 mb-8">
+                    <span className="text-6xl bouncy" style={{animationDelay: '0s'}}>🎉</span>
+                    <span className="text-6xl bouncy" style={{animationDelay: '0.2s'}}>✨</span>
+                    <span className="text-6xl bouncy" style={{animationDelay: '0.4s'}}>😍</span>
+                  </div>
+                  <h3 className="text-3xl font-display gradient-text mb-6">Your Emoji is Ready!</h3>
+                  
+                  <div className="inline-block rounded-3xl overflow-hidden p-6 bg-gradient-to-br from-primary/10 to-secondary/10 shadow-2xl border-4 border-white mb-8">
                     <img 
                       src={processMutation.data?.url} 
-                      alt="IconicDuo Creation"
-                      className="max-w-full max-h-96 rounded-lg"
+                      alt="emojify Creation"
+                      className="max-w-full max-h-96 rounded-2xl shadow-xl"
                     />
                   </div>
                   
                   {/* Download Button */}
-                  <div className="mt-6">
+                  <div>
                     <button 
-                      className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-lg hover:from-green-600 hover:to-blue-600 transition-all"
+                      className="success-gradient text-white px-10 py-5 rounded-full hover:scale-105 transition-all text-xl font-display font-bold shadow-2xl hover:shadow-green-500/50"
                       onClick={async () => {
                         try {
                           const imageUrl = processMutation.data?.url;
-                          const imageId = processMutation.data?.id || 'iconicduo';
+                          const imageId = processMutation.data?.id || 'emoji';
                           
                           if (!imageUrl) {
                             toast({
@@ -512,31 +431,36 @@ export default function ImageGenerator() {
                             return;
                           }
                           
-                          await downloadImage(imageUrl, `iconicduo-${imageId}`);
+                          await downloadImage(imageUrl, `emoji-${imageId}`);
                           
                           toast({
-                            title: "Download successful!",
-                            description: "Your IconicDuo creation has been saved"
+                            title: "Download successful! 🎉",
+                            description: "Your amazing emoji has been saved to your device!"
                           });
                         } catch (error) {
                           toast({
-                            title: "Download failed",
+                            title: "Download failed 😞",
                             description: error instanceof Error ? error.message : "Failed to download image",
                             variant: "destructive"
                           });
                         }
                       }}
                     >
-                      Download IconicDuo
+                      💾 Download Your Emoji!
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="text-center py-16">
-                  <div className="text-8xl mb-6">👥</div>
-                  <h4 className="text-xl font-display gradient-text mb-2">Ready to create your IconicDuo?</h4>
-                  <p className="text-muted-foreground max-w-lg mx-auto">
-                    Upload two character images and let AI create a stunning merged scene
+                <div className="text-center py-20">
+                  <div className="flex justify-center gap-3 mb-8">
+                    <span className="text-7xl bouncy" style={{animationDelay: '0s'}}>🤗</span>
+                    <span className="text-7xl bouncy" style={{animationDelay: '0.3s'}}>📷</span>
+                    <span className="text-7xl bouncy" style={{animationDelay: '0.6s'}}>✨</span>
+                  </div>
+                  <h4 className="text-3xl font-display gradient-text mb-4">Ready to Create Magic?</h4>
+                  <p className="text-muted-foreground max-w-2xl mx-auto font-body text-lg">
+                    your emoji masterpiece will appear here once you upload an image above! 
+                    we can't wait to see what you create 🎨
                   </p>
                 </div>
               )}

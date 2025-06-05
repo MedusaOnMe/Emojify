@@ -4,53 +4,60 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white border-t border-gray-200 py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer className="glass border-t-4 border-primary py-12 mt-16">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           {/* Logo Section */}
           <div>
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">N</span>
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-12 h-12 emoji-gradient rounded-full flex items-center justify-center emoji-shadow bouncy">
+                <span className="text-2xl">😄</span>
               </div>
               <div>
-                <span className="font-display text-lg font-semibold text-gray-700">
-                  No-ify
+                <span className="font-display text-2xl font-bold gradient-text">
+                  emojify
                 </span>
-                <div className="text-xs text-gray-500">Simple nofacify</div>
+                <div className="text-sm text-muted-foreground font-body">turn photos into emojis</div>
               </div>
             </Link>
           </div>
           
           {/* Quick Links */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-8">
             <Link 
               href="/" 
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-foreground hover:text-primary transition-colors font-display font-semibold text-lg hover:scale-105 transform"
             >
-              Convert
+              Create
             </Link>
             <Link 
               href="/gallery" 
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-foreground hover:text-primary transition-colors font-display font-semibold text-lg hover:scale-105 transform"
             >
               Gallery
             </Link>
           </div>
         </div>
         
-        {/* Divider */}
-        <div className="w-full h-px bg-gray-200 my-6"></div>
+        {/* Fun Divider */}
+        <div className="w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full my-8"></div>
         
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-center md:text-left">
-            <p className="text-gray-600 text-sm">
-              © {currentYear} No-ify. All rights reserved.
+            <p className="text-foreground text-base font-body font-semibold">
+              © {currentYear} emojify. spreading joy one emoji at a time! 🎉
             </p>
-            <p className="text-gray-500 text-xs mt-1">
-              Convert images to clean, minimalist nofacified versions.
+            <p className="text-muted-foreground text-sm mt-2 font-body">
+              transform any image into a cute, expressive emoji with ai magic ✨
             </p>
+          </div>
+          
+          {/* Fun emoji decoration */}
+          <div className="flex gap-2 text-2xl">
+            <span className="bouncy" style={{animationDelay: '0s'}}>😊</span>
+            <span className="bouncy" style={{animationDelay: '0.2s'}}>🎨</span>
+            <span className="bouncy" style={{animationDelay: '0.4s'}}>🚀</span>
           </div>
         </div>
       </div>
