@@ -7,7 +7,7 @@ interface HeaderProps {
 
 export default function Header({ onMenuClick }: HeaderProps) {
   return (
-    <header className="glass sticky top-0 z-50 border-b-4 border-green-200 backdrop-blur-md">
+    <header className="glass sticky top-0 z-50 border-b-4 border-green-600 backdrop-blur-md">
       <div className="container mx-auto px-6">
         <div className="flex h-24 items-center justify-between">
           {/* Logo */}
@@ -17,8 +17,8 @@ export default function Header({ onMenuClick }: HeaderProps) {
                 <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
               </svg>
             </div>
-            <span className="font-display text-3xl font-bold gradient-text hover:scale-105 transition-transform">
-              Gorbify
+            <span className="font-display text-3xl font-bold gradient-text transform -rotate-1 hover:rotate-0 transition-transform">
+              GORBIFY
             </span>
           </Link>
 
@@ -26,15 +26,15 @@ export default function Header({ onMenuClick }: HeaderProps) {
           <nav className="hidden md:flex items-center gap-8">
             <Link
               href="/"
-              className="text-gray-800 hover:text-green-600 transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-green-50"
+              className="text-gray-800 hover:text-green-600 transition-colors font-display font-semibold text-lg transform -rotate-1 hover:rotate-0 px-4 py-2 hover:bg-green-50"
             >
-              Gorbify
+              GORBIFY
             </Link>
             <Link
               href="/gallery"
-              className="text-gray-800 hover:text-green-600 transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-green-50"
+              className="text-gray-800 hover:text-green-600 transition-colors font-display font-semibold text-lg transform rotate-1 hover:rotate-0 px-4 py-2 hover:bg-green-50"
             >
-              Gallery
+              GALLERY
             </Link>
             <a
               href="https://x.com/i/communities/1930184588879335841"

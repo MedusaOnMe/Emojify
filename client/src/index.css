@@ -65,8 +65,8 @@
 }
 
 body {
-  background: #e5e7eb;
-  color: hsl(var(--foreground));
+  background: #f3f4f6;
+  color: #1f2937;
   font-family: 'Roboto Condensed', 'Arial', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
@@ -101,16 +101,22 @@ h1, h2, h3, h4, h5, h6 {
 
 @layer components {
   .modern-card {
-    background: #f4f4f5;
-    border: 2px solid #a1a1aa;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    border: 3px solid #374151;
+    border-radius: 4px;
+    box-shadow: 4px 4px 0px #374151;
     position: relative;
     overflow: hidden;
+    transform: rotate(-0.5deg);
   }
 
   .modern-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: rotate(0deg);
+    box-shadow: 6px 6px 0px #374151;
+  }
+  
+  .modern-card:nth-child(even) {
+    transform: rotate(0.5deg);
   }
 
   /* Fun button styles */
@@ -202,9 +208,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .glass {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid #d1d5db;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #6b7280;
+    box-shadow: 3px 3px 0px #374151;
   }
 
   /* Oscar themed background */

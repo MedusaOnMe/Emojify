@@ -222,18 +222,18 @@ export default function ImageGenerator() {
     <section id="image-generator" className="py-8 relative">
       <div className="container px-6 mx-auto max-w-5xl">
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-5xl font-display text-green-800">
-            Gorbify
+          <h2 className="text-3xl md:text-5xl font-display text-green-800 transform -rotate-1">
+            UPLOAD & GORBIFY
           </h2>
         </div>
         
         {/* Split Layout - Upload and Result Side by Side */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Side - Upload */}
-          <Card className="modern-card border-4 border-green-200">
+          <Card className="modern-card border-4 border-green-600">
             <CardContent className="p-8">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-display text-green-800 mb-2">Upload</h3>
+                <h3 className="text-2xl font-display text-green-800 mb-2 transform rotate-1">UPLOAD IMAGE</h3>
               </div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -278,14 +278,14 @@ export default function ImageGenerator() {
                           <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
                         </svg>
                       </div>
-                      <h4 className="text-lg font-display text-gray-800 font-semibold mb-3">Upload Image</h4>
-                      <p className="text-gray-600 mb-6 font-body">PNG, JPG, etc.</p>
+                      <h4 className="text-lg font-display text-gray-800 font-semibold mb-3">DRAG OR CLICK</h4>
+                      <p className="text-gray-600 mb-6 font-body">Any image file</p>
                       <button 
                         type="button" 
-                        className="bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-3 rounded-full hover:scale-105 transition-all font-display font-bold shadow-lg"
+                        className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 font-display font-bold shadow-lg border-2 border-gray-800 transform -rotate-1 hover:rotate-0 transition-all"
                         onClick={() => fileInputRef.current?.click()}
                       >
-                        Choose File
+                        PICK FILE
                       </button>
                     </>
                   )}
@@ -304,7 +304,7 @@ export default function ImageGenerator() {
                   <div className="flex justify-center">
                     <Button 
                       type="submit" 
-                      className="bg-gradient-to-r from-green-600 to-green-700 text-white text-xl font-display font-bold py-6 px-12 rounded-full hover:scale-105 transition-all shadow-xl disabled:opacity-50 disabled:scale-100"
+                      className="bg-green-600 hover:bg-green-700 text-white text-xl font-display font-bold py-6 px-12 transition-all shadow-xl disabled:opacity-50 border-2 border-gray-800 transform rotate-1 hover:rotate-0"
                       disabled={processMutation.isPending || !imageFile}
                     >
                       {processMutation.isPending ? (
@@ -328,10 +328,10 @@ export default function ImageGenerator() {
           </Card>
           
           {/* Right Side - Result */}
-          <Card className="modern-card border-4 border-green-200">
+          <Card className="modern-card border-4 border-green-600">
             <CardContent className="p-8">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-display text-green-800 mb-2">Result</h3>
+                <h3 className="text-2xl font-display text-green-800 mb-2 transform -rotate-1">GORBIFIED!</h3>
               </div>
               
               <div className="min-h-[400px] flex items-center justify-center">
