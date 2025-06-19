@@ -10,7 +10,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative py-12 md:py-16 overflow-hidden bg-gray-200">
-      {/* Floating Oscar Images */}
+      {/* Floating Oscar Images - MORE CHAOS */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <img 
           src="/images/oscar-with-lid.png" 
@@ -43,6 +43,43 @@ export default function HeroSection() {
           style={{ 
             animation: 'bounce 2.5s infinite',
             animationDelay: '0.5s'
+          }}
+        />
+        {/* MORE OSCARS */}
+        <img 
+          src="/images/oscar-with-lid.png" 
+          alt=""
+          className="absolute top-1/3 left-5 w-10 h-10 md:w-16 md:h-16 opacity-15 transform rotate-90"
+          style={{ 
+            animation: 'float 3s ease-in-out infinite',
+            animationDelay: '2.5s'
+          }}
+        />
+        <img 
+          src="/images/oscar-with-lid.png" 
+          alt=""
+          className="absolute top-1/2 right-5 w-18 h-18 md:w-24 md:h-24 opacity-25 transform -rotate-45"
+          style={{ 
+            animation: 'wiggle 1.5s ease-in-out infinite',
+            animationDelay: '1.5s'
+          }}
+        />
+        <img 
+          src="/images/oscar-with-lid.png" 
+          alt=""
+          className="absolute bottom-1/4 left-1/3 w-8 h-8 md:w-12 md:h-12 opacity-30 transform rotate-180"
+          style={{ 
+            animation: 'bounce 4s infinite',
+            animationDelay: '3s'
+          }}
+        />
+        <img 
+          src="/images/oscar-with-lid.png" 
+          alt=""
+          className="absolute top-1/4 right-1/3 w-14 h-14 md:w-20 md:h-20 opacity-20 transform rotate-30"
+          style={{ 
+            animation: 'float 2.5s ease-in-out infinite',
+            animationDelay: '0.7s'
           }}
         />
       </div>

@@ -4,7 +4,28 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="glass border-t-4 border-primary py-12 mt-16">
+    <footer className="glass border-t-4 border-green-600 py-12 mt-16 relative transform rotate-1">
+      {/* Floating Oscars in footer */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <img 
+          src="/images/oscar-with-lid.png" 
+          alt=""
+          className="absolute top-5 left-10 w-8 h-8 md:w-12 md:h-12 opacity-15 transform rotate-45"
+          style={{ 
+            animation: 'float 3s ease-in-out infinite',
+            animationDelay: '0s'
+          }}
+        />
+        <img 
+          src="/images/oscar-with-lid.png" 
+          alt=""
+          className="absolute bottom-5 right-20 w-6 h-6 md:w-10 md:h-10 opacity-20 transform -rotate-30"
+          style={{ 
+            animation: 'wiggle 2s ease-in-out infinite',
+            animationDelay: '1s'
+          }}
+        />
+      </div>
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           {/* Logo Section */}
@@ -27,26 +48,26 @@ export default function Footer() {
           <div className="flex items-center gap-8">
             <Link 
               href="/" 
-              className="text-foreground hover:text-primary transition-colors font-display font-semibold text-lg hover:scale-105 transform"
+              className="text-foreground hover:text-green-600 transition-colors font-display font-semibold text-lg transform -rotate-1 hover:rotate-0 hover:scale-105"
             >
-              Gorbify
+              GORBIFY
             </Link>
             <Link 
               href="/gallery" 
-              className="text-foreground hover:text-primary transition-colors font-display font-semibold text-lg hover:scale-105 transform"
+              className="text-foreground hover:text-green-600 transition-colors font-display font-semibold text-lg transform rotate-1 hover:rotate-0 hover:scale-105"
             >
-              Gallery
+              GALLERY
             </Link>
           </div>
         </div>
         
-        <div className="w-full h-1 bg-green-600 rounded-full my-8"></div>
+        <div className="w-full h-1 bg-green-600 my-8 transform -rotate-1"></div>
         
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-center md:text-left">
-            <p className="text-foreground text-base font-body font-semibold">
-              © {currentYear} Gorbify
+            <p className="text-foreground text-base font-body font-semibold transform rotate-1">
+              © {currentYear} GORBIFY - TRASH YOURSELF
             </p>
           </div>
           

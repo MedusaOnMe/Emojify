@@ -55,15 +55,45 @@ export default function Gallery() {
     <div className="flex flex-col min-h-screen bg-white">
       <Header onMenuClick={() => setIsMobileNavOpen(true)} />
       
-      <main className="flex-1 pt-20 pb-10">
+      <main className="flex-1 pt-20 pb-10 relative">
+        {/* Floating Oscars in gallery */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <img 
+            src="/images/oscar-with-lid.png" 
+            alt=""
+            className="absolute top-20 right-10 w-10 h-10 md:w-16 md:h-16 opacity-15 transform rotate-90"
+            style={{ 
+              animation: 'float 4s ease-in-out infinite',
+              animationDelay: '1.5s'
+            }}
+          />
+          <img 
+            src="/images/oscar-with-lid.png" 
+            alt=""
+            className="absolute bottom-40 left-5 w-8 h-8 md:w-12 md:h-12 opacity-20 transform -rotate-45"
+            style={{ 
+              animation: 'wiggle 2.5s ease-in-out infinite',
+              animationDelay: '0.8s'
+            }}
+          />
+          <img 
+            src="/images/oscar-with-lid.png" 
+            alt=""
+            className="absolute top-1/2 right-5 w-6 h-6 md:w-10 md:h-10 opacity-10 transform rotate-180"
+            style={{ 
+              animation: 'bounce 3s infinite',
+              animationDelay: '2s'
+            }}
+          />
+        </div>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="font-display font-bold text-3xl md:text-4xl text-gray-800">
-              Gallery
+            <h1 className="font-display font-bold text-3xl md:text-4xl text-gray-800 transform -rotate-1">
+              GALLERY
             </h1>
-            <Link href="/" className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
+            <Link href="/" className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 transition-all flex items-center gap-2 border-2 border-gray-800 transform rotate-1 hover:rotate-0 hover:scale-105">
               <span>+</span>
-              Gorbify
+              GORBIFY
             </Link>
           </div>
           
@@ -127,8 +157,8 @@ export default function Gallery() {
                 <p className="text-gray-400 max-w-md mx-auto mb-6">
                   Upload an image to gorbify.
                 </p>
-                <Link href="/" className="inline-block px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 rounded-lg text-white font-medium">
-                  Gorbify
+                <Link href="/" className="inline-block px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium border-2 border-gray-800 transform -rotate-1 hover:rotate-0 transition-all hover:scale-105">
+                  GORBIFY NOW
                 </Link>
               </CardContent>
             </Card>

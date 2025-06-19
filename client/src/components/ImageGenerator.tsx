@@ -220,6 +220,36 @@ export default function ImageGenerator() {
 
   return (
     <section id="image-generator" className="py-8 relative">
+      {/* Floating Oscars in generator section */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <img 
+          src="/images/oscar-with-lid.png" 
+          alt=""
+          className="absolute top-10 right-10 w-12 h-12 md:w-16 md:h-16 opacity-15 transform rotate-90"
+          style={{ 
+            animation: 'float 3.5s ease-in-out infinite',
+            animationDelay: '1s'
+          }}
+        />
+        <img 
+          src="/images/oscar-with-lid.png" 
+          alt=""
+          className="absolute bottom-20 left-8 w-10 h-10 md:w-14 md:h-14 opacity-20 transform -rotate-45"
+          style={{ 
+            animation: 'wiggle 2s ease-in-out infinite',
+            animationDelay: '0.5s'
+          }}
+        />
+        <img 
+          src="/images/oscar-with-lid.png" 
+          alt=""
+          className="absolute top-1/2 left-2 w-8 h-8 md:w-12 md:h-12 opacity-10 transform rotate-180"
+          style={{ 
+            animation: 'bounce 4s infinite',
+            animationDelay: '2s'
+          }}
+        />
+      </div>
       <div className="container px-6 mx-auto max-w-5xl">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-5xl font-display text-green-800 transform -rotate-1">
@@ -282,8 +312,14 @@ export default function ImageGenerator() {
                       <p className="text-gray-600 mb-6 font-body">Any image file</p>
                       <button 
                         type="button" 
-                        className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 font-display font-bold shadow-lg border-2 border-gray-800 transform -rotate-1 hover:rotate-0 transition-all"
+                        className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 font-display font-bold shadow-lg border-2 border-gray-800 transform -rotate-1 hover:rotate-0 transition-all hover:animate-pulse"
                         onClick={() => fileInputRef.current?.click()}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.animation = 'shake 0.5s ease-in-out';
+                          setTimeout(() => {
+                            e.currentTarget.style.animation = '';
+                          }, 500);
+                        }}
                       >
                         PICK FILE
                       </button>
@@ -306,6 +342,14 @@ export default function ImageGenerator() {
                       type="submit" 
                       className="bg-green-600 hover:bg-green-700 text-white text-xl font-display font-bold py-6 px-12 transition-all shadow-xl disabled:opacity-50 border-2 border-gray-800 transform rotate-1 hover:rotate-0"
                       disabled={processMutation.isPending || !imageFile}
+                      onMouseEnter={(e) => {
+                        if (!processMutation.isPending && imageFile) {
+                          e.currentTarget.style.animation = 'shake 0.6s ease-in-out';
+                          setTimeout(() => {
+                            e.currentTarget.style.animation = '';
+                          }, 600);
+                        }
+                      }}
                     >
                       {processMutation.isPending ? (
                         <span className="flex items-center gap-3">
@@ -383,7 +427,13 @@ export default function ImageGenerator() {
                     </div>
                     
                     <button 
-                      className="bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-4 rounded-full hover:scale-105 transition-all text-lg font-display font-bold shadow-xl"
+                      className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 transition-all text-lg font-display font-bold shadow-xl border-2 border-gray-800 transform -rotate-1 hover:rotate-0"
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.animation = 'shake 0.4s ease-in-out';
+                        setTimeout(() => {
+                          e.currentTarget.style.animation = '';
+                        }, 400);
+                      }}
                       onClick={async () => {
                         try {
                           const imageUrl = processMutation.data?.url;
