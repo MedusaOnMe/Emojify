@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comic+Neue:wght@300;400;700&family=Nunito:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@300;400;700&family=Oswald:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -65,9 +65,9 @@
 }
 
 body {
-  background: linear-gradient(135deg, #f7f7f7 0%, #e5e7eb 30%, #d1d5db 70%, #9ca3af 100%);
+  background: #e5e7eb;
   color: hsl(var(--foreground));
-  font-family: 'Inter', 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: 'Roboto Condensed', 'Arial', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100vh;
@@ -98,42 +98,19 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--secondary-gradient);
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 20% 30%, rgba(22, 101, 52, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(115, 115, 115, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(82, 82, 91, 0.08) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: -1;
-}
 
 @layer components {
-  /* Fun card style */
   .modern-card {
-    background: linear-gradient(145deg, #fafafa 0%, #f4f4f5 50%, #e4e4e7 100%);
-    border: 3px solid #d4d4d8;
-    border-radius: var(--radius);
-    box-shadow: 
-      0 8px 32px rgba(22, 101, 52, 0.12),
-      0 4px 16px rgba(115, 115, 115, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: #f4f4f5;
+    border: 2px solid #a1a1aa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
   }
 
   .modern-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 
-      0 12px 48px rgba(22, 101, 52, 0.18),
-      0 8px 24px rgba(115, 115, 115, 0.12),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   /* Fun button styles */
@@ -224,12 +201,10 @@ body::before {
     font-weight: 400;
   }
 
-  /* Fun glass effects */
   .glass {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(5, 150, 105, 0.1);
-    box-shadow: 0 4px 16px rgba(5, 150, 105, 0.05);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #d1d5db;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   /* Oscar themed background */
@@ -308,17 +283,6 @@ body::before {
   }
 }
 
-@keyframes rainbow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 .custom-spinner {
   animation: spin 1s linear infinite;
@@ -335,32 +299,27 @@ body::before {
   animation: none;
 }
 
-/* Fun Typography */
+/* Typography */
 .font-display {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
   line-height: 1.2;
   overflow: visible;
 }
 
 .font-body {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 400;
 }
 
 .font-fun {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 400;
 }
 
 /* Fun Utility classes */
 .gradient-text {
-  background: var(--grouch-gradient);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: rainbow 3s ease infinite;
+  color: #166534;
   line-height: 1.4 !important;
   overflow: visible !important;
   display: inline-block !important;
@@ -382,17 +341,16 @@ body::before {
 }
 
 .text-bounce {
-  animation: bounce 2s infinite;
   line-height: 1.2;
   overflow: visible;
 }
 
 .text-wiggle {
-  animation: wiggle 2s ease-in-out infinite;
+  
 }
 
 .float {
-  animation: float 3s ease-in-out infinite;
+  
 }
 
 .success-gradient {

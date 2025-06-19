@@ -28,13 +28,13 @@ export default function Header({ onMenuClick }: HeaderProps) {
               href="/"
               className="text-gray-800 hover:text-green-600 transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-green-50"
             >
-              Make a Grouch
+              Gorbify
             </Link>
             <Link
               href="/gallery"
               className="text-gray-800 hover:text-green-600 transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-green-50"
             >
-              Trash Collection
+              Gallery
             </Link>
             <a
               href="https://x.com/i/communities/1930184588879335841"
