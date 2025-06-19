@@ -1,19 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-import { useEffect, useState } from "react";
-
 export default function HeroSection() {
-  const [showOscar, setShowOscar] = useState(false);
-
-  useEffect(() => {
-    // Start Oscar animation after component mounts
-    const timer = setTimeout(() => {
-      setShowOscar(true);
-    }, 500);
-    
-    return () => clearTimeout(timer);
-  }, []);
-
   const scrollToGenerator = () => {
     const element = document.getElementById("image-generator");
     if (element) {
@@ -23,28 +10,53 @@ export default function HeroSection() {
 
   return (
     <section className="relative py-12 md:py-16 overflow-hidden bg-gray-200">
+      {/* Floating Oscar Images */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <img 
+          src="/images/oscar-with-lid.png" 
+          alt=""
+          className="absolute top-10 left-10 w-16 h-16 md:w-24 md:h-24 opacity-30 transform rotate-12 animate-bounce"
+          style={{ animationDelay: '0s', animationDuration: '3s' }}
+        />
+        <img 
+          src="/images/oscar-with-lid.png" 
+          alt=""
+          className="absolute top-20 right-16 w-12 h-12 md:w-20 md:h-20 opacity-25 transform -rotate-6"
+          style={{ 
+            animation: 'float 4s ease-in-out infinite',
+            animationDelay: '1s'
+          }}
+        />
+        <img 
+          src="/images/oscar-with-lid.png" 
+          alt=""
+          className="absolute bottom-20 left-1/4 w-20 h-20 md:w-28 md:h-28 opacity-20 transform rotate-45"
+          style={{ 
+            animation: 'wiggle 2s ease-in-out infinite',
+            animationDelay: '2s'
+          }}
+        />
+        <img 
+          src="/images/oscar-with-lid.png" 
+          alt=""
+          className="absolute bottom-32 right-20 w-14 h-14 md:w-22 md:h-22 opacity-35 transform -rotate-12"
+          style={{ 
+            animation: 'bounce 2.5s infinite',
+            animationDelay: '0.5s'
+          }}
+        />
+      </div>
+
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           
-          {/* Oscar Animation Container */}
+          {/* Main Oscar */}
           <div className="relative mb-8 flex justify-center">
-            <div className="relative w-48 h-48 md:w-64 md:h-64">
-              {/* Oscar with Lid - Animates up from behind - BEHIND trash can */}
-              <img 
-                src="/images/oscar-with-lid.png" 
-                alt=""
-                className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-auto z-10 transition-all duration-1000 ease-out ${
-                  showOscar ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'
-                }`}
-              />
-              
-              {/* Trash Can Base - IN FRONT to cover Oscar initially */}
-              <img 
-                src="/images/trash-can.png" 
-                alt=""
-                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-auto z-20"
-              />
-            </div>
+            <img 
+              src="/images/oscar-with-lid.png" 
+              alt=""
+              className="w-48 h-48 md:w-64 md:h-64 transform -rotate-3 hover:rotate-0 transition-all duration-300 hover:scale-110"
+            />
           </div>
 
           {/* Title */}
