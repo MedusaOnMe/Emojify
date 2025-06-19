@@ -10,14 +10,15 @@ export default function Footer() {
           {/* Logo Section */}
           <div>
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 emoji-gradient rounded-full flex items-center justify-center emoji-shadow bouncy">
-                <span className="text-2xl">😄</span>
+              <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
+                </svg>
               </div>
               <div>
                 <span className="font-display text-2xl font-bold gradient-text">
-                  emojify
+                  Gorbify
                 </span>
-                <div className="text-sm text-muted-foreground font-body">turn photos into emojis</div>
               </div>
             </Link>
           </div>
@@ -28,7 +29,7 @@ export default function Footer() {
               href="/" 
               className="text-foreground hover:text-primary transition-colors font-display font-semibold text-lg hover:scale-105 transform"
             >
-              Create
+              Gorbify
             </Link>
             <Link 
               href="/gallery" 
@@ -39,26 +40,16 @@ export default function Footer() {
           </div>
         </div>
         
-        {/* Fun Divider */}
-        <div className="w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full my-8"></div>
+        <div className="w-full h-1 bg-green-600 rounded-full my-8"></div>
         
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-center md:text-left">
             <p className="text-foreground text-base font-body font-semibold">
-              © {currentYear} emojify. spreading joy one emoji at a time! 🎉
-            </p>
-            <p className="text-muted-foreground text-sm mt-2 font-body">
-              transform any image into a cute, expressive emoji with ai magic ✨
+              © {currentYear} Gorbify
             </p>
           </div>
           
-          {/* Fun emoji decoration */}
-          <div className="flex gap-2 text-2xl">
-            <span className="bouncy" style={{animationDelay: '0s'}}>😊</span>
-            <span className="bouncy" style={{animationDelay: '0.2s'}}>🎨</span>
-            <span className="bouncy" style={{animationDelay: '0.4s'}}>🚀</span>
-          </div>
         </div>
       </div>
     </footer>

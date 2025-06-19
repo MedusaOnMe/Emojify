@@ -67,19 +67,11 @@ export default function GallerySection() {
       <div className="container px-6 mx-auto relative z-10 max-w-6xl">
         {/* Gallery Header */}
         <div className="text-center mb-16">
-          <div className="flex justify-center gap-4 mb-8">
-            <span className="text-6xl bouncy" style={{animationDelay: '0s'}}>🎨</span>
-            <span className="text-6xl bouncy" style={{animationDelay: '0.3s'}}>🖼️</span>
-            <span className="text-6xl bouncy" style={{animationDelay: '0.6s'}}>✨</span>
-          </div>
           <div className="mb-8" style={{lineHeight: '1.2', paddingBottom: '0.5em', paddingTop: '0.2em', overflow: 'visible'}}>
             <h2 className="text-5xl md:text-7xl font-display gradient-text" style={{overflow: 'visible'}}>
-              emoji gallery!
+              Gallery
             </h2>
           </div>
-          <p className="text-xl text-gray-800 font-body max-w-2xl mx-auto">
-            check out all the amazing emojis created by our community! 🤩
-          </p>
         </div>
       
         {isLoading ? (
@@ -92,10 +84,9 @@ export default function GallerySection() {
           </div>
         ) : isError ? (
           <div className="text-center p-12 max-w-lg mx-auto modern-card">
-            <div className="text-8xl mb-6 wiggle">💔</div>
-            <h3 className="text-2xl font-display text-red-500 mb-4">oops! gallery won't load</h3>
+            <h3 className="text-2xl font-display text-red-500 mb-4">Error loading gallery</h3>
             <p className="text-muted-foreground font-body">
-              {error ? error.message : "something went wrong loading the emojis"}
+              {error ? error.message : "Something went wrong"}
             </p>
           </div>
         ) : images && images.length > 0 ? (
@@ -110,8 +101,8 @@ export default function GallerySection() {
                 <div className="aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 p-2">
                   <img 
                     src={image.url} 
-                    alt="emojify creation" 
-                    className="w-full h-full object-cover rounded-xl group-hover:scale-110 transition-transform duration-300"
+                    alt="Gorbify creation" 
+                    className="w-full h-full object-cover rounded-xl transition-transform duration-300"
                     loading="lazy" 
                   />
                 </div>
@@ -125,18 +116,17 @@ export default function GallerySection() {
           </div>
         ) : (
           <div className="text-center p-16 max-w-lg mx-auto modern-card">
-            <div className="text-9xl mb-8 bouncy">🎭</div>
             <h3 className="text-3xl font-display gradient-text mb-4">
-              no emojis yet!
+              No images
             </h3>
             <p className="text-muted-foreground font-body text-lg mb-8">
-              be the first to create an amazing emoji! 
+              Upload an image to gorbify
             </p>
             <Button 
-              className="emoji-gradient text-white px-8 py-4 rounded-full font-display font-bold hover:scale-105 transition-all"
+              className="bg-green-600 text-white px-8 py-4 rounded-full font-display font-bold"
               onClick={() => document.getElementById('image-generator')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              🎨 Create First Emoji!
+              Gorbify
             </Button>
           </div>
         )}
@@ -157,29 +147,24 @@ export default function GallerySection() {
               <div className="overflow-hidden max-h-[60vh] bg-gradient-to-br from-primary/10 to-secondary/10 p-8">
                 <img 
                   src={selectedImage.url} 
-                  alt="emojify creation" 
+                  alt="Gorbify creation" 
                   className="w-full object-contain rounded-3xl shadow-2xl"
                 />
               </div>
               
               <div className="p-8 text-center">
-                <div className="flex justify-center gap-3 mb-6">
-                  <span className="text-4xl bouncy" style={{animationDelay: '0s'}}>🎉</span>
-                  <span className="text-4xl bouncy" style={{animationDelay: '0.2s'}}>✨</span>
-                  <span className="text-4xl bouncy" style={{animationDelay: '0.4s'}}>😍</span>
-                </div>
                 <h3 className="text-3xl font-display gradient-text mb-4">
-                  amazing emoji!
+                  Gorbify Creation
                 </h3>
                 <p className="text-muted-foreground font-body mb-8">
                   Created: {new Date(selectedImage.timestamp).toLocaleDateString()}
                 </p>
                 
                 <Button 
-                  className="success-gradient text-white px-8 py-4 rounded-full font-display font-bold hover:scale-105 transition-all text-lg"
-                  onClick={() => downloadImage(selectedImage.url, `emoji-${selectedImage.id.split('/').pop() || 'creation'}`)}
+                  className="bg-green-600 text-white px-8 py-4 rounded-full font-display font-bold"
+                  onClick={() => downloadImage(selectedImage.url, `gorbify-${selectedImage.id.split('/').pop() || 'creation'}`)}
                 >
-                  💾 Download This Emoji!
+                  Download
                 </Button>
               </div>
             </div>
@@ -187,13 +172,6 @@ export default function GallerySection() {
         </div>
       )}
       
-      {/* Background decorations */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 text-5xl opacity-20 float" style={{animationDelay: '0s'}}>🎨</div>
-        <div className="absolute top-40 right-16 text-4xl opacity-25 float" style={{animationDelay: '1s'}}>😊</div>
-        <div className="absolute bottom-40 left-1/4 text-6xl opacity-15 float" style={{animationDelay: '2s'}}>✨</div>
-        <div className="absolute bottom-60 right-20 text-3xl opacity-30 float" style={{animationDelay: '1.5s'}}>🎭</div>
-      </div>
     </section>
   );
 }
