@@ -45,6 +45,9 @@ export default function HeroSection() {
             <h1 className="text-6xl md:text-8xl font-display gradient-text tracking-tight text-bounce" style={{overflow: 'visible', lineHeight: '1.4', paddingBottom: '0.3em'}}>
               Gorbify
             </h1>
+            <p className="text-xl md:text-2xl text-gray-600 font-medium max-w-2xl mx-auto">
+              Throw anyone into Oscar's trash can. Because sometimes everyone needs to be a grouch.
+            </p>
           </div>
 
         </div>

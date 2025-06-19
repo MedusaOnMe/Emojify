@@ -5,11 +5,12 @@
 
 /* Oscar the Grouch Themed Design System */
 :root {
-  --primary-gradient: linear-gradient(135deg, #059669 0%, #10b981 100%);
-  --secondary-gradient: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
-  --accent-gradient: linear-gradient(135deg, #374151 0%, #6b7280 100%);
-  --grouch-gradient: linear-gradient(135deg, #065f46 0%, #059669 50%, #10b981 100%);
-  --success-gradient: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  --primary-gradient: linear-gradient(135deg, #166534 0%, #15803d 100%);
+  --secondary-gradient: linear-gradient(135deg, #71717a 0%, #a1a1aa 100%);
+  --accent-gradient: linear-gradient(135deg, #52525b 0%, #71717a 100%);
+  --grouch-gradient: linear-gradient(135deg, #14532d 0%, #166534 50%, #15803d 100%);
+  --trash-metal: linear-gradient(135deg, #737373 0%, #525252 50%, #404040 100%);
+  --success-gradient: linear-gradient(135deg, #166534 0%, #15803d 100%);
   
   --background: 45 100% 96%;
   --foreground: 240 10% 15%;
@@ -64,7 +65,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #f0fdf4 0%, #f3f4f6 50%, #e5e7eb 100%);
+  background: linear-gradient(135deg, #f7f7f7 0%, #e5e7eb 30%, #d1d5db 70%, #9ca3af 100%);
   color: hsl(var(--foreground));
   font-family: 'Inter', 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
@@ -105,9 +106,9 @@ body::before {
   right: 0;
   bottom: 0;
   background-image: 
-    radial-gradient(circle at 20% 30%, rgba(5, 150, 105, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(107, 114, 128, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(55, 65, 81, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, rgba(22, 101, 52, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(115, 115, 115, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(82, 82, 91, 0.08) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
 }
@@ -115,12 +116,13 @@ body::before {
 @layer components {
   /* Fun card style */
   .modern-card {
-    background: hsl(var(--card));
-    border: 3px solid hsl(var(--border));
+    background: linear-gradient(145deg, #fafafa 0%, #f4f4f5 50%, #e4e4e7 100%);
+    border: 3px solid #d4d4d8;
     border-radius: var(--radius);
     box-shadow: 
-      0 8px 32px rgba(5, 150, 105, 0.1),
-      0 4px 16px rgba(107, 114, 128, 0.05);
+      0 8px 32px rgba(22, 101, 52, 0.12),
+      0 4px 16px rgba(115, 115, 115, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -129,8 +131,9 @@ body::before {
   .modern-card:hover {
     transform: translateY(-4px);
     box-shadow: 
-      0 12px 48px rgba(5, 150, 105, 0.15),
-      0 8px 24px rgba(107, 114, 128, 0.1);
+      0 12px 48px rgba(22, 101, 52, 0.18),
+      0 8px 24px rgba(115, 115, 115, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
 
   /* Fun button styles */
