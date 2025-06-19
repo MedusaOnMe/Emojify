@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { downloadImage } from "@/lib/image-utils";
 import { uploadImageToFirebase, onStorageChange } from "@/lib/firebase";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
 
 // Interface for image data
 interface ImageData {
@@ -101,8 +101,7 @@ export default function ImageGenerator() {
     },
     onError: (error) => {
       setIsUpdating(false);
-      toast.error({
-        title: "Error",
+      toast.error("Error", {
         description: error instanceof Error ? error.message : "Failed to process images"
       });
     }
@@ -112,8 +111,7 @@ export default function ImageGenerator() {
     e.preventDefault();
     
     if (!imageFile) {
-      toast.error({
-        title: "Missing Image",
+      toast.error("Missing Image", {
         description: "Please upload an image before transforming"
       });
       return;
@@ -134,8 +132,7 @@ export default function ImageGenerator() {
     
     if (file) {
       if (!file.type.startsWith('image/')) {
-        toast.error({
-          title: "Invalid file type",
+        toast.error("Invalid file type", {
           description: `File type ${file.type} is not a supported image format`
         });
         return;
@@ -143,8 +140,7 @@ export default function ImageGenerator() {
       
       const maxSizeInBytes = 4 * 1024 * 1024; // 4MB
       if (file.size > maxSizeInBytes) {
-        toast.error({
-          title: "File too large",
+        toast.error("File too large", {
           description: `Image is too large (${(file.size / 1024 / 1024).toFixed(2)}MB). Maximum size is 4MB.`
         });
         return;
@@ -156,8 +152,7 @@ export default function ImageGenerator() {
         
         img.onerror = () => {
           URL.revokeObjectURL(objectUrl);
-          toast.error({
-            title: "Invalid image",
+          toast.error("Invalid image", {
             description: "Unable to load image. The file may be corrupted or not a valid image."
           });
         };
@@ -169,8 +164,7 @@ export default function ImageGenerator() {
         
         img.src = objectUrl;
       } catch (error) {
-        toast.error({
-          title: "Error processing image",
+        toast.error("Error processing image", {
           description: "An error occurred while processing the image file."
         });
       }
@@ -202,8 +196,7 @@ export default function ImageGenerator() {
     
     if (file) {
       if (!file.type.startsWith('image/')) {
-        toast.error({
-          title: "Invalid file type",
+        toast.error("Invalid file type", {
           description: `File type ${file.type} is not a supported image format`
         });
         return;
@@ -211,8 +204,7 @@ export default function ImageGenerator() {
       
       const maxSizeInBytes = 4 * 1024 * 1024; // 4MB
       if (file.size > maxSizeInBytes) {
-        toast.error({
-          title: "File too large",
+        toast.error("File too large", {
           description: `Image is too large (${(file.size / 1024 / 1024).toFixed(2)}MB). Maximum size is 4MB.`
         });
         return;
@@ -224,8 +216,7 @@ export default function ImageGenerator() {
         
         img.onerror = () => {
           URL.revokeObjectURL(objectUrl);
-          toast.error({
-            title: "Invalid image",
+          toast.error("Invalid image", {
             description: "Unable to load image. The file may be corrupted or not a valid image."
           });
         };
@@ -237,10 +228,8 @@ export default function ImageGenerator() {
         
         img.src = objectUrl;
       } catch (error) {
-        toast({
-          title: "Error processing image",
-          description: "An error occurred while processing the dropped image file.",
-          variant: "destructive"
+        toast.error("Error processing image", {
+          description: "An error occurred while processing the dropped image file."
         });
       }
     } else {
@@ -434,8 +423,7 @@ export default function ImageGenerator() {
                           const imageId = processMutation.data?.id || 'emoji';
                           
                           if (!imageUrl) {
-                            toast.error({
-                              title: "Download failed",
+                            toast.error("Download failed", {
                               description: "No image URL available for download"
                             });
                             return;
@@ -443,13 +431,11 @@ export default function ImageGenerator() {
                           
                           await downloadImage(imageUrl, `gorbify-${imageId}`);
                           
-                          toast.success({
-                            title: "Download successful!",
+                          toast.success("Download successful!", {
                             description: "Your transformed image has been saved!"
                           });
                         } catch (error) {
-                          toast.error({
-                            title: "Download failed",
+                          toast.error("Download failed", {
                             description: error instanceof Error ? error.message : "Failed to download image"
                           });
                         }
