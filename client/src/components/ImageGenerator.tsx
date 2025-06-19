@@ -61,7 +61,7 @@ export default function ImageGenerator() {
       formData.append("image", imageFile);
       
       // Hardcoded prompt for putting subject in Oscar's trash bin
-      const hardcodedPrompt = "Place this character inside a realistic, full-sized metal garbage can. The character should be positioned sitting inside the can with their head, shoulders and upper torso visible above the rim, as if they live inside it. The garbage can should be a large, cylindrical metal trash can with vertical ridges, weathered galvanized steel surface with realistic rust spots and dents. The lid is removed and set aside. The character maintains their exact original appearance, colors, and features. Photorealistic style with natural lighting and a simple, clean background";
+      const hardcodedPrompt = "Place this character inside a realistic, full-sized metal garbage can with the lid balanced on top of their head like a hat. The character should be positioned sitting inside the can with their head, shoulders and upper torso visible above the rim. Show the complete trash can from bottom to top - it should be a large, cylindrical galvanized steel garbage can with vertical ridges, weathered surface with realistic rust spots and dents. The metal lid sits directly on the character's head. The character maintains their exact original appearance, colors, and pixelated style. Photorealistic trash can with natural lighting and simple background";
       
       formData.append("prompt", hardcodedPrompt);
       
