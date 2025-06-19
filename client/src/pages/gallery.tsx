@@ -56,33 +56,60 @@ export default function Gallery() {
       <Header onMenuClick={() => setIsMobileNavOpen(true)} />
       
       <main className="flex-1 pt-20 pb-10 relative">
-        {/* Floating Oscars in gallery */}
+        {/* GALLERY CHAOS MIX */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <img 
             src="/images/oscar-with-lid.png" 
             alt=""
             className="absolute top-20 right-10 w-10 h-10 md:w-16 md:h-16 opacity-15 transform rotate-90"
             style={{ 
-              animation: 'float 4s ease-in-out infinite',
+              animation: 'paperShake 4s ease-in-out infinite',
               animationDelay: '1.5s'
             }}
           />
           <img 
-            src="/images/oscar-with-lid.png" 
+            src="/images/trash-can.png" 
             alt=""
             className="absolute bottom-40 left-5 w-8 h-8 md:w-12 md:h-12 opacity-20 transform -rotate-45"
             style={{ 
-              animation: 'wiggle 2.5s ease-in-out infinite',
+              animation: 'crumple 2.5s ease-in-out infinite',
               animationDelay: '0.8s'
+            }}
+          />
+          <img 
+            src="/images/gorb.png" 
+            alt=""
+            className="absolute top-1/2 right-5 w-6 h-6 md:w-10 md:h-10 opacity-10 transform rotate-180"
+            style={{ 
+              animation: 'sway 3s ease-in-out infinite',
+              animationDelay: '2s'
+            }}
+          />
+          <img 
+            src="/images/gorb.png" 
+            alt=""
+            className="absolute top-32 left-8 w-7 h-7 md:w-12 md:h-12 opacity-18 transform rotate-45"
+            style={{ 
+              animation: 'float 3.8s ease-in-out infinite',
+              animationDelay: '0.3s'
+            }}
+          />
+          <img 
+            src="/images/trash-can.png" 
+            alt=""
+            className="absolute bottom-20 right-1/4 w-5 h-5 md:w-8 md:h-8 opacity-25 transform -rotate-30"
+            style={{ 
+              animation: 'wiggle 2.2s ease-in-out infinite',
+              animationDelay: '1.8s'
             }}
           />
           <img 
             src="/images/oscar-with-lid.png" 
             alt=""
-            className="absolute top-1/2 right-5 w-6 h-6 md:w-10 md:h-10 opacity-10 transform rotate-180"
+            className="absolute top-1/3 left-1/4 w-4 h-4 md:w-6 md:h-6 opacity-8 transform rotate-135"
             style={{ 
-              animation: 'bounce 3s infinite',
-              animationDelay: '2s'
+              animation: 'bounce 5s infinite',
+              animationDelay: '3.2s'
             }}
           />
         </div>

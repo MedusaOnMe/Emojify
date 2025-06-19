@@ -5,24 +5,42 @@ export default function Footer() {
 
   return (
     <footer className="glass border-t-4 border-green-600 py-12 mt-16 relative transform rotate-1">
-      {/* Floating Oscars in footer */}
+      {/* FOOTER CHAOS MIX */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <img 
           src="/images/oscar-with-lid.png" 
           alt=""
           className="absolute top-5 left-10 w-8 h-8 md:w-12 md:h-12 opacity-15 transform rotate-45"
           style={{ 
-            animation: 'float 3s ease-in-out infinite',
+            animation: 'paperShake 4s ease-in-out infinite',
             animationDelay: '0s'
           }}
         />
         <img 
-          src="/images/oscar-with-lid.png" 
+          src="/images/trash-can.png" 
           alt=""
           className="absolute bottom-5 right-20 w-6 h-6 md:w-10 md:h-10 opacity-20 transform -rotate-30"
           style={{ 
-            animation: 'wiggle 2s ease-in-out infinite',
+            animation: 'sway 3s ease-in-out infinite',
             animationDelay: '1s'
+          }}
+        />
+        <img 
+          src="/images/gorb.png" 
+          alt=""
+          className="absolute top-8 right-1/3 w-5 h-5 md:w-8 md:h-8 opacity-18 transform rotate-90"
+          style={{ 
+            animation: 'crumple 5s ease-in-out infinite',
+            animationDelay: '2s'
+          }}
+        />
+        <img 
+          src="/images/gorb.png" 
+          alt=""
+          className="absolute bottom-8 left-1/4 w-7 h-7 md:w-10 md:h-10 opacity-12 transform -rotate-45"
+          style={{ 
+            animation: 'float 2.5s ease-in-out infinite',
+            animationDelay: '1.5s'
           }}
         />
       </div>
