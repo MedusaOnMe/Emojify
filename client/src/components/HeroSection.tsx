@@ -29,20 +29,20 @@ export default function HeroSection() {
           {/* Oscar Animation Container */}
           <div className="relative mb-8 flex justify-center">
             <div className="relative w-48 h-48 md:w-64 md:h-64">
-              {/* Trash Can Base */}
-              <img 
-                src="/images/trash-can.png" 
-                alt=""
-                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-auto z-10"
-              />
-              
-              {/* Oscar with Lid - Animates up */}
+              {/* Oscar with Lid - Animates up from behind - BEHIND trash can */}
               <img 
                 src="/images/oscar-with-lid.png" 
                 alt=""
-                className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-auto z-20 transition-all duration-1000 ease-out ${
-                  showOscar ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-auto z-10 transition-all duration-1000 ease-out ${
+                  showOscar ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'
                 }`}
+              />
+              
+              {/* Trash Can Base - IN FRONT to cover Oscar initially */}
+              <img 
+                src="/images/trash-can.png" 
+                alt=""
+                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-auto z-20"
               />
             </div>
           </div>
