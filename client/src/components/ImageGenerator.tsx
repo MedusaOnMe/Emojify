@@ -61,7 +61,7 @@ export default function ImageGenerator() {
       formData.append("image", imageFile);
       
       // Hardcoded prompt for putting subject in Oscar's trash bin
-      const hardcodedPrompt = "Put the main subject (person, animal, or character) from this image inside Oscar the Grouch's metal trash bin from Sesame Street. The subject should be sitting or standing inside the cylindrical metal trash can with the lid placed on their head like a hat. Keep the subject's original appearance but position them naturally inside the grouch's iconic metal garbage bin. The trash can should be old, dented metal with a rusty appearance, just like Oscar's home.";
+      const hardcodedPrompt = "Put character in this picture into a worn, metallic cylindrical trash can with a slightly rusted surface, standing upright. The lid is off, and a character is peeking out from inside the bin, similar to Oscar the Grouch on Sesame Street. The setting is simple and neutral, emphasizing the character emerging from the can.";
       
       formData.append("prompt", hardcodedPrompt);
       
@@ -114,7 +114,7 @@ export default function ImageGenerator() {
     if (!imageFile) {
       toast.error({
         title: "Missing Image",
-        description: "Please upload an image before getting trashed"
+        description: "Please upload an image before transforming"
       });
       return;
     }
@@ -255,13 +255,15 @@ export default function ImageGenerator() {
         {/* Streamlined Header */}
         <div className="text-center mb-8">
           <div className="flex justify-center gap-3 mb-4">
-            <span className="text-4xl bouncy" style={{animationDelay: '0s'}}>🗑️</span>
-            <span className="text-4xl bouncy" style={{animationDelay: '0.3s'}}>🦛</span>
-            <span className="text-4xl bouncy" style={{animationDelay: '0.6s'}}>🗑️</span>
+            <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
+              </svg>
+            </div>
           </div>
           <div className="mb-4" style={{lineHeight: '1.2', paddingBottom: '0.5em', paddingTop: '0.2em', overflow: 'visible'}}>
-            <h2 className="text-3xl md:text-5xl font-display gradient-text" style={{overflow: 'visible'}}>
-              get trashed!
+            <h2 className="text-3xl md:text-5xl font-display text-green-800" style={{overflow: 'visible'}}>
+              Transform Your Photos
             </h2>
           </div>
         </div>
@@ -269,21 +271,21 @@ export default function ImageGenerator() {
         {/* Split Layout - Upload and Result Side by Side */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Side - Upload */}
-          <Card className="modern-card border-4 border-primary/20">
+          <Card className="modern-card border-4 border-green-200">
             <CardContent className="p-8">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-display gradient-text mb-2">Upload Image</h3>
-                <p className="text-foreground font-body">Choose a photo to put in the trash</p>
+                <h3 className="text-2xl font-display text-green-800 mb-2">Upload Image</h3>
+                <p className="text-gray-600 font-body">Choose a photo to transform</p>
               </div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div 
                   className={`border-4 border-dashed rounded-2xl p-8 text-center transition-all duration-300 ${
                     dragActive 
-                      ? 'border-primary bg-primary/10 scale-105' 
+                      ? 'border-green-600 bg-green-100 scale-105' 
                       : imagePreview 
-                        ? 'border-green-400 bg-green-400/10' 
-                        : 'border-border hover:border-primary hover:bg-primary/5'
+                        ? 'border-green-500 bg-green-50' 
+                        : 'border-gray-300 hover:border-green-500 hover:bg-green-50'
                   }`}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
@@ -293,8 +295,8 @@ export default function ImageGenerator() {
                     <div className="relative">
                       <img 
                         src={imagePreview} 
-                        alt="Image to gorbify" 
-                        className="max-h-64 mx-auto rounded-2xl shadow-xl border-2 border-primary/20"
+                        alt="Image to transform" 
+                        className="max-h-64 mx-auto rounded-2xl shadow-xl border-2 border-green-200"
                       />
                       <button 
                         type="button"
@@ -313,12 +315,16 @@ export default function ImageGenerator() {
                     </div>
                   ) : (
                     <>
-                      <div className="text-6xl mb-4 bouncy">🗑️</div>
-                      <h4 className="text-lg font-display text-foreground font-semibold mb-3">Upload or Drag Image</h4>
-                      <p className="text-muted-foreground mb-6 font-body">PNG, JPG, or other image formats</p>
+                      <div className="mb-4">
+                        <svg className="w-16 h-16 mx-auto text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
+                        </svg>
+                      </div>
+                      <h4 className="text-lg font-display text-gray-800 font-semibold mb-3">Upload or Drag Image</h4>
+                      <p className="text-gray-600 mb-6 font-body">PNG, JPG, or other image formats</p>
                       <button 
                         type="button" 
-                        className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-full hover:scale-105 transition-all font-display font-bold shadow-lg"
+                        className="bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-3 rounded-full hover:scale-105 transition-all font-display font-bold shadow-lg"
                         onClick={() => fileInputRef.current?.click()}
                       >
                         Choose File
@@ -340,17 +346,20 @@ export default function ImageGenerator() {
                   <div className="flex justify-center">
                     <Button 
                       type="submit" 
-                      className="emoji-gradient text-white text-xl font-display font-bold py-6 px-12 rounded-full hover:scale-105 transition-all shadow-xl disabled:opacity-50 disabled:scale-100"
+                      className="bg-gradient-to-r from-green-600 to-green-700 text-white text-xl font-display font-bold py-6 px-12 rounded-full hover:scale-105 transition-all shadow-xl disabled:opacity-50 disabled:scale-100"
                       disabled={processMutation.isPending || !imageFile}
                     >
                       {processMutation.isPending ? (
                         <span className="flex items-center gap-3">
                           <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                          Trashing...
+                          Processing...
                         </span>
                       ) : (
                         <span className="flex items-center gap-3">
-                          🗑️ Trash It!
+                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
+                          </svg>
+                          Transform
                         </span>
                       )}
                     </Button>
@@ -361,45 +370,55 @@ export default function ImageGenerator() {
           </Card>
           
           {/* Right Side - Result */}
-          <Card className="modern-card border-4 border-primary/20">
+          <Card className="modern-card border-4 border-green-200">
             <CardContent className="p-8">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-display gradient-text mb-2">Your Result</h3>
-                <p className="text-foreground font-body">Your trash bin creation will appear here</p>
+                <h3 className="text-2xl font-display text-green-800 mb-2">Your Result</h3>
+                <p className="text-gray-600 font-body">Your transformed image will appear here</p>
               </div>
               
               <div className="min-h-[400px] flex items-center justify-center">
                 {processMutation.isPending || isUpdating ? (
                   <div className="text-center py-12">
-                    <div className="text-7xl mb-6 bouncy">🗑️</div>
-                    <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
-                    <h4 className="text-xl font-display gradient-text mb-4">Getting you trashed...</h4>
-                    <p className="text-foreground font-body">This may take a moment</p>
+                    <div className="mb-6">
+                      <svg className="w-16 h-16 mx-auto text-green-600 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
+                      </svg>
+                    </div>
+                    <div className="w-16 h-16 border-4 border-green-600 border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
+                    <h4 className="text-xl font-display text-green-800 mb-4">Processing your image...</h4>
+                    <p className="text-gray-600 font-body">This may take a moment</p>
                   </div>
                 ) : processMutation.isError ? (
                   <div className="text-center py-12">
-                    <div className="text-7xl mb-6 wiggle">🚮</div>
+                    <div className="mb-6">
+                      <svg className="w-16 h-16 mx-auto text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z"/>
+                      </svg>
+                    </div>
                     <h4 className="text-xl font-display text-red-500 mb-4">Something went wrong</h4>
-                    <p className="text-foreground font-body mb-6">
+                    <p className="text-gray-600 font-body mb-6">
                       {processMutation.error instanceof Error ? processMutation.error.message : "Please try again"}
                     </p>
                     <button 
                       onClick={() => processMutation.reset()}
-                      className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full font-display font-bold hover:scale-105 transition-all"
+                      className="bg-gradient-to-r from-green-600 to-green-700 text-white px-6 py-3 rounded-full font-display font-bold hover:scale-105 transition-all"
                     >
-                      🔄 Try Again
+                      Try Again
                     </button>
                   </div>
                 ) : processMutation.data ? (
                   <div className="text-center py-12 w-full">
                     <div className="flex justify-center gap-3 mb-6">
-                      <span className="text-5xl bouncy" style={{animationDelay: '0s'}}>🗑️</span>
-                      <span className="text-5xl bouncy" style={{animationDelay: '0.2s'}}>🦛</span>
-                      <span className="text-5xl bouncy" style={{animationDelay: '0.4s'}}>🗑️</span>
+                      <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/>
+                        </svg>
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-display gradient-text mb-6">Perfect! You've been trashed!</h3>
+                    <h3 className="text-2xl font-display text-green-800 mb-6">Perfect! Your image has been transformed!</h3>
                     
-                    <div className="inline-block rounded-2xl overflow-hidden p-6 bg-gradient-to-br from-primary/10 to-secondary/10 shadow-xl border-2 border-primary/20 mb-6">
+                    <div className="inline-block rounded-2xl overflow-hidden p-6 bg-gradient-to-br from-green-50 to-gray-50 shadow-xl border-2 border-green-200 mb-6">
                       <img 
                         src={processMutation.data?.url} 
                         alt="Gorbify Creation"
@@ -408,7 +427,7 @@ export default function ImageGenerator() {
                     </div>
                     
                     <button 
-                      className="success-gradient text-white px-8 py-4 rounded-full hover:scale-105 transition-all text-lg font-display font-bold shadow-xl"
+                      className="bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-4 rounded-full hover:scale-105 transition-all text-lg font-display font-bold shadow-xl"
                       onClick={async () => {
                         try {
                           const imageUrl = processMutation.data?.url;
@@ -425,26 +444,33 @@ export default function ImageGenerator() {
                           await downloadImage(imageUrl, `gorbify-${imageId}`);
                           
                           toast.success({
-                            title: "Download successful! 🗑️",
-                            description: "Your grouch creation has been saved!"
+                            title: "Download successful!",
+                            description: "Your transformed image has been saved!"
                           });
                         } catch (error) {
                           toast.error({
-                            title: "Download failed 😞",
+                            title: "Download failed",
                             description: error instanceof Error ? error.message : "Failed to download image"
                           });
                         }
                       }}
                     >
-                      💾 Download Creation
+                      <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/>
+                      </svg>
+                      Download Image
                     </button>
                   </div>
                 ) : (
                   <div className="text-center py-12">
-                    <div className="text-7xl mb-6 bouncy">🗑️</div>
-                    <h4 className="text-xl font-display gradient-text mb-4">Ready to get grouch'd?</h4>
-                    <p className="text-foreground font-body max-w-sm mx-auto">
-                      Upload an image on the left to see your trash bin creation appear here! 
+                    <div className="mb-6">
+                      <svg className="w-16 h-16 mx-auto text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
+                      </svg>
+                    </div>
+                    <h4 className="text-xl font-display text-green-800 mb-4">Ready to transform?</h4>
+                    <p className="text-gray-600 font-body max-w-sm mx-auto">
+                      Upload an image on the left to see your transformed creation appear here! 
                     </p>
                   </div>
                 )}

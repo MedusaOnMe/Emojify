@@ -7,13 +7,15 @@ interface HeaderProps {
 
 export default function Header({ onMenuClick }: HeaderProps) {
   return (
-    <header className="glass sticky top-0 z-50 border-b-4 border-primary/20 backdrop-blur-md">
+    <header className="glass sticky top-0 z-50 border-b-4 border-green-200 backdrop-blur-md">
       <div className="container mx-auto px-6">
         <div className="flex h-24 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-4 group">
-            <div className="w-14 h-14 emoji-gradient rounded-full flex items-center justify-center emoji-shadow group-hover:bouncy transition-all">
-              <span className="text-3xl">🗑️</span>
+            <div className="w-14 h-14 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-all">
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
+              </svg>
             </div>
             <span className="font-display text-3xl font-bold gradient-text hover:scale-105 transition-transform">
               Gorbify
@@ -24,13 +26,13 @@ export default function Header({ onMenuClick }: HeaderProps) {
           <nav className="hidden md:flex items-center gap-8">
             <Link
               href="/"
-              className="text-gray-800 hover:text-primary transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-primary/10"
+              className="text-gray-800 hover:text-green-600 transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-green-50"
             >
-              Trash It
+              Create
             </Link>
             <Link
               href="/gallery"
-              className="text-gray-800 hover:text-primary transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-primary/10"
+              className="text-gray-800 hover:text-green-600 transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-green-50"
             >
               Gallery
             </Link>
@@ -38,7 +40,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
               href="https://x.com/i/communities/1930184588879335841"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-800 hover:text-primary transition-all p-3 glass rounded-full hover:scale-110 transform hover:bg-primary/10"
+              className="text-gray-800 hover:text-green-600 transition-all p-3 bg-white/50 backdrop-blur-sm rounded-full hover:scale-110 transform hover:bg-green-50"
               aria-label="Follow us on X (Twitter)"
             >
               <svg
@@ -54,7 +56,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-4 text-gray-800 hover:text-primary glass rounded-full transition-all hover:scale-110 transform hover:bg-primary/10"
+            className="md:hidden p-4 text-gray-800 hover:text-green-600 bg-white/50 backdrop-blur-sm rounded-full transition-all hover:scale-110 transform hover:bg-green-50"
             onClick={onMenuClick}
           >
             <svg
