@@ -61,7 +61,7 @@ export default function ImageGenerator() {
       formData.append("image", imageFile);
       
       // Hardcoded prompt for putting subject in Oscar's trash bin
-      const hardcodedPrompt = "Put character in this picture into a worn, metallic cylindrical trash can with a slightly rusted surface, standing upright. The lid is off, and a character is peeking out from inside the bin, similar to Oscar the Grouch on Sesame Street. The setting is simple and neutral, emphasizing the character emerging from the can.";
+      const hardcodedPrompt = "Place this character inside a realistic, full-sized metal garbage can. The character should be positioned sitting inside the can with their head, shoulders and upper torso visible above the rim, as if they live inside it. The garbage can should be a large, cylindrical metal trash can with vertical ridges, weathered galvanized steel surface with realistic rust spots and dents. The lid is removed and set aside. The character maintains their exact original appearance, colors, and features. Photorealistic style with natural lighting and a simple, clean background";
       
       formData.append("prompt", hardcodedPrompt);
       
