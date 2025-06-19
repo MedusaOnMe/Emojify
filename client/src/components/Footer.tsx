@@ -10,7 +10,7 @@ export default function Footer() {
         <img 
           src="/images/oscar-with-lid.png" 
           alt=""
-          className="absolute top-5 left-10 w-8 h-8 md:w-12 md:h-12 opacity-15 transform rotate-45"
+          className="absolute top-5 left-10 w-6 h-6 md:w-10 md:h-10 opacity-15 transform rotate-45 object-contain"
           style={{ 
             animation: 'paperShake 4s ease-in-out infinite',
             animationDelay: '0s'
@@ -19,7 +19,7 @@ export default function Footer() {
         <img 
           src="/images/trash-can.png" 
           alt=""
-          className="absolute bottom-5 right-20 w-6 h-6 md:w-10 md:h-10 opacity-20 transform -rotate-30"
+          className="absolute bottom-5 right-20 w-5 h-5 md:w-8 md:h-8 opacity-20 transform -rotate-30 object-contain"
           style={{ 
             animation: 'sway 3s ease-in-out infinite',
             animationDelay: '1s'
@@ -28,7 +28,7 @@ export default function Footer() {
         <img 
           src="/images/gorb.png" 
           alt=""
-          className="absolute top-8 right-1/3 w-5 h-5 md:w-8 md:h-8 opacity-18 transform rotate-90"
+          className="absolute top-8 right-1/3 w-4 h-4 md:w-6 md:h-6 opacity-18 transform rotate-90 object-contain"
           style={{ 
             animation: 'crumple 5s ease-in-out infinite',
             animationDelay: '2s'
@@ -37,7 +37,7 @@ export default function Footer() {
         <img 
           src="/images/gorb.png" 
           alt=""
-          className="absolute bottom-8 left-1/4 w-7 h-7 md:w-10 md:h-10 opacity-12 transform -rotate-45"
+          className="absolute bottom-8 left-1/4 w-5 h-5 md:w-8 md:h-8 opacity-12 transform -rotate-45 object-contain"
           style={{ 
             animation: 'float 2.5s ease-in-out infinite',
             animationDelay: '1.5s'

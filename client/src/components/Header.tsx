@@ -13,31 +13,31 @@ export default function Header({ onMenuClick }: HeaderProps) {
         <img 
           src="/images/oscar-with-lid.png" 
           alt=""
-          className="absolute top-1 right-20 w-8 h-8 opacity-25 transform rotate-45"
+          className="absolute top-1 right-20 w-8 h-8 opacity-25 transform rotate-45 object-contain"
           style={{ animation: 'sway 4s ease-in-out infinite', animationDelay: '1s' }}
         />
         <img 
           src="/images/trash-can.png" 
           alt=""
-          className="absolute bottom-1 left-40 w-6 h-6 opacity-20 transform -rotate-30"
+          className="absolute bottom-1 left-40 w-6 h-6 opacity-20 transform -rotate-30 object-contain"
           style={{ animation: 'float 3s ease-in-out infinite', animationDelay: '0.5s' }}
         />
         <img 
           src="/images/gorb.png" 
           alt=""
-          className="absolute top-2 left-80 w-5 h-5 opacity-15 transform rotate-90"
+          className="absolute top-2 left-80 w-5 h-5 opacity-15 transform rotate-90 object-contain"
           style={{ animation: 'crumple 5s ease-in-out infinite', animationDelay: '2s' }}
         />
         <img 
           src="/images/gorb.png" 
           alt=""
-          className="absolute bottom-2 right-60 w-7 h-7 opacity-30 transform -rotate-45"
+          className="absolute bottom-2 right-60 w-7 h-7 opacity-30 transform -rotate-45 object-contain"
           style={{ animation: 'wiggle 2s ease-in-out infinite', animationDelay: '0.8s' }}
         />
         <img 
           src="/images/trash-can.png" 
           alt=""
-          className="absolute top-3 right-40 w-4 h-4 opacity-10 transform rotate-180"
+          className="absolute top-3 right-40 w-4 h-4 opacity-10 transform rotate-180 object-contain"
           style={{ animation: 'bounce 3s infinite', animationDelay: '1.5s' }}
         />
       </div>
@@ -50,17 +50,17 @@ export default function Header({ onMenuClick }: HeaderProps) {
               <img 
                 src="/images/trash-can.png" 
                 alt=""
-                className="absolute w-12 h-12 top-1 left-1 transform rotate-6 group-hover:rotate-12 transition-all opacity-80"
+                className="absolute w-12 h-12 top-1 left-1 transform rotate-6 group-hover:rotate-12 transition-all opacity-80 object-contain"
               />
               <img 
                 src="/images/oscar-with-lid.png" 
                 alt=""
-                className="absolute w-10 h-10 top-2 left-3 transform -rotate-12 group-hover:rotate-0 transition-all z-10"
+                className="absolute w-10 h-10 top-2 left-3 transform -rotate-12 group-hover:rotate-0 transition-all z-10 object-contain"
               />
               <img 
                 src="/images/gorb.png" 
                 alt=""
-                className="absolute w-8 h-8 bottom-0 right-0 transform rotate-45 group-hover:-rotate-45 transition-all opacity-60"
+                className="absolute w-8 h-8 bottom-0 right-0 transform rotate-45 group-hover:-rotate-45 transition-all opacity-60 object-contain"
               />
             </div>
             <span className="font-display text-3xl font-bold gradient-text transform -rotate-2 hover:rotate-0 transition-transform">

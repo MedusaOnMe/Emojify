@@ -16,25 +16,25 @@ export default function HeroSection() {
         <img 
           src="/images/oscar-with-lid.png" 
           alt=""
-          className="absolute top-10 left-10 w-16 h-16 md:w-24 md:h-24 opacity-30 transform rotate-12"
+          className="absolute top-10 left-10 w-14 h-14 md:w-20 md:h-20 opacity-30 transform rotate-12 object-contain"
           style={{ animation: 'crumple 4s ease-in-out infinite', animationDelay: '0s' }}
         />
         <img 
           src="/images/oscar-with-lid.png" 
           alt=""
-          className="absolute top-20 right-16 w-12 h-12 md:w-20 md:h-20 opacity-25 transform -rotate-6"
+          className="absolute top-20 right-16 w-10 h-10 md:w-16 md:h-16 opacity-25 transform -rotate-6 object-contain"
           style={{ animation: 'sway 3s ease-in-out infinite', animationDelay: '1s' }}
         />
         <img 
           src="/images/oscar-with-lid.png" 
           alt=""
-          className="absolute bottom-20 left-1/4 w-20 h-20 md:w-28 md:h-28 opacity-20 transform rotate-45"
+          className="absolute bottom-20 left-1/4 w-18 h-18 md:w-24 md:h-24 opacity-20 transform rotate-45 object-contain"
           style={{ animation: 'wiggle 2s ease-in-out infinite', animationDelay: '2s' }}
         />
         <img 
           src="/images/oscar-with-lid.png" 
           alt=""
-          className="absolute top-1/2 right-5 w-18 h-18 md:w-24 md:h-24 opacity-25 transform -rotate-45"
+          className="absolute top-1/2 right-5 w-16 h-16 md:w-20 md:h-20 opacity-25 transform -rotate-45 object-contain"
           style={{ animation: 'float 2.5s ease-in-out infinite', animationDelay: '1.5s' }}
         />
         
@@ -42,25 +42,25 @@ export default function HeroSection() {
         <img 
           src="/images/trash-can.png" 
           alt=""
-          className="absolute top-1/3 left-5 w-14 h-14 md:w-18 md:h-18 opacity-20 transform rotate-90"
+          className="absolute top-1/3 left-5 w-12 h-12 md:w-16 md:h-16 opacity-20 transform rotate-90 object-contain"
           style={{ animation: 'bounce 3.5s infinite', animationDelay: '2.5s' }}
         />
         <img 
           src="/images/trash-can.png" 
           alt=""
-          className="absolute bottom-32 right-20 w-10 h-10 md:w-16 md:h-16 opacity-35 transform -rotate-12"
+          className="absolute bottom-32 right-20 w-8 h-8 md:w-12 md:h-12 opacity-35 transform -rotate-12 object-contain"
           style={{ animation: 'sway 4s ease-in-out infinite', animationDelay: '0.8s' }}
         />
         <img 
           src="/images/trash-can.png" 
           alt=""
-          className="absolute top-1/4 left-1/3 w-8 h-8 md:w-12 md:h-12 opacity-15 transform rotate-135"
+          className="absolute top-1/4 left-1/3 w-6 h-6 md:w-10 md:h-10 opacity-15 transform rotate-135 object-contain"
           style={{ animation: 'float 3s ease-in-out infinite', animationDelay: '1.8s' }}
         />
         <img 
           src="/images/trash-can.png" 
           alt=""
-          className="absolute bottom-1/3 right-1/4 w-12 h-12 md:w-20 md:h-20 opacity-25 transform -rotate-30"
+          className="absolute bottom-1/3 right-1/4 w-10 h-10 md:w-16 md:h-16 opacity-25 transform -rotate-30 object-contain"
           style={{ animation: 'crumple 2.8s ease-in-out infinite', animationDelay: '0.3s' }}
         />
         
@@ -68,25 +68,25 @@ export default function HeroSection() {
         <img 
           src="/images/gorb.png" 
           alt=""
-          className="absolute bottom-1/4 left-1/3 w-10 h-10 md:w-14 md:h-14 opacity-30 transform rotate-180"
+          className="absolute bottom-1/4 left-1/3 w-8 h-8 md:w-12 md:h-12 opacity-30 transform rotate-180 object-contain"
           style={{ animation: 'bounce 4s infinite', animationDelay: '3s' }}
         />
         <img 
           src="/images/gorb.png" 
           alt=""
-          className="absolute top-1/4 right-1/3 w-16 h-16 md:w-22 md:h-22 opacity-20 transform rotate-60"
+          className="absolute top-1/4 right-1/3 w-14 h-14 md:w-18 md:h-18 opacity-20 transform rotate-60 object-contain"
           style={{ animation: 'wiggle 1.8s ease-in-out infinite', animationDelay: '0.7s' }}
         />
         <img 
           src="/images/gorb.png" 
           alt=""
-          className="absolute top-40 left-1/2 w-6 h-6 md:w-10 md:h-10 opacity-25 transform -rotate-90"
+          className="absolute top-40 left-1/2 w-5 h-5 md:w-8 md:h-8 opacity-25 transform -rotate-90 object-contain"
           style={{ animation: 'sway 3.2s ease-in-out infinite', animationDelay: '2.2s' }}
         />
         <img 
           src="/images/gorb.png" 
           alt=""
-          className="absolute bottom-40 right-1/3 w-8 h-8 md:w-12 md:h-12 opacity-18 transform rotate-45"
+          className="absolute bottom-40 right-1/3 w-6 h-6 md:w-10 md:h-10 opacity-18 transform rotate-45 object-contain"
           style={{ animation: 'float 2.3s ease-in-out infinite', animationDelay: '1.1s' }}
         />
         
@@ -94,13 +94,13 @@ export default function HeroSection() {
         <img 
           src="/images/oscar-with-lid.png" 
           alt=""
-          className="absolute top-2/3 left-8 w-6 h-6 md:w-8 md:h-8 opacity-12 transform rotate-270"
+          className="absolute top-2/3 left-8 w-5 h-5 md:w-7 md:h-7 opacity-12 transform rotate-270 object-contain"
           style={{ animation: 'crumple 5s ease-in-out infinite', animationDelay: '4s' }}
         />
         <img 
           src="/images/trash-can.png" 
           alt=""
-          className="absolute top-16 right-1/4 w-5 h-5 md:w-8 md:h-8 opacity-8 transform rotate-15"
+          className="absolute top-16 right-1/4 w-4 h-4 md:w-6 md:h-6 opacity-8 transform rotate-15 object-contain"
           style={{ animation: 'bounce 6s infinite', animationDelay: '5s' }}
         />
       </div>
@@ -113,7 +113,7 @@ export default function HeroSection() {
             <img 
               src="/images/oscar-with-lid.png" 
               alt=""
-              className="w-48 h-48 md:w-64 md:h-64 transform -rotate-3 hover:rotate-0 transition-all duration-300 hover:scale-110"
+              className="w-48 h-48 md:w-64 md:h-64 transform -rotate-3 hover:rotate-0 transition-all duration-300 hover:scale-110 object-contain"
             />
           </div>
 

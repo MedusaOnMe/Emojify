@@ -225,7 +225,7 @@ export default function ImageGenerator() {
         <img 
           src="/images/oscar-with-lid.png" 
           alt=""
-          className="absolute top-10 right-10 w-12 h-12 md:w-16 md:h-16 opacity-15 transform rotate-90"
+          className="absolute top-10 right-10 w-10 h-10 md:w-14 md:h-14 opacity-15 transform rotate-90 object-contain"
           style={{ 
             animation: 'sway 3.5s ease-in-out infinite',
             animationDelay: '1s'
@@ -234,7 +234,7 @@ export default function ImageGenerator() {
         <img 
           src="/images/trash-can.png" 
           alt=""
-          className="absolute bottom-20 left-8 w-10 h-10 md:w-14 md:h-14 opacity-20 transform -rotate-45"
+          className="absolute bottom-20 left-8 w-8 h-8 md:w-12 md:h-12 opacity-20 transform -rotate-45 object-contain"
           style={{ 
             animation: 'crumple 2s ease-in-out infinite',
             animationDelay: '0.5s'
@@ -243,7 +243,7 @@ export default function ImageGenerator() {
         <img 
           src="/images/gorb.png" 
           alt=""
-          className="absolute top-1/2 left-2 w-8 h-8 md:w-12 md:h-12 opacity-10 transform rotate-180"
+          className="absolute top-1/2 left-2 w-6 h-6 md:w-10 md:h-10 opacity-10 transform rotate-180 object-contain"
           style={{ 
             animation: 'bounce 4s infinite',
             animationDelay: '2s'
@@ -252,7 +252,7 @@ export default function ImageGenerator() {
         <img 
           src="/images/gorb.png" 
           alt=""
-          className="absolute bottom-32 right-5 w-6 h-6 md:w-10 md:h-10 opacity-25 transform rotate-45"
+          className="absolute bottom-32 right-5 w-5 h-5 md:w-8 md:h-8 opacity-25 transform rotate-45 object-contain"
           style={{ 
             animation: 'float 2.8s ease-in-out infinite',
             animationDelay: '1.3s'
@@ -261,7 +261,7 @@ export default function ImageGenerator() {
         <img 
           src="/images/trash-can.png" 
           alt=""
-          className="absolute top-20 left-1/4 w-5 h-5 md:w-8 md:h-8 opacity-12 transform -rotate-60"
+          className="absolute top-20 left-1/4 w-4 h-4 md:w-6 md:h-6 opacity-12 transform -rotate-60 object-contain"
           style={{ 
             animation: 'wiggle 3.2s ease-in-out infinite',
             animationDelay: '2.8s'
