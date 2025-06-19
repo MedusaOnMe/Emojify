@@ -240,7 +240,7 @@ async function processImageEditJob(jobId: string, imageData: { imagePath: string
     
     // Store the image in our database
     const image = await storage.createImage({
-      prompt: `Edit: ${prompt}`,
+      prompt: `Gorbify: ${prompt}`,
       url: imageUrl,
       size: "1024x1024",
       userId: null,
@@ -754,9 +754,9 @@ export async function registerRoutes(app: Application) {
               });
             });
             
-  // Emojify endpoint (specific for emoji creation)
-  app.post('/api/images/emojify', (req, res) => {
-    log('=== EMOJIFY ENDPOINT CALLED ===');
+  // Gorbify endpoint (specific for trash bin creation)
+  app.post('/api/images/gorbify', (req, res) => {
+    log('=== GORBIFY ENDPOINT CALLED ===');
     
     // Check API key status upfront
     const apiKey = process.env.OPENAI_API_KEY;
@@ -823,7 +823,7 @@ export async function registerRoutes(app: Application) {
         // Convert to PNG with alpha channel
         await sharp(imagePath)
           .ensureAlpha()
-          .resize(1024, 1024, { fit: 'inside' }) // Keep larger size for emojis
+          .resize(1024, 1024, { fit: 'inside' }) // Keep larger size for trash bin creations
           .toFormat('png')
           .withMetadata()
           .toFile(tempPngPath);
@@ -919,7 +919,7 @@ export async function registerRoutes(app: Application) {
           
           // Store image in our database
           const image = await storage.createImage({
-            prompt: `Emojify: ${prompt}`,
+            prompt: `Gorbify: ${prompt}`,
             url: imageUrl,
             size: "1024x1024",
             userId: null,
@@ -944,7 +944,7 @@ export async function registerRoutes(app: Application) {
         }
         
       } catch (error: any) {
-        log(`EMOJIFY ERROR: ${error.message}`);
+        log(`GORBIFY ERROR: ${error.message}`);
         
         // Clean up any files
         if (imagePath && fs.existsSync(imagePath)) {

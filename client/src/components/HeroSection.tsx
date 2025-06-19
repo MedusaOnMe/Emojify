@@ -10,31 +10,31 @@ export default function HeroSection() {
 
   return (
     <section className="relative py-12 md:py-16 overflow-hidden">
-      {/* Floating emoji decorations */}
+      {/* Floating trash/grouch decorations */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 text-4xl opacity-30 float" style={{animationDelay: '0s'}}>🎨</div>
-        <div className="absolute top-40 right-16 text-3xl opacity-40 float" style={{animationDelay: '1s'}}>✨</div>
-        <div className="absolute top-60 left-1/4 text-5xl opacity-20 float" style={{animationDelay: '2s'}}>😊</div>
-        <div className="absolute bottom-40 right-1/4 text-4xl opacity-35 float" style={{animationDelay: '0.5s'}}>🚀</div>
-        <div className="absolute bottom-60 left-16 text-3xl opacity-25 float" style={{animationDelay: '1.5s'}}>🎉</div>
-        <div className="absolute top-1/2 right-10 text-6xl opacity-15 float" style={{animationDelay: '3s'}}>💫</div>
+        <div className="absolute top-20 left-10 text-4xl opacity-30 float" style={{animationDelay: '0s'}}>🗑️</div>
+        <div className="absolute top-40 right-16 text-3xl opacity-40 float" style={{animationDelay: '1s'}}>🫙</div>
+        <div className="absolute top-60 left-1/4 text-5xl opacity-20 float" style={{animationDelay: '2s'}}>🦛</div>
+        <div className="absolute bottom-40 right-1/4 text-4xl opacity-35 float" style={{animationDelay: '0.5s'}}>🗑️</div>
+        <div className="absolute bottom-60 left-16 text-3xl opacity-25 float" style={{animationDelay: '1.5s'}}>🪣</div>
+        <div className="absolute top-1/2 right-10 text-6xl opacity-15 float" style={{animationDelay: '3s'}}>🦝</div>
       </div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
         {/* Hero content */}
         <div className="max-w-4xl mx-auto">
-          {/* Fun emoji intro */}
+          {/* Fun trash bin intro */}
           <div className="flex justify-center gap-4 mb-6">
-            <span className="text-5xl bouncy" style={{animationDelay: '0s'}}>😄</span>
+            <span className="text-5xl bouncy" style={{animationDelay: '0s'}}>👤</span>
             <span className="text-5xl bouncy" style={{animationDelay: '0.2s'}}>📸</span>
             <span className="text-5xl bouncy" style={{animationDelay: '0.4s'}}>➡️</span>
-            <span className="text-5xl bouncy" style={{animationDelay: '0.6s'}}>😎</span>
+            <span className="text-5xl bouncy" style={{animationDelay: '0.6s'}}>🗑️</span>
           </div>
 
           {/* Main title with proper height to prevent clipping */}
           <div className="mb-6" style={{lineHeight: '1.6', paddingBottom: '1em', paddingTop: '0.5em', overflow: 'visible', minHeight: '150px'}}>
             <h1 className="text-6xl md:text-8xl font-display gradient-text tracking-tight text-bounce" style={{overflow: 'visible', lineHeight: '1.4', paddingBottom: '0.3em'}}>
-              emojify
+              Gorbify
             </h1>
           </div>
 

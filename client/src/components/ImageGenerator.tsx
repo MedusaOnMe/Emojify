@@ -60,12 +60,12 @@ export default function ImageGenerator() {
       const formData = new FormData();
       formData.append("image", imageFile);
       
-      // Hardcoded prompt for converting image to emoji
-      const hardcodedPrompt = "Convert this image into a cute, simple emoji style. Make it round, colorful, and expressive like a standard emoji. Remove any complex details and focus on the main subject with bold, clear features that would work well as a small emoji icon.";
+      // Hardcoded prompt for putting subject in Oscar's trash bin
+      const hardcodedPrompt = "Put the main subject (person, animal, or character) from this image inside Oscar the Grouch's metal trash bin from Sesame Street. The subject should be sitting or standing inside the cylindrical metal trash can with the lid placed on their head like a hat. Keep the subject's original appearance but position them naturally inside the grouch's iconic metal garbage bin. The trash can should be old, dented metal with a rusty appearance, just like Oscar's home.";
       
       formData.append("prompt", hardcodedPrompt);
       
-      const response = await fetch("/api/images/emojify", {
+      const response = await fetch("/api/images/gorbify", {
         method: "POST",
         body: formData,
       });
@@ -89,7 +89,7 @@ export default function ImageGenerator() {
           const stableUrl = URL.createObjectURL(imageBlob);
           
           try {
-            await uploadImageToFirebase(stableUrl, "emojify Creation");
+            await uploadImageToFirebase(stableUrl, "Gorbify Creation");
           } finally {
             URL.revokeObjectURL(stableUrl);
           }
@@ -114,7 +114,7 @@ export default function ImageGenerator() {
     if (!imageFile) {
       toast.error({
         title: "Missing Image",
-        description: "Please upload an image before creating your emoji"
+        description: "Please upload an image before getting trashed"
       });
       return;
     }
@@ -255,13 +255,13 @@ export default function ImageGenerator() {
         {/* Streamlined Header */}
         <div className="text-center mb-8">
           <div className="flex justify-center gap-3 mb-4">
-            <span className="text-4xl bouncy" style={{animationDelay: '0s'}}>🎨</span>
-            <span className="text-4xl bouncy" style={{animationDelay: '0.3s'}}>✨</span>
-            <span className="text-4xl bouncy" style={{animationDelay: '0.6s'}}>🎭</span>
+            <span className="text-4xl bouncy" style={{animationDelay: '0s'}}>🗑️</span>
+            <span className="text-4xl bouncy" style={{animationDelay: '0.3s'}}>🦛</span>
+            <span className="text-4xl bouncy" style={{animationDelay: '0.6s'}}>🗑️</span>
           </div>
           <div className="mb-4" style={{lineHeight: '1.2', paddingBottom: '0.5em', paddingTop: '0.2em', overflow: 'visible'}}>
             <h2 className="text-3xl md:text-5xl font-display gradient-text" style={{overflow: 'visible'}}>
-              transform your photos!
+              get trashed!
             </h2>
           </div>
         </div>
@@ -273,7 +273,7 @@ export default function ImageGenerator() {
             <CardContent className="p-8">
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-display gradient-text mb-2">Upload Image</h3>
-                <p className="text-foreground font-body">Choose a photo to transform</p>
+                <p className="text-foreground font-body">Choose a photo to put in the trash</p>
               </div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -293,7 +293,7 @@ export default function ImageGenerator() {
                     <div className="relative">
                       <img 
                         src={imagePreview} 
-                        alt="Image to emojify" 
+                        alt="Image to gorbify" 
                         className="max-h-64 mx-auto rounded-2xl shadow-xl border-2 border-primary/20"
                       />
                       <button 
@@ -313,7 +313,7 @@ export default function ImageGenerator() {
                     </div>
                   ) : (
                     <>
-                      <div className="text-6xl mb-4 bouncy">📸</div>
+                      <div className="text-6xl mb-4 bouncy">🗑️</div>
                       <h4 className="text-lg font-display text-foreground font-semibold mb-3">Upload or Drag Image</h4>
                       <p className="text-muted-foreground mb-6 font-body">PNG, JPG, or other image formats</p>
                       <button 
@@ -346,11 +346,11 @@ export default function ImageGenerator() {
                       {processMutation.isPending ? (
                         <span className="flex items-center gap-3">
                           <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                          Creating...
+                          Trashing...
                         </span>
                       ) : (
                         <span className="flex items-center gap-3">
-                          🎭 Transform!
+                          🗑️ Trash It!
                         </span>
                       )}
                     </Button>
@@ -365,20 +365,20 @@ export default function ImageGenerator() {
             <CardContent className="p-8">
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-display gradient-text mb-2">Your Result</h3>
-                <p className="text-foreground font-body">Your emoji will appear here</p>
+                <p className="text-foreground font-body">Your trash bin creation will appear here</p>
               </div>
               
               <div className="min-h-[400px] flex items-center justify-center">
                 {processMutation.isPending || isUpdating ? (
                   <div className="text-center py-12">
-                    <div className="text-7xl mb-6 bouncy">🎨</div>
+                    <div className="text-7xl mb-6 bouncy">🗑️</div>
                     <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
-                    <h4 className="text-xl font-display gradient-text mb-4">Creating your emoji...</h4>
+                    <h4 className="text-xl font-display gradient-text mb-4">Getting you trashed...</h4>
                     <p className="text-foreground font-body">This may take a moment</p>
                   </div>
                 ) : processMutation.isError ? (
                   <div className="text-center py-12">
-                    <div className="text-7xl mb-6 wiggle">😵</div>
+                    <div className="text-7xl mb-6 wiggle">🚮</div>
                     <h4 className="text-xl font-display text-red-500 mb-4">Something went wrong</h4>
                     <p className="text-foreground font-body mb-6">
                       {processMutation.error instanceof Error ? processMutation.error.message : "Please try again"}
@@ -393,16 +393,16 @@ export default function ImageGenerator() {
                 ) : processMutation.data ? (
                   <div className="text-center py-12 w-full">
                     <div className="flex justify-center gap-3 mb-6">
-                      <span className="text-5xl bouncy" style={{animationDelay: '0s'}}>🎉</span>
-                      <span className="text-5xl bouncy" style={{animationDelay: '0.2s'}}>✨</span>
-                      <span className="text-5xl bouncy" style={{animationDelay: '0.4s'}}>😍</span>
+                      <span className="text-5xl bouncy" style={{animationDelay: '0s'}}>🗑️</span>
+                      <span className="text-5xl bouncy" style={{animationDelay: '0.2s'}}>🦛</span>
+                      <span className="text-5xl bouncy" style={{animationDelay: '0.4s'}}>🗑️</span>
                     </div>
-                    <h3 className="text-2xl font-display gradient-text mb-6">Perfect! Here's your emoji</h3>
+                    <h3 className="text-2xl font-display gradient-text mb-6">Perfect! You've been trashed!</h3>
                     
                     <div className="inline-block rounded-2xl overflow-hidden p-6 bg-gradient-to-br from-primary/10 to-secondary/10 shadow-xl border-2 border-primary/20 mb-6">
                       <img 
                         src={processMutation.data?.url} 
-                        alt="emojify Creation"
+                        alt="Gorbify Creation"
                         className="max-w-full max-h-64 rounded-xl shadow-lg"
                       />
                     </div>
@@ -422,11 +422,11 @@ export default function ImageGenerator() {
                             return;
                           }
                           
-                          await downloadImage(imageUrl, `emoji-${imageId}`);
+                          await downloadImage(imageUrl, `gorbify-${imageId}`);
                           
                           toast.success({
-                            title: "Download successful! 🎉",
-                            description: "Your amazing emoji has been saved!"
+                            title: "Download successful! 🗑️",
+                            description: "Your grouch creation has been saved!"
                           });
                         } catch (error) {
                           toast.error({
@@ -436,15 +436,15 @@ export default function ImageGenerator() {
                         }
                       }}
                     >
-                      💾 Download Emoji
+                      💾 Download Creation
                     </button>
                   </div>
                 ) : (
                   <div className="text-center py-12">
-                    <div className="text-7xl mb-6 bouncy">🎭</div>
-                    <h4 className="text-xl font-display gradient-text mb-4">Ready for magic?</h4>
+                    <div className="text-7xl mb-6 bouncy">🗑️</div>
+                    <h4 className="text-xl font-display gradient-text mb-4">Ready to get grouch'd?</h4>
                     <p className="text-foreground font-body max-w-sm mx-auto">
-                      Upload an image on the left to see your emoji appear here! 
+                      Upload an image on the left to see your trash bin creation appear here! 
                     </p>
                   </div>
                 )}

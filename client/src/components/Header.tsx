@@ -13,10 +13,10 @@ export default function Header({ onMenuClick }: HeaderProps) {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-4 group">
             <div className="w-14 h-14 emoji-gradient rounded-full flex items-center justify-center emoji-shadow group-hover:bouncy transition-all">
-              <span className="text-3xl">😄</span>
+              <span className="text-3xl">🗑️</span>
             </div>
             <span className="font-display text-3xl font-bold gradient-text hover:scale-105 transition-transform">
-              emojify
+              Gorbify
             </span>
           </Link>
 
@@ -26,13 +26,13 @@ export default function Header({ onMenuClick }: HeaderProps) {
               href="/"
               className="text-gray-800 hover:text-primary transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-primary/10"
             >
-              Create ✨
+              Trash It
             </Link>
             <Link
               href="/gallery"
               className="text-gray-800 hover:text-primary transition-colors font-display font-semibold text-lg hover:scale-105 transform px-4 py-2 rounded-full hover:bg-primary/10"
             >
-              Gallery 🎨
+              Gallery
             </Link>
             <a
               href="https://x.com/i/communities/1930184588879335841"
