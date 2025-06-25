@@ -10,24 +10,20 @@ export default function Header({ onMenuClick }: HeaderProps) {
     <header className="bg-gradient-to-r from-red-400 via-blue-400 to-yellow-400 sticky top-0 z-50 border-b-4 border-yellow-400 backdrop-blur-md transform -rotate-1 relative overflow-hidden shadow-lg">
       {/* Floating Pokemon Images in Header */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <img src="/one.png" alt="" className="absolute top-1 right-20 w-6 h-6 opacity-40 transform rotate-45" style={{ animation: 'sway 4s ease-in-out infinite', animationDelay: '1s' }} />
-        <img src="/two.png" alt="" className="absolute bottom-1 left-40 w-5 h-5 opacity-35 transform -rotate-30" style={{ animation: 'float 3s ease-in-out infinite', animationDelay: '0.5s' }} />
-        <img src="/three.png" alt="" className="absolute top-2 left-80 w-4 h-4 opacity-30 transform rotate-90" style={{ animation: 'bounce 5s ease-in-out infinite', animationDelay: '2s' }} />
-        <img src="/four.png" alt="" className="absolute bottom-2 right-60 w-5 h-5 opacity-45 transform -rotate-45" style={{ animation: 'wiggle 2s ease-in-out infinite', animationDelay: '0.8s' }} />
+        <img src="/one.png" alt="" className="absolute top-1 right-20 w-6 h-6 opacity-50" style={{ animation: 'swayScale 5s ease-in-out infinite', animationDelay: '1s' }} />
+        <img src="/two.png" alt="" className="absolute bottom-1 left-40 w-5 h-5 opacity-45" style={{ animation: 'wiggleFloat 4s ease-in-out infinite', animationDelay: '0.5s' }} />
+        <img src="/three.png" alt="" className="absolute top-2 left-80 w-4 h-4 opacity-40" style={{ animation: 'bounceSpin 6s ease-in-out infinite', animationDelay: '2s' }} />
+        <img src="/four.png" alt="" className="absolute bottom-2 right-60 w-5 h-5 opacity-55" style={{ animation: 'floatSpin 7s ease-in-out infinite reverse', animationDelay: '0.8s' }} />
       </div>
       <div className="container mx-auto px-6">
         <div className="flex h-24 items-center justify-between">
           {/* CHAOTIC Logo */}
-          <Link href="/" className="flex items-center gap-4 group relative">
-            {/* Pokemon card logo */}
-            <div className="relative w-16 h-16">
-              <div className="absolute w-12 h-12 top-1 left-1 transform rotate-6 group-hover:rotate-12 transition-all opacity-80 bg-red-500 rounded-lg border-2 border-white"></div>
-              <div className="absolute w-10 h-10 top-2 left-3 transform -rotate-12 group-hover:rotate-0 transition-all z-10 bg-yellow-400 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold">⚡</div>
-              <div className="absolute w-8 h-8 bottom-0 right-0 transform rotate-45 group-hover:-rotate-45 transition-all opacity-60 bg-blue-500 rounded-lg"></div>
-            </div>
-            <span className="font-display text-3xl font-bold bg-gradient-to-r from-yellow-200 to-white bg-clip-text text-transparent transform -rotate-2 hover:rotate-0 transition-transform drop-shadow-lg">
-              POKEIFY
-            </span>
+          <Link href="/" className="flex items-center gap-2 group relative">
+            <img 
+              src="/title.png" 
+              alt="Pokeify"
+              className="h-12 md:h-16 w-auto transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 drop-shadow-lg"
+            />
           </Link>
 
           {/* Navigation */}

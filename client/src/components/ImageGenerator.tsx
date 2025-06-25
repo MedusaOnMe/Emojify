@@ -222,11 +222,11 @@ export default function ImageGenerator() {
     <section id="image-generator" className="py-8 relative bg-gradient-to-br from-red-50 via-blue-50 to-yellow-50">
       {/* Floating Pokemon Images */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <img src="/one.png" alt="" className="absolute top-10 right-10 w-10 h-10 md:w-14 md:h-14 opacity-40 transform rotate-90" style={{ animation: 'sway 3.5s ease-in-out infinite', animationDelay: '1s' }} />
-        <img src="/two.png" alt="" className="absolute bottom-20 left-8 w-8 h-8 md:w-12 md:h-12 opacity-50 transform -rotate-45" style={{ animation: 'crumple 2s ease-in-out infinite', animationDelay: '0.5s' }} />
-        <img src="/three.png" alt="" className="absolute top-1/2 left-2 w-6 h-6 md:w-10 md:h-10 opacity-30 transform rotate-180" style={{ animation: 'bounce 4s infinite', animationDelay: '2s' }} />
-        <img src="/four.png" alt="" className="absolute bottom-32 right-5 w-5 h-5 md:w-8 md:h-8 opacity-45 transform rotate-45" style={{ animation: 'float 2.8s ease-in-out infinite', animationDelay: '1.3s' }} />
-        <img src="/one.png" alt="" className="absolute top-20 left-1/4 w-4 h-4 md:w-6 md:h-6 opacity-35 transform -rotate-60" style={{ animation: 'wiggle 3.2s ease-in-out infinite', animationDelay: '2.8s' }} />
+        <img src="/one.png" alt="" className="absolute top-10 right-10 w-10 h-10 md:w-14 md:h-14 opacity-50" style={{ animation: 'bounceSpin 6s ease-in-out infinite', animationDelay: '1s' }} />
+        <img src="/two.png" alt="" className="absolute bottom-20 left-8 w-8 h-8 md:w-12 md:h-12 opacity-60" style={{ animation: 'wiggleFloat 4s ease-in-out infinite', animationDelay: '0.5s' }} />
+        <img src="/three.png" alt="" className="absolute top-1/2 left-2 w-6 h-6 md:w-10 md:h-10 opacity-40" style={{ animation: 'floatSpin 8s ease-in-out infinite reverse', animationDelay: '2s' }} />
+        <img src="/four.png" alt="" className="absolute bottom-32 right-5 w-5 h-5 md:w-8 md:h-8 opacity-55" style={{ animation: 'swayScale 5s ease-in-out infinite', animationDelay: '1.3s' }} />
+        <img src="/one.png" alt="" className="absolute top-20 left-1/4 w-4 h-4 md:w-6 md:h-6 opacity-45" style={{ animation: 'orbit 12s linear infinite', animationDelay: '2.8s' }} />
       </div>
       <div className="container px-6 mx-auto max-w-5xl">
         <div className="text-center mb-8">
@@ -293,10 +293,14 @@ export default function ImageGenerator() {
                         className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 font-display font-bold shadow-lg border-2 border-gray-800 transform -rotate-1 hover:rotate-0 transition-all hover:animate-pulse"
                         onClick={() => fileInputRef.current?.click()}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.animation = 'shake 0.5s ease-in-out';
-                          setTimeout(() => {
-                            e.currentTarget.style.animation = '';
-                          }, 500);
+                          if (e.currentTarget) {
+                            e.currentTarget.style.animation = 'shake 0.5s ease-in-out';
+                            setTimeout(() => {
+                              if (e.currentTarget) {
+                                e.currentTarget.style.animation = '';
+                              }
+                            }, 500);
+                          }
                         }}
                       >
                         PICK FILE
@@ -321,10 +325,12 @@ export default function ImageGenerator() {
                       className="bg-green-600 hover:bg-green-700 text-white text-xl font-display font-bold py-6 px-12 transition-all shadow-xl disabled:opacity-50 border-2 border-gray-800 transform rotate-1 hover:rotate-0"
                       disabled={processMutation.isPending || !imageFile}
                       onMouseEnter={(e) => {
-                        if (!processMutation.isPending && imageFile) {
+                        if (!processMutation.isPending && imageFile && e.currentTarget) {
                           e.currentTarget.style.animation = 'shake 0.6s ease-in-out';
                           setTimeout(() => {
-                            e.currentTarget.style.animation = '';
+                            if (e.currentTarget) {
+                              e.currentTarget.style.animation = '';
+                            }
                           }, 600);
                         }
                       }}
@@ -407,10 +413,14 @@ export default function ImageGenerator() {
                     <button 
                       className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 transition-all text-lg font-display font-bold shadow-xl border-2 border-gray-800 transform -rotate-1 hover:rotate-0"
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.animation = 'shake 0.4s ease-in-out';
-                        setTimeout(() => {
-                          e.currentTarget.style.animation = '';
-                        }, 400);
+                        if (e.currentTarget) {
+                          e.currentTarget.style.animation = 'shake 0.4s ease-in-out';
+                          setTimeout(() => {
+                            if (e.currentTarget) {
+                              e.currentTarget.style.animation = '';
+                            }
+                          }, 400);
+                        }
                       }}
                       onClick={async () => {
                         try {

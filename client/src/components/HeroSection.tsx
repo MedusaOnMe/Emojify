@@ -15,50 +15,50 @@ export default function HeroSection() {
         <img 
           src="/one.png" 
           alt=""
-          className="absolute top-10 left-10 w-16 h-16 md:w-24 md:h-24 opacity-60 transform rotate-12" 
-          style={{ animation: 'float 6s ease-in-out infinite', animationDelay: '0s' }}
+          className="absolute top-10 left-10 w-16 h-16 md:w-24 md:h-24 opacity-70" 
+          style={{ animation: 'floatSpin 8s ease-in-out infinite', animationDelay: '0s' }}
         />
         <img 
           src="/two.png" 
           alt=""
-          className="absolute top-20 right-16 w-12 h-12 md:w-20 md:h-20 opacity-50 transform -rotate-6" 
-          style={{ animation: 'sway 4s ease-in-out infinite', animationDelay: '1s' }}
+          className="absolute top-20 right-16 w-12 h-12 md:w-20 md:h-20 opacity-60" 
+          style={{ animation: 'swayScale 6s ease-in-out infinite', animationDelay: '1s' }}
         />
         <img 
           src="/three.png" 
           alt=""
-          className="absolute bottom-20 left-1/4 w-20 h-20 md:w-28 md:h-28 opacity-40 transform rotate-45" 
-          style={{ animation: 'bounce 5s ease-in-out infinite', animationDelay: '2s' }}
+          className="absolute bottom-20 left-1/4 w-20 h-20 md:w-28 md:h-28 opacity-50" 
+          style={{ animation: 'bounceSpin 7s ease-in-out infinite', animationDelay: '2s' }}
         />
         <img 
           src="/four.png" 
           alt=""
-          className="absolute top-1/2 right-5 w-18 h-18 md:w-24 md:h-24 opacity-55 transform -rotate-45" 
-          style={{ animation: 'wiggle 3s ease-in-out infinite', animationDelay: '1.5s' }}
+          className="absolute top-1/2 right-5 w-18 h-18 md:w-24 md:h-24 opacity-65" 
+          style={{ animation: 'wiggleFloat 5s ease-in-out infinite', animationDelay: '1.5s' }}
         />
         <img 
           src="/one.png" 
           alt=""
-          className="absolute bottom-32 right-20 w-10 h-10 md:w-16 md:h-16 opacity-35 transform rotate-90" 
-          style={{ animation: 'float 4s ease-in-out infinite', animationDelay: '0.8s' }}
+          className="absolute bottom-32 right-20 w-10 h-10 md:w-16 md:h-16 opacity-45" 
+          style={{ animation: 'orbit 10s linear infinite', animationDelay: '0.8s' }}
         />
         <img 
           src="/two.png" 
           alt=""
-          className="absolute top-1/4 left-1/3 w-8 h-8 md:w-14 md:h-14 opacity-25 transform rotate-135" 
-          style={{ animation: 'sway 7s ease-in-out infinite', animationDelay: '1.8s' }}
+          className="absolute top-1/4 left-1/3 w-8 h-8 md:w-14 md:h-14 opacity-35" 
+          style={{ animation: 'floatSpin 12s ease-in-out infinite reverse', animationDelay: '1.8s' }}
         />
         <img 
           src="/three.png" 
           alt=""
-          className="absolute bottom-1/3 right-1/4 w-14 h-14 md:w-22 md:h-22 opacity-45 transform -rotate-30" 
-          style={{ animation: 'bounce 3.5s ease-in-out infinite', animationDelay: '0.3s' }}
+          className="absolute bottom-1/3 right-1/4 w-14 h-14 md:w-22 md:h-22 opacity-55" 
+          style={{ animation: 'swayScale 4s ease-in-out infinite', animationDelay: '0.3s' }}
         />
         <img 
           src="/four.png" 
           alt=""
-          className="absolute top-2/3 left-8 w-8 h-8 md:w-12 md:h-12 opacity-30 transform rotate-270" 
-          style={{ animation: 'wiggle 5s ease-in-out infinite', animationDelay: '4s' }}
+          className="absolute top-2/3 left-8 w-8 h-8 md:w-12 md:h-12 opacity-40" 
+          style={{ animation: 'bounceSpin 6s ease-in-out infinite reverse', animationDelay: '4s' }}
         />
       </div>
 
