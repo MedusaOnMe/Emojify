@@ -7,7 +7,7 @@ interface HeaderProps {
 
 export default function Header({ onMenuClick }: HeaderProps) {
   return (
-    <header className="bg-gradient-to-r from-red-400 via-blue-400 to-yellow-400 sticky top-0 z-50 border-b-4 border-yellow-400 backdrop-blur-md transform -rotate-1 relative overflow-hidden shadow-lg">
+    <header className="bg-gradient-to-r from-red-400 via-blue-400 to-yellow-400 sticky top-0 z-50 border-b-4 border-yellow-400 backdrop-blur-md relative overflow-hidden shadow-lg">
       {/* Floating Pokemon Images in Header */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <img src="/one.png" alt="" className="absolute top-1 right-20 w-6 h-6 opacity-50" style={{ animation: 'swayScale 5s ease-in-out infinite', animationDelay: '1s' }} />
@@ -22,7 +22,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
             <img 
               src="/title.png" 
               alt="Pokeify"
-              className="h-12 md:h-16 w-auto transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 drop-shadow-lg"
+              className="h-12 md:h-16 w-auto group-hover:scale-105 transition-transform duration-300 drop-shadow-lg"
             />
           </Link>
 

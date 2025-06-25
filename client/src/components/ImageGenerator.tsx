@@ -238,20 +238,22 @@ export default function ImageGenerator() {
         {/* Split Layout - Upload and Result Side by Side */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Side - Upload */}
-          <div className="modern-card border-4 border-green-600">
-            <divContent className="p-8">
+          <div className="bg-gradient-to-br from-blue-400 to-purple-600 border-4 border-yellow-400 rounded-xl shadow-2xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-purple-600/20"></div>
+            <divContent className="p-8 relative z-10">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-display text-green-800 mb-2 transform rotate-1">UPLOAD IMAGE</h3>
+                <h3 className="text-2xl font-display text-white mb-2 transform rotate-1 drop-shadow-lg">UPLOAD IMAGE</h3>
+                <div className="w-16 h-1 bg-yellow-400 mx-auto rounded-full"></div>
               </div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div 
                   className={`border-4 border-dashed rounded-2xl p-8 text-center transition-all duration-300 ${
                     dragActive 
-                      ? 'border-green-600 bg-green-100 scale-105' 
+                      ? 'border-yellow-400 bg-yellow-100/30 scale-105' 
                       : imagePreview 
-                        ? 'border-green-500 bg-green-50' 
-                        : 'border-gray-300 hover:border-green-500 hover:bg-green-50'
+                        ? 'border-yellow-400 bg-white/20' 
+                        : 'border-white/50 hover:border-yellow-400 hover:bg-white/20'
                   }`}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
@@ -262,7 +264,7 @@ export default function ImageGenerator() {
                       <img 
                         src={imagePreview} 
                         alt="Image to transform" 
-                        className="max-h-64 mx-auto rounded-2xl shadow-xl border-2 border-green-200"
+                        className="max-h-64 mx-auto rounded-2xl shadow-xl border-2 border-yellow-400"
                       />
                       <button 
                         type="button"
@@ -282,15 +284,17 @@ export default function ImageGenerator() {
                   ) : (
                     <>
                       <div className="mb-4">
-                        <svg className="w-16 h-16 mx-auto text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
-                        </svg>
+                        <div className="w-16 h-16 mx-auto bg-yellow-400 rounded-full flex items-center justify-center border-2 border-white">
+                          <svg className="w-8 h-8 text-blue-800" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9,2V7.5L5.5,4L4,5.5L7.5,9H2V11H7.5L4,14.5L5.5,16L9,12.5V18H11V12.5L14.5,16L16,14.5L12.5,11H18V9H12.5L16,5.5L14.5,4L11,7.5V2H9Z"/>
+                          </svg>
+                        </div>
                       </div>
-                      <h4 className="text-lg font-display text-gray-800 font-semibold mb-3">DRAG OR CLICK</h4>
-                      <p className="text-gray-600 mb-6 font-body">Any image file</p>
+                      <h4 className="text-lg font-display text-white font-semibold mb-3 drop-shadow-lg">DRAG OR CLICK</h4>
+                      <p className="text-white/80 mb-6 font-body">Any image file</p>
                       <button 
                         type="button" 
-                        className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 font-display font-bold shadow-lg border-2 border-gray-800 transform -rotate-1 hover:rotate-0 transition-all hover:animate-pulse"
+                        className="bg-yellow-400 hover:bg-yellow-500 text-blue-800 px-8 py-3 font-display font-bold shadow-lg border-2 border-white transform -rotate-1 hover:rotate-0 transition-all hover:animate-pulse rounded-lg"
                         onClick={() => fileInputRef.current?.click()}
                         onMouseEnter={(e) => {
                           if (e.currentTarget) {
@@ -322,7 +326,7 @@ export default function ImageGenerator() {
                   <div className="flex justify-center">
                     <Button 
                       type="submit" 
-                      className="bg-green-600 hover:bg-green-700 text-white text-xl font-display font-bold py-6 px-12 transition-all shadow-xl disabled:opacity-50 border-2 border-gray-800 transform rotate-1 hover:rotate-0"
+                      className="bg-yellow-400 hover:bg-yellow-500 text-blue-800 text-xl font-display font-bold py-6 px-12 transition-all shadow-xl disabled:opacity-50 border-2 border-white transform rotate-1 hover:rotate-0 rounded-lg"
                       disabled={processMutation.isPending || !imageFile}
                       onMouseEnter={(e) => {
                         if (!processMutation.isPending && imageFile && e.currentTarget) {
@@ -356,62 +360,62 @@ export default function ImageGenerator() {
           </div>
           
           {/* Right Side - Result */}
-          <div className="modern-card border-4 border-green-600">
-            <divContent className="p-8">
+          <div className="bg-gradient-to-br from-red-400 to-orange-500 border-4 border-yellow-400 rounded-xl shadow-2xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-red-400/20 to-orange-500/20"></div>
+            <divContent className="p-8 relative z-10">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-display text-green-800 mb-2 transform -rotate-1">POKEIFIED!</h3>
+                <h3 className="text-2xl font-display text-white mb-2 transform -rotate-1 drop-shadow-lg">POKEIFIED!</h3>
+                <div className="w-16 h-1 bg-yellow-400 mx-auto rounded-full"></div>
               </div>
               
               <div className="min-h-[400px] flex items-center justify-center">
                 {processMutation.isPending || isUpdating ? (
                   <div className="text-center py-12">
                     <div className="mb-6">
-                      <svg className="w-16 h-16 mx-auto text-green-600 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
-                      </svg>
+                      <div className="w-16 h-16 mx-auto bg-yellow-400 rounded-full flex items-center justify-center border-2 border-white animate-pulse">
+                        <svg className="w-8 h-8 text-blue-800" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M7,2V13H10V22L17,10H13L17,2H7Z"/>
+                        </svg>
+                      </div>
                     </div>
-                    <div className="w-16 h-16 border-4 border-green-600 border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
-                    <h4 className="text-xl font-display text-green-800 mb-4">Processing...</h4>
+                    <div className="w-16 h-16 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
+                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">Creating Pokemon Card...</h4>
                   </div>
                 ) : processMutation.isError ? (
                   <div className="text-center py-12">
                     <div className="mb-6">
-                      <svg className="w-16 h-16 mx-auto text-red-500" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z"/>
-                      </svg>
+                      <div className="w-16 h-16 mx-auto bg-red-500 rounded-full flex items-center justify-center border-2 border-white">
+                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+                        </svg>
+                      </div>
                     </div>
-                    <h4 className="text-xl font-display text-red-500 mb-4">Error</h4>
-                    <p className="text-gray-600 font-body mb-6">
+                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">Error</h4>
+                    <p className="text-white/80 font-body mb-6">
                       {processMutation.error instanceof Error ? processMutation.error.message : "Please try again"}
                     </p>
                     <button 
                       onClick={() => processMutation.reset()}
-                      className="bg-gradient-to-r from-green-600 to-green-700 text-white px-6 py-3 rounded-full font-display font-bold hover:scale-105 transition-all"
+                      className="bg-yellow-400 hover:bg-yellow-500 text-blue-800 px-6 py-3 rounded-lg font-display font-bold hover:scale-105 transition-all border-2 border-white"
                     >
                       Try Again
                     </button>
                   </div>
                 ) : processMutation.data ? (
-                  <div className="text-center py-12 w-full">
-                    <div className="flex justify-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
-                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/>
-                        </svg>
+                  <div className="text-center py-4 w-full">
+                    <div className="flex justify-center items-center h-full">
+                      <div className="bg-gradient-to-br from-yellow-400/20 to-white/20 rounded-2xl p-4 border-2 border-yellow-400 backdrop-blur-sm">
+                        <img 
+                          src={processMutation.data?.url} 
+                          alt="Pokemon Card"
+                          className="w-full max-w-xs mx-auto rounded-xl shadow-2xl border-2 border-yellow-400"
+                          style={{ aspectRatio: '2/3' }}
+                        />
                       </div>
-                    </div>
-                    <h3 className="text-2xl font-display text-green-800 mb-6">Complete</h3>
-                    
-                    <div className="inline-block rounded-2xl overflow-hidden p-6 bg-gradient-to-br from-green-50 to-gray-50 shadow-xl border-2 border-green-200 mb-6">
-                      <img 
-                        src={processMutation.data?.url} 
-                        alt="Pokeify Creation"
-                        className="max-w-full max-h-64 rounded-xl shadow-lg"
-                      />
                     </div>
                     
                     <button 
-                      className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 transition-all text-lg font-display font-bold shadow-xl border-2 border-gray-800 transform -rotate-1 hover:rotate-0"
+                      className="bg-yellow-400 hover:bg-yellow-500 text-blue-800 px-8 py-4 transition-all text-lg font-display font-bold shadow-xl border-2 border-white transform -rotate-1 hover:rotate-0 rounded-lg mt-6"
                       onMouseEnter={(e) => {
                         if (e.currentTarget) {
                           e.currentTarget.style.animation = 'shake 0.4s ease-in-out';
@@ -449,12 +453,14 @@ export default function ImageGenerator() {
                 ) : (
                   <div className="text-center py-12">
                     <div className="mb-6">
-                      <svg className="w-16 h-16 mx-auto text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
-                      </svg>
+                      <div className="w-16 h-16 mx-auto bg-yellow-400 rounded-full flex items-center justify-center border-2 border-white">
+                        <svg className="w-8 h-8 text-blue-800" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M5,17L9.5,11L13,15.5L15.5,12.5L19,17M20,6H12L10,4H4A2,2 0 0,0 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8A2,2 0 0,0 20,6Z"/>
+                        </svg>
+                      </div>
                     </div>
-                    <h4 className="text-xl font-display text-green-800 mb-4">Ready</h4>
-                    <p className="text-gray-600 font-body max-w-sm mx-auto">
+                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">Ready</h4>
+                    <p className="text-white/80 font-body max-w-sm mx-auto">
                       Upload an image to create Pokemon card
                     </p>
                   </div>
