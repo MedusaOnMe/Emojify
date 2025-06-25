@@ -123,7 +123,7 @@ async function processImageEditJob(jobId: string, imageData: { imagePath: string
       formData.append('model', modelName);
       formData.append('prompt', prompt);
       formData.append('quality', 'medium'); // Use medium quality for better results
-      formData.append('size', '1024x1792');
+      formData.append('size', '1024x1536');
       // Note: gpt-image-1 with images/edits doesn't support response_format parameter
       
       // Get file stats for logging
@@ -242,7 +242,7 @@ async function processImageEditJob(jobId: string, imageData: { imagePath: string
     const image = await storage.createImage({
       prompt: `Pokeify: ${prompt}`,
       url: imageUrl,
-      size: "1024x1792",
+      size: "1024x1536",
       userId: null,
     });
     
@@ -560,7 +560,7 @@ export async function registerRoutes(app: Application) {
         const image = await storage.createImage({
           prompt: `IconicDuo: ${prompt.substring(0, 100)}`,
           url: imageUrl,
-          size: "1024x1792",
+          size: "1024x1536",
           userId: null,
         });
         
@@ -872,7 +872,7 @@ export async function registerRoutes(app: Application) {
           formData.append('model', modelName);
           formData.append('prompt', prompt);
           formData.append('quality', 'medium');
-          formData.append('size', '1024x1792');
+          formData.append('size', '1024x1536');
           
           // Add image file
           formData.append('image', fs.createReadStream(tempPngPath), {
@@ -921,7 +921,7 @@ export async function registerRoutes(app: Application) {
           const image = await storage.createImage({
             prompt: `Pokeify: ${prompt}`,
             url: imageUrl,
-            size: "1024x1792",
+            size: "1024x1536",
             userId: null,
           });
           
