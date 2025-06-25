@@ -240,7 +240,7 @@ async function processImageEditJob(jobId: string, imageData: { imagePath: string
     
     // Store the image in our database
     const image = await storage.createImage({
-      prompt: `Gorbify: ${prompt}`,
+      prompt: `Pokeify: ${prompt}`,
       url: imageUrl,
       size: "1024x1024",
       userId: null,
@@ -754,9 +754,9 @@ export async function registerRoutes(app: Application) {
               });
             });
             
-  // Gorbify endpoint (specific for trash bin creation)
-  app.post('/api/images/gorbify', (req, res) => {
-    log('=== GORBIFY ENDPOINT CALLED ===');
+  // Pokeify endpoint (specific for Pokemon card creation)
+  app.post('/api/images/pokeify', (req, res) => {
+    log('=== POKEIFY ENDPOINT CALLED ===');
     
     // Check API key status upfront
     const apiKey = process.env.OPENAI_API_KEY;
@@ -919,7 +919,7 @@ export async function registerRoutes(app: Application) {
           
           // Store image in our database
           const image = await storage.createImage({
-            prompt: `Gorbify: ${prompt}`,
+            prompt: `Pokeify: ${prompt}`,
             url: imageUrl,
             size: "1024x1024",
             userId: null,

@@ -56,7 +56,7 @@ export default function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProp
         <nav className="flex flex-col space-y-2">
           <Link href="/">
             <a className={`py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors ${location === '/' ? 'bg-gray-100 font-medium' : ''}`}>
-              Gorbify
+              Pokeify
             </a>
           </Link>
           <Link href="/gallery">

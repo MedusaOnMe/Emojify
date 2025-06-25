@@ -56,62 +56,14 @@ export default function Gallery() {
       <Header onMenuClick={() => setIsMobileNavOpen(true)} />
       
       <main className="flex-1 pt-20 pb-10 relative">
-        {/* GALLERY CHAOS MIX */}
+        {/* Pokemon-themed gallery background */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <img 
-            src="/images/oscar-with-lid.png" 
-            alt=""
-            className="absolute top-20 right-10 w-8 h-8 md:w-12 md:h-12 opacity-15 transform rotate-90 object-contain"
-            style={{ 
-              animation: 'paperShake 4s ease-in-out infinite',
-              animationDelay: '1.5s'
-            }}
-          />
-          <img 
-            src="/images/trash-can.png" 
-            alt=""
-            className="absolute bottom-40 left-5 w-6 h-6 md:w-10 md:h-10 opacity-20 transform -rotate-45 object-contain"
-            style={{ 
-              animation: 'crumple 2.5s ease-in-out infinite',
-              animationDelay: '0.8s'
-            }}
-          />
-          <img 
-            src="/images/gorb.png" 
-            alt=""
-            className="absolute top-1/2 right-5 w-5 h-5 md:w-8 md:h-8 opacity-10 transform rotate-180 object-contain"
-            style={{ 
-              animation: 'sway 3s ease-in-out infinite',
-              animationDelay: '2s'
-            }}
-          />
-          <img 
-            src="/images/gorb.png" 
-            alt=""
-            className="absolute top-32 left-8 w-6 h-6 md:w-10 md:h-10 opacity-18 transform rotate-45 object-contain"
-            style={{ 
-              animation: 'float 3.8s ease-in-out infinite',
-              animationDelay: '0.3s'
-            }}
-          />
-          <img 
-            src="/images/trash-can.png" 
-            alt=""
-            className="absolute bottom-20 right-1/4 w-4 h-4 md:w-6 md:h-6 opacity-25 transform -rotate-30 object-contain"
-            style={{ 
-              animation: 'wiggle 2.2s ease-in-out infinite',
-              animationDelay: '1.8s'
-            }}
-          />
-          <img 
-            src="/images/oscar-with-lid.png" 
-            alt=""
-            className="absolute top-1/3 left-1/4 w-3 h-3 md:w-5 md:h-5 opacity-8 transform rotate-135 object-contain"
-            style={{ 
-              animation: 'bounce 5s infinite',
-              animationDelay: '3.2s'
-            }}
-          />
+          <div className="absolute top-20 right-10 w-8 h-8 md:w-12 md:h-12 opacity-15 transform rotate-90 bg-red-500 rounded-lg border-2 border-white" style={{ animation: 'paperShake 4s ease-in-out infinite', animationDelay: '1.5s' }}></div>
+          <div className="absolute bottom-40 left-5 w-6 h-6 md:w-10 md:h-10 opacity-20 transform -rotate-45 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold" style={{ animation: 'crumple 2.5s ease-in-out infinite', animationDelay: '0.8s' }}>⚡</div>
+          <div className="absolute top-1/2 right-5 w-5 h-5 md:w-8 md:h-8 opacity-10 transform rotate-180 bg-yellow-500 rounded-full" style={{ animation: 'sway 3s ease-in-out infinite', animationDelay: '2s' }}></div>
+          <div className="absolute top-32 left-8 w-6 h-6 md:w-10 md:h-10 opacity-18 transform rotate-45 bg-green-500 rounded-lg" style={{ animation: 'float 3.8s ease-in-out infinite', animationDelay: '0.3s' }}></div>
+          <div className="absolute bottom-20 right-1/4 w-4 h-4 md:w-6 md:h-6 opacity-25 transform -rotate-30 bg-purple-500 rounded-full" style={{ animation: 'wiggle 2.2s ease-in-out infinite', animationDelay: '1.8s' }}></div>
+          <div className="absolute top-1/3 left-1/4 w-3 h-3 md:w-5 md:h-5 opacity-8 transform rotate-135 bg-orange-500 rounded-lg" style={{ animation: 'bounce 5s infinite', animationDelay: '3.2s' }}></div>
         </div>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
@@ -120,7 +72,7 @@ export default function Gallery() {
             </h1>
             <Link href="/" className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 transition-all flex items-center gap-2 border-2 border-gray-800 transform rotate-1 hover:rotate-0 hover:scale-105">
               <span>+</span>
-              GORBIFY
+              POKEIFY
             </Link>
           </div>
           
@@ -182,10 +134,10 @@ export default function Gallery() {
                 </div>
                 <h3 className="font-display text-xl mb-2">No images</h3>
                 <p className="text-gray-400 max-w-md mx-auto mb-6">
-                  Upload an image to gorbify.
+                  Upload an image to create Pokemon cards.
                 </p>
                 <Link href="/" className="inline-block px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium border-2 border-gray-800 transform -rotate-1 hover:rotate-0 transition-all hover:scale-105">
-                  GORBIFY NOW
+                  POKEIFY NOW
                 </Link>
               </CardContent>
             </Card>

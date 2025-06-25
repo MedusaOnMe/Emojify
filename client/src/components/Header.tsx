@@ -8,63 +8,26 @@ interface HeaderProps {
 export default function Header({ onMenuClick }: HeaderProps) {
   return (
     <header className="glass sticky top-0 z-50 border-b-4 border-green-600 backdrop-blur-md transform -rotate-1 relative overflow-hidden">
-      {/* CHAOTIC floating images in header */}
+      {/* Pokemon-themed floating elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <img 
-          src="/images/oscar-with-lid.png" 
-          alt=""
-          className="absolute top-1 right-20 w-8 h-8 opacity-25 transform rotate-45 object-contain"
-          style={{ animation: 'sway 4s ease-in-out infinite', animationDelay: '1s' }}
-        />
-        <img 
-          src="/images/trash-can.png" 
-          alt=""
-          className="absolute bottom-1 left-40 w-6 h-6 opacity-20 transform -rotate-30 object-contain"
-          style={{ animation: 'float 3s ease-in-out infinite', animationDelay: '0.5s' }}
-        />
-        <img 
-          src="/images/gorb.png" 
-          alt=""
-          className="absolute top-2 left-80 w-5 h-5 opacity-15 transform rotate-90 object-contain"
-          style={{ animation: 'crumple 5s ease-in-out infinite', animationDelay: '2s' }}
-        />
-        <img 
-          src="/images/gorb.png" 
-          alt=""
-          className="absolute bottom-2 right-60 w-7 h-7 opacity-30 transform -rotate-45 object-contain"
-          style={{ animation: 'wiggle 2s ease-in-out infinite', animationDelay: '0.8s' }}
-        />
-        <img 
-          src="/images/trash-can.png" 
-          alt=""
-          className="absolute top-3 right-40 w-4 h-4 opacity-10 transform rotate-180 object-contain"
-          style={{ animation: 'bounce 3s infinite', animationDelay: '1.5s' }}
-        />
+        <div className="absolute top-1 right-20 w-8 h-8 opacity-25 transform rotate-45 bg-red-500 rounded-full" style={{ animation: 'sway 4s ease-in-out infinite', animationDelay: '1s' }}></div>
+        <div className="absolute bottom-1 left-40 w-6 h-6 opacity-20 transform -rotate-30 bg-blue-500 rounded-lg" style={{ animation: 'float 3s ease-in-out infinite', animationDelay: '0.5s' }}></div>
+        <div className="absolute top-2 left-80 w-5 h-5 opacity-15 transform rotate-90 bg-yellow-500 rounded-full" style={{ animation: 'crumple 5s ease-in-out infinite', animationDelay: '2s' }}></div>
+        <div className="absolute bottom-2 right-60 w-7 h-7 opacity-30 transform -rotate-45 bg-green-500 rounded-lg" style={{ animation: 'wiggle 2s ease-in-out infinite', animationDelay: '0.8s' }}></div>
+        <div className="absolute top-3 right-40 w-4 h-4 opacity-10 transform rotate-180 bg-purple-500 rounded-full" style={{ animation: 'bounce 3s infinite', animationDelay: '1.5s' }}></div>
       </div>
       <div className="container mx-auto px-6">
         <div className="flex h-24 items-center justify-between">
           {/* CHAOTIC Logo */}
           <Link href="/" className="flex items-center gap-4 group relative">
-            {/* Overlapping logo images */}
+            {/* Pokemon card logo */}
             <div className="relative w-16 h-16">
-              <img 
-                src="/images/trash-can.png" 
-                alt=""
-                className="absolute w-12 h-12 top-1 left-1 transform rotate-6 group-hover:rotate-12 transition-all opacity-80 object-contain"
-              />
-              <img 
-                src="/images/oscar-with-lid.png" 
-                alt=""
-                className="absolute w-10 h-10 top-2 left-3 transform -rotate-12 group-hover:rotate-0 transition-all z-10 object-contain"
-              />
-              <img 
-                src="/images/gorb.png" 
-                alt=""
-                className="absolute w-8 h-8 bottom-0 right-0 transform rotate-45 group-hover:-rotate-45 transition-all opacity-60 object-contain"
-              />
+              <div className="absolute w-12 h-12 top-1 left-1 transform rotate-6 group-hover:rotate-12 transition-all opacity-80 bg-red-500 rounded-lg border-2 border-white"></div>
+              <div className="absolute w-10 h-10 top-2 left-3 transform -rotate-12 group-hover:rotate-0 transition-all z-10 bg-yellow-400 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold">⚡</div>
+              <div className="absolute w-8 h-8 bottom-0 right-0 transform rotate-45 group-hover:-rotate-45 transition-all opacity-60 bg-blue-500 rounded-lg"></div>
             </div>
             <span className="font-display text-3xl font-bold gradient-text transform -rotate-2 hover:rotate-0 transition-transform">
-              GORBIFY
+              POKEIFY
             </span>
           </Link>
 
@@ -74,7 +37,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
               href="/"
               className="text-gray-800 hover:text-green-600 transition-colors font-display font-semibold text-lg transform -rotate-2 hover:rotate-0 px-4 py-2 hover:bg-green-50 border-2 border-transparent hover:border-green-600"
             >
-              GORBIFY
+              POKEIFY
             </Link>
             <Link
               href="/gallery"

@@ -5,44 +5,12 @@ export default function Footer() {
 
   return (
     <footer className="glass border-t-4 border-green-600 py-12 mt-16 relative transform rotate-1">
-      {/* FOOTER CHAOS MIX */}
+      {/* Pokemon-themed footer elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <img 
-          src="/images/oscar-with-lid.png" 
-          alt=""
-          className="absolute top-5 left-10 w-6 h-6 md:w-10 md:h-10 opacity-15 transform rotate-45 object-contain"
-          style={{ 
-            animation: 'paperShake 4s ease-in-out infinite',
-            animationDelay: '0s'
-          }}
-        />
-        <img 
-          src="/images/trash-can.png" 
-          alt=""
-          className="absolute bottom-5 right-20 w-5 h-5 md:w-8 md:h-8 opacity-20 transform -rotate-30 object-contain"
-          style={{ 
-            animation: 'sway 3s ease-in-out infinite',
-            animationDelay: '1s'
-          }}
-        />
-        <img 
-          src="/images/gorb.png" 
-          alt=""
-          className="absolute top-8 right-1/3 w-4 h-4 md:w-6 md:h-6 opacity-18 transform rotate-90 object-contain"
-          style={{ 
-            animation: 'crumple 5s ease-in-out infinite',
-            animationDelay: '2s'
-          }}
-        />
-        <img 
-          src="/images/gorb.png" 
-          alt=""
-          className="absolute bottom-8 left-1/4 w-5 h-5 md:w-8 md:h-8 opacity-12 transform -rotate-45 object-contain"
-          style={{ 
-            animation: 'float 2.5s ease-in-out infinite',
-            animationDelay: '1.5s'
-          }}
-        />
+        <div className="absolute top-5 left-10 w-6 h-6 md:w-10 md:h-10 opacity-15 transform rotate-45 bg-red-500 rounded-full" style={{ animation: 'paperShake 4s ease-in-out infinite', animationDelay: '0s' }}></div>
+        <div className="absolute bottom-5 right-20 w-5 h-5 md:w-8 md:h-8 opacity-20 transform -rotate-30 bg-blue-500 rounded-lg" style={{ animation: 'sway 3s ease-in-out infinite', animationDelay: '1s' }}></div>
+        <div className="absolute top-8 right-1/3 w-4 h-4 md:w-6 md:h-6 opacity-18 transform rotate-90 bg-yellow-500 rounded-full" style={{ animation: 'crumple 5s ease-in-out infinite', animationDelay: '2s' }}></div>
+        <div className="absolute bottom-8 left-1/4 w-5 h-5 md:w-8 md:h-8 opacity-12 transform -rotate-45 bg-green-500 rounded-lg" style={{ animation: 'float 2.5s ease-in-out infinite', animationDelay: '1.5s' }}></div>
       </div>
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
@@ -56,7 +24,7 @@ export default function Footer() {
               </div>
               <div>
                 <span className="font-display text-2xl font-bold gradient-text">
-                  Gorbify
+                  Pokeify
                 </span>
               </div>
             </Link>
@@ -68,7 +36,7 @@ export default function Footer() {
               href="/" 
               className="text-foreground hover:text-green-600 transition-colors font-display font-semibold text-lg transform -rotate-1 hover:rotate-0 hover:scale-105"
             >
-              GORBIFY
+              POKEIFY
             </Link>
             <Link 
               href="/gallery" 
@@ -85,7 +53,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-center md:text-left">
             <p className="text-foreground text-base font-body font-semibold transform rotate-1">
-              © {currentYear} GORBIFY - TRASH YOURSELF
+              © {currentYear} POKEIFY - BECOME A POKEMON
             </p>
           </div>
           

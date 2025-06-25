@@ -60,12 +60,12 @@ export default function ImageGenerator() {
       const formData = new FormData();
       formData.append("image", imageFile);
       
-      // Hardcoded prompt for putting subject in Oscar's trash bin
-      const hardcodedPrompt = "Place this character inside a realistic, full-sized metal garbage can. The character should be positioned sitting inside the can with their head, shoulders and upper torso visible above the rim, as if they live inside it. The garbage can should be a large, cylindrical metal trash can with vertical ridges, weathered galvanized steel surface with realistic rust spots and dents. The lid is removed and set aside. The character maintains their exact original appearance, colors, and features. Photorealistic style with natural lighting and a simple, clean background";
+      // Hardcoded prompt for creating Pokemon card
+      const hardcodedPrompt = "Transform this character into a Pokemon trading card design. Create a detailed Pokemon card layout with the character as the main Pokemon. Include realistic Pokemon card elements: border design, energy symbols, HP value, attack names with damage values, weakness/resistance icons, and card number. The character should maintain their appearance but be stylized as a Pokemon creature. Use authentic Pokemon card styling with proper fonts, layout, and visual elements. High quality, professional trading card appearance."
       
       formData.append("prompt", hardcodedPrompt);
       
-      const response = await fetch("/api/images/gorbify", {
+      const response = await fetch("/api/images/pokeify", {
         method: "POST",
         body: formData,
       });
@@ -89,7 +89,7 @@ export default function ImageGenerator() {
           const stableUrl = URL.createObjectURL(imageBlob);
           
           try {
-            await uploadImageToFirebase(stableUrl, "Gorbify Creation");
+            await uploadImageToFirebase(stableUrl, "Pokeify Creation");
           } finally {
             URL.revokeObjectURL(stableUrl);
           }
@@ -220,58 +220,18 @@ export default function ImageGenerator() {
 
   return (
     <section id="image-generator" className="py-8 relative">
-      {/* MIXED CHAOS in generator section */}
+      {/* Pokemon-themed generator section */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <img 
-          src="/images/oscar-with-lid.png" 
-          alt=""
-          className="absolute top-10 right-10 w-10 h-10 md:w-14 md:h-14 opacity-15 transform rotate-90 object-contain"
-          style={{ 
-            animation: 'sway 3.5s ease-in-out infinite',
-            animationDelay: '1s'
-          }}
-        />
-        <img 
-          src="/images/trash-can.png" 
-          alt=""
-          className="absolute bottom-20 left-8 w-8 h-8 md:w-12 md:h-12 opacity-20 transform -rotate-45 object-contain"
-          style={{ 
-            animation: 'crumple 2s ease-in-out infinite',
-            animationDelay: '0.5s'
-          }}
-        />
-        <img 
-          src="/images/gorb.png" 
-          alt=""
-          className="absolute top-1/2 left-2 w-6 h-6 md:w-10 md:h-10 opacity-10 transform rotate-180 object-contain"
-          style={{ 
-            animation: 'bounce 4s infinite',
-            animationDelay: '2s'
-          }}
-        />
-        <img 
-          src="/images/gorb.png" 
-          alt=""
-          className="absolute bottom-32 right-5 w-5 h-5 md:w-8 md:h-8 opacity-25 transform rotate-45 object-contain"
-          style={{ 
-            animation: 'float 2.8s ease-in-out infinite',
-            animationDelay: '1.3s'
-          }}
-        />
-        <img 
-          src="/images/trash-can.png" 
-          alt=""
-          className="absolute top-20 left-1/4 w-4 h-4 md:w-6 md:h-6 opacity-12 transform -rotate-60 object-contain"
-          style={{ 
-            animation: 'wiggle 3.2s ease-in-out infinite',
-            animationDelay: '2.8s'
-          }}
-        />
+        <div className="absolute top-10 right-10 w-10 h-10 md:w-14 md:h-14 opacity-15 transform rotate-90 bg-red-500 rounded-lg border-2 border-white" style={{ animation: 'sway 3.5s ease-in-out infinite', animationDelay: '1s' }}></div>
+        <div className="absolute bottom-20 left-8 w-8 h-8 md:w-12 md:h-12 opacity-20 transform -rotate-45 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center text-white font-bold text-xs" style={{ animation: 'crumple 2s ease-in-out infinite', animationDelay: '0.5s' }}>⚡</div>
+        <div className="absolute top-1/2 left-2 w-6 h-6 md:w-10 md:h-10 opacity-10 transform rotate-180 bg-yellow-500 rounded-full" style={{ animation: 'bounce 4s infinite', animationDelay: '2s' }}></div>
+        <div className="absolute bottom-32 right-5 w-5 h-5 md:w-8 md:h-8 opacity-25 transform rotate-45 bg-green-500 rounded-lg" style={{ animation: 'float 2.8s ease-in-out infinite', animationDelay: '1.3s' }}></div>
+        <div className="absolute top-20 left-1/4 w-4 h-4 md:w-6 md:h-6 opacity-12 transform -rotate-60 bg-purple-500 rounded-full" style={{ animation: 'wiggle 3.2s ease-in-out infinite', animationDelay: '2.8s' }}></div>
       </div>
       <div className="container px-6 mx-auto max-w-5xl">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-5xl font-display text-green-800 transform -rotate-1">
-            UPLOAD & GORBIFY
+            UPLOAD & POKEIFY
           </h2>
         </div>
         
@@ -379,7 +339,7 @@ export default function ImageGenerator() {
                           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
                           </svg>
-                          Gorbify
+                          Pokeify
                         </span>
                       )}
                     </Button>
@@ -393,7 +353,7 @@ export default function ImageGenerator() {
           <Card className="modern-card border-4 border-green-600">
             <CardContent className="p-8">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-display text-green-800 mb-2 transform -rotate-1">GORBIFIED!</h3>
+                <h3 className="text-2xl font-display text-green-800 mb-2 transform -rotate-1">POKEIFIED!</h3>
               </div>
               
               <div className="min-h-[400px] flex items-center justify-center">
@@ -439,7 +399,7 @@ export default function ImageGenerator() {
                     <div className="inline-block rounded-2xl overflow-hidden p-6 bg-gradient-to-br from-green-50 to-gray-50 shadow-xl border-2 border-green-200 mb-6">
                       <img 
                         src={processMutation.data?.url} 
-                        alt="Gorbify Creation"
+                        alt="Pokeify Creation"
                         className="max-w-full max-h-64 rounded-xl shadow-lg"
                       />
                     </div>
@@ -462,7 +422,7 @@ export default function ImageGenerator() {
                             return;
                           }
                           
-                          await downloadImage(imageUrl, `gorbify-${imageId}`);
+                          await downloadImage(imageUrl, `pokeify-${imageId}`);
                           
                           toast.success("Download complete");
                         } catch (error) {
@@ -485,7 +445,7 @@ export default function ImageGenerator() {
                     </div>
                     <h4 className="text-xl font-display text-green-800 mb-4">Ready</h4>
                     <p className="text-gray-600 font-body max-w-sm mx-auto">
-                      Upload an image to gorbify
+                      Upload an image to create Pokemon card
                     </p>
                   </div>
                 )}

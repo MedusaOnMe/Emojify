@@ -101,7 +101,7 @@ export default function GallerySection() {
                 <div className="aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 p-2">
                   <img 
                     src={image.url} 
-                    alt="Gorbify creation" 
+                    alt="Pokeify creation" 
                     className="w-full h-full object-cover rounded-xl transition-transform duration-300"
                     loading="lazy" 
                   />
@@ -120,13 +120,13 @@ export default function GallerySection() {
               No images
             </h3>
             <p className="text-muted-foreground font-body text-lg mb-8">
-              Upload an image to gorbify
+              Upload an image to create Pokemon cards
             </p>
             <Button 
               className="bg-green-600 text-white px-8 py-4 rounded-full font-display font-bold"
               onClick={() => document.getElementById('image-generator')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Gorbify
+              Pokeify
             </Button>
           </div>
         )}
@@ -147,14 +147,14 @@ export default function GallerySection() {
               <div className="overflow-hidden max-h-[60vh] bg-gradient-to-br from-primary/10 to-secondary/10 p-8">
                 <img 
                   src={selectedImage.url} 
-                  alt="Gorbify creation" 
+                  alt="Pokeify creation" 
                   className="w-full object-contain rounded-3xl shadow-2xl"
                 />
               </div>
               
               <div className="p-8 text-center">
                 <h3 className="text-3xl font-display gradient-text mb-4">
-                  Gorbify Creation
+                  Pokeify Creation
                 </h3>
                 <p className="text-muted-foreground font-body mb-8">
                   Created: {new Date(selectedImage.timestamp).toLocaleDateString()}
