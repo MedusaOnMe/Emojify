@@ -300,10 +300,10 @@ Key errors that must be corrected is it must include an energy that is recognise
                 <div 
                   className={`rounded-2xl p-8 text-center transition-all duration-300 ${
                     dragActive 
-                      ? 'bg-yellow-400/20 scale-105 border-2 border-yellow-300' 
+                      ? 'bg-yellow-400/20 scale-105' 
                       : imagePreview 
                         ? 'bg-white/10' 
-                        : 'bg-white/5 hover:bg-white/15 border-2 border-dashed border-white/30 hover:border-yellow-300'
+                        : 'bg-white/5 hover:bg-white/15'
                   }`}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
