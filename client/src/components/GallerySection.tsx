@@ -126,7 +126,7 @@ export default function GallerySection() {
                       
                       {/* Pokedex number overlay */}
                       <div className="absolute top-2 left-2 bg-black/70 text-yellow-400 px-2 py-1 rounded text-sm font-bold">
-                        #{String(index + 1).padStart(3, '0')}
+                        #{String(images.length - index).padStart(3, '0')}
                       </div>
                       
                       {/* Shine effect */}
@@ -187,7 +187,7 @@ export default function GallerySection() {
               
               <div className="p-8 text-center">
                 <h3 className="text-3xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent mb-4">
-                  Pokemon Card #{String(images.findIndex(img => img.id === selectedImage.id) + 1).padStart(3, '0')}
+                  Pokemon Card #{String(images.length - images.findIndex(img => img.id === selectedImage.id)).padStart(3, '0')}
                 </h3>
                 
                 <Button 
