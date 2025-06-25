@@ -67,22 +67,26 @@ export default function GallerySection() {
       <div className="container px-6 mx-auto relative z-10 max-w-6xl">
         {/* Pokedex Header */}
         <div className="text-center mb-16">
-          <div className="mb-8" style={{lineHeight: '1.2', paddingBottom: '0.5em', paddingTop: '0.2em', overflow: 'visible'}}>
-            <h2 className="text-5xl md:text-7xl font-display gradient-text" style={{overflow: 'visible'}}>
-              Pokedex
-            </h2>
+          <div className="mb-8">
+            <img 
+              src="/pokedex.png" 
+              alt="Pokedex"
+              className="mx-auto max-w-md md:max-w-2xl w-full h-auto transform hover:scale-105 transition-transform duration-300"
+            />
           </div>
         </div>
       
         {isLoading ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {[...Array(12)].map((_, index) => (
-              <div key={index} className="bg-gradient-to-br from-red-400 to-blue-500 p-1 rounded-xl shadow-lg border-2 border-yellow-400">
-                <div className="bg-white rounded-lg p-2 m-1">
-                  <Skeleton className="w-full aspect-square rounded-lg" style={{background: '#e5e7eb'}} />
-                  <div className="pt-2 text-center bg-gray-100 rounded-b-lg mt-1 py-2">
-                    <Skeleton className="h-3 w-8 mx-auto mb-1" style={{background: '#d1d5db'}} />
-                    <Skeleton className="h-2 w-16 mx-auto" style={{background: '#d1d5db'}} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            {[...Array(15)].map((_, index) => (
+              <div key={index} className="relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-red-500 to-blue-500 rounded-lg opacity-60"></div>
+                <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden shadow-xl">
+                  <div className="aspect-[2/3] relative">
+                    <Skeleton className="w-full h-full" style={{background: '#e5e7eb'}} />
+                    <div className="absolute top-2 left-2 bg-black/70 px-2 py-1 rounded">
+                      <Skeleton className="h-3 w-8" style={{background: '#d1d5db'}} />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -96,30 +100,38 @@ export default function GallerySection() {
             </p>
           </div>
         ) : images && images.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
             {images.map((image: Image, index) => (
               <div 
                 key={image.id} 
-                className="bg-gradient-to-br from-red-400 to-blue-500 p-1 rounded-xl cursor-pointer hover:scale-105 transition-all duration-300 group shadow-lg border-2 border-yellow-400"
+                className="relative cursor-pointer hover:scale-105 transition-all duration-300 group"
                 onClick={() => handleImageClick(image)}
                 style={{animationDelay: `${index * 0.1}s`}}
               >
-                <div className="bg-white rounded-lg p-2 m-1">
-                  <div className="aspect-square overflow-hidden rounded-lg bg-gradient-to-br from-yellow-100 to-blue-100 p-2 border-2 border-gray-300">
-                    <img 
-                      src={image.url} 
-                      alt="Pokeify creation" 
-                      className="w-full h-full object-cover rounded-md transition-transform duration-300"
-                      loading="lazy" 
-                    />
-                  </div>
-                  <div className="pt-2 text-center bg-gray-100 rounded-b-lg mt-1 py-2">
-                    <p className="text-xs font-bold text-gray-700">
-                      #{String(index + 1).padStart(3, '0')}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      {new Date(image.timestamp).toLocaleDateString()}
-                    </p>
+                {/* Pokemon Card with holographic border */}
+                <div className="relative">
+                  {/* Holographic outer glow */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-red-500 to-blue-500 rounded-lg opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                  
+                  {/* Main card */}
+                  <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden shadow-xl">
+                    {/* Pokemon card image */}
+                    <div className="aspect-[2/3] relative">
+                      <img 
+                        src={image.url} 
+                        alt={`Pokemon Card #${String(index + 1).padStart(3, '0')}`}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        loading="lazy" 
+                      />
+                      
+                      {/* Pokedex number overlay */}
+                      <div className="absolute top-2 left-2 bg-black/70 text-yellow-400 px-2 py-1 rounded text-sm font-bold">
+                        #{String(index + 1).padStart(3, '0')}
+                      </div>
+                      
+                      {/* Shine effect */}
+                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -146,7 +158,7 @@ export default function GallerySection() {
       {/* Image details modal */}
       {selectedImage && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm" style={{background: 'rgba(0,0,0,0.7)'}}>
-          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-hidden border-4 border-yellow-400 shadow-2xl">
+          <div className="bg-white rounded-xl max-w-lg w-full max-h-[90vh] overflow-hidden border-4 border-yellow-400 shadow-2xl">
             <div className="relative">
               <button 
                 className="absolute top-6 right-6 w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center z-10 hover:bg-red-600 transition-all hover:scale-110 font-bold text-xl shadow-lg"
@@ -155,21 +167,28 @@ export default function GallerySection() {
                 ×
               </button>
               
-              <div className="overflow-hidden max-h-[60vh] bg-gradient-to-br from-yellow-100 to-blue-100 p-8">
-                <img 
-                  src={selectedImage.url} 
-                  alt="Pokeify creation" 
-                  className="w-full object-contain rounded-3xl shadow-2xl"
-                />
+              <div className="overflow-hidden max-h-[70vh] bg-gradient-to-br from-blue-600 to-purple-700 p-8 flex items-center justify-center">
+                <div className="relative">
+                  {/* Holographic card frame */}
+                  <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400 via-red-500 to-blue-500 rounded-2xl opacity-80 animate-pulse"></div>
+                  <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 p-1 rounded-xl">
+                    <img 
+                      src={selectedImage.url} 
+                      alt={`Pokemon Card #${images.findIndex(img => img.id === selectedImage.id) + 1}`}
+                      className="max-w-sm w-full object-contain rounded-lg shadow-2xl"
+                      style={{ aspectRatio: '2/3' }}
+                    />
+                  </div>
+                  {/* Sparkle effects */}
+                  <div className="absolute top-4 right-4 w-2 h-2 bg-yellow-300 rounded-full animate-ping"></div>
+                  <div className="absolute bottom-6 left-6 w-1 h-1 bg-blue-300 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+                </div>
               </div>
               
               <div className="p-8 text-center">
                 <h3 className="text-3xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent mb-4">
-                  Pokemon Card
+                  Pokemon Card #{String(images.findIndex(img => img.id === selectedImage.id) + 1).padStart(3, '0')}
                 </h3>
-                <p className="text-gray-600 font-body mb-8">
-                  Created: {new Date(selectedImage.timestamp).toLocaleDateString()}
-                </p>
                 
                 <Button 
                   className="bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 text-white px-8 py-4 rounded-lg font-display font-bold border-2 border-yellow-400"

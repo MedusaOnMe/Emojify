@@ -61,7 +61,7 @@ export default function ImageGenerator() {
       formData.append("image", imageFile);
       
       // Hardcoded prompt for creating custom Pokemon card
-      const hardcodedPrompt = "I want you to generate a custom Pokémon card based on the attached photo. Design it in the classic Pokémon card style, portrait format. The person in the image should be turned into a Pokémon character. Include the following details on the card: A custom Pokémon name (inspired by their real name or look), Their Pokémon type (Fire, Water, Psychic, Dark, etc.) based on their appearance or vibe, HP (Health Points), 2 attacks, each with: a name, damage value, short effect description, One Weakness, one Resistance, and a Retreat Cost, A background that matches their type or personality. The final result should look like a real Pokémon card: colorful, well-designed, with the character in a dynamic pose. Make sure the energy of the pokemon card is randomised with a corresponding weakness. Also have 1/10 cards created be an ex card that includes more shine and sparkles to show it's a rare card."
+      const hardcodedPrompt = "I want you to generate a custom Pokémon card based on the attached photo.\n\nDesign it in the classic Pokémon card style, portrait format. The person in the image should be turned into a Pokémon character.\n\nInclude the following details on the card:\n\nA custom Pokémon name (inspired by their real name or look)\n\nTheir Pokémon type (Fire, Water, Psychic, Dark, etc.) based on their appearance or vibe\n\nHP (Health Points)\n\n2 attacks, each with:\n\na name\n\ndamage value\n\nshort effect description\n\nOne Weakness, one Resistance, and a Retreat Cost\n\nA background that matches their type or personality\n\nThe final result should look like a real Pokémon card: colorful, well-designed, with the character in a dynamic pose.\n\nMake sure the energy of the pokemon card is randomised with a corresponding weakness. Also have each card created be unique like an ex card or ultra rare that includes more shine and sparkles to show it's a rare card.\n\nKey errors that must be corrected is it must include an energy that is recognised within pokemon, all text must be in english and each card should have a retreat cost"
       
       formData.append("prompt", hardcodedPrompt);
       
@@ -238,8 +238,24 @@ export default function ImageGenerator() {
         {/* Split Layout - Upload and Result Side by Side */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Side - Upload */}
-          <div className="bg-gradient-to-br from-blue-400 to-purple-600 border-4 border-yellow-400 rounded-xl shadow-2xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-purple-600/20"></div>
+          <div className="relative border-4 border-yellow-400 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-red-500 via-red-600 to-red-700">
+            {/* Pokemon Ball Pattern Background */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-4 left-4 w-8 h-8 border-4 border-white rounded-full"></div>
+              <div className="absolute top-16 right-8 w-6 h-6 border-3 border-white rounded-full"></div>
+              <div className="absolute bottom-20 left-12 w-4 h-4 border-2 border-white rounded-full"></div>
+              <div className="absolute bottom-8 right-16 w-10 h-10 border-4 border-white rounded-full"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 border-8 border-white rounded-full opacity-30"></div>
+            </div>
+            {/* Lightning Bolt Pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <svg className="absolute top-6 right-12 w-12 h-12 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M7,2V13H10V22L17,10H13L17,2H7Z"/>
+              </svg>
+              <svg className="absolute bottom-12 left-6 w-8 h-8 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M7,2V13H10V22L17,10H13L17,2H7Z"/>
+              </svg>
+            </div>
             <divContent className="p-8 relative z-10">
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-display text-white mb-2 transform rotate-1 drop-shadow-lg">UPLOAD IMAGE</h3>
@@ -248,12 +264,12 @@ export default function ImageGenerator() {
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div 
-                  className={`border-4 border-dashed rounded-2xl p-8 text-center transition-all duration-300 ${
+                  className={`rounded-2xl p-8 text-center transition-all duration-300 ${
                     dragActive 
-                      ? 'border-yellow-400 bg-yellow-100/30 scale-105' 
+                      ? 'bg-yellow-400/20 scale-105 border-2 border-yellow-300' 
                       : imagePreview 
-                        ? 'border-yellow-400 bg-white/20' 
-                        : 'border-white/50 hover:border-yellow-400 hover:bg-white/20'
+                        ? 'bg-white/10' 
+                        : 'bg-white/5 hover:bg-white/15 border-2 border-dashed border-white/30 hover:border-yellow-300'
                   }`}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
@@ -261,11 +277,13 @@ export default function ImageGenerator() {
                 >
                   {imagePreview ? (
                     <div className="relative">
-                      <img 
-                        src={imagePreview} 
-                        alt="Image to transform" 
-                        className="max-h-64 mx-auto rounded-2xl shadow-xl border-2 border-yellow-400"
-                      />
+                      <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 p-1 rounded-2xl shadow-2xl">
+                        <img 
+                          src={imagePreview} 
+                          alt="Image to transform" 
+                          className="max-h-64 mx-auto rounded-xl shadow-xl"
+                        />
+                      </div>
                       <button 
                         type="button"
                         className="absolute top-2 right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-all hover:scale-110 font-bold shadow-lg"
@@ -360,8 +378,28 @@ export default function ImageGenerator() {
           </div>
           
           {/* Right Side - Result */}
-          <div className="bg-gradient-to-br from-red-400 to-orange-500 border-4 border-yellow-400 rounded-xl shadow-2xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-red-400/20 to-orange-500/20"></div>
+          <div className="relative border-4 border-yellow-400 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
+            {/* Pokeball Button Pattern Background */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-8 right-6 w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                <div className="w-6 h-6 bg-red-500 rounded-full border-2 border-gray-800"></div>
+              </div>
+              <div className="absolute bottom-16 left-8 w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                <div className="w-4 h-4 bg-red-500 rounded-full border border-gray-800"></div>
+              </div>
+              <div className="absolute top-1/3 left-6 w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              </div>
+            </div>
+            {/* Star Pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <svg className="absolute top-12 left-10 w-10 h-10 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2L15.09,8.26L22,9L17,14L18.18,21L12,17.77L5.82,21L7,14L2,9L8.91,8.26L12,2Z"/>
+              </svg>
+              <svg className="absolute bottom-20 right-10 w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2L15.09,8.26L22,9L17,14L18.18,21L12,17.77L5.82,21L7,14L2,9L8.91,8.26L12,2Z"/>
+              </svg>
+            </div>
             <divContent className="p-8 relative z-10">
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-display text-white mb-2 transform -rotate-1 drop-shadow-lg">POKEIFIED!</h3>
@@ -404,18 +442,27 @@ export default function ImageGenerator() {
                 ) : processMutation.data ? (
                   <div className="text-center py-4 w-full">
                     <div className="flex justify-center items-center h-full">
-                      <div className="bg-gradient-to-br from-yellow-400/20 to-white/20 rounded-2xl p-4 border-2 border-yellow-400 backdrop-blur-sm">
-                        <img 
-                          src={processMutation.data?.url} 
-                          alt="Pokemon Card"
-                          className="w-full max-w-xs mx-auto rounded-xl shadow-2xl border-2 border-yellow-400"
-                          style={{ aspectRatio: '2/3' }}
-                        />
+                      <div className="relative">
+                        {/* Holographic Card Frame */}
+                        <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 rounded-2xl opacity-80 animate-pulse"></div>
+                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 rounded-2xl opacity-60"></div>
+                        <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 p-1 rounded-xl">
+                          <img 
+                            src={processMutation.data?.url} 
+                            alt="Pokemon Card"
+                            className="w-full max-w-xs mx-auto rounded-lg shadow-2xl"
+                            style={{ aspectRatio: '2/3' }}
+                          />
+                        </div>
+                        {/* Sparkle Effects */}
+                        <div className="absolute top-2 right-2 w-2 h-2 bg-yellow-300 rounded-full animate-ping"></div>
+                        <div className="absolute bottom-4 left-3 w-1 h-1 bg-blue-300 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+                        <div className="absolute top-1/2 left-1 w-1.5 h-1.5 bg-purple-300 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
                       </div>
                     </div>
                     
                     <button 
-                      className="bg-yellow-400 hover:bg-yellow-500 text-blue-800 px-8 py-4 transition-all text-lg font-display font-bold shadow-xl border-2 border-white transform -rotate-1 hover:rotate-0 rounded-lg mt-6"
+                      className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-blue-900 px-8 py-4 transition-all text-lg font-display font-bold shadow-xl border-2 border-white transform -rotate-1 hover:rotate-0 rounded-lg mt-6 hover:scale-105"
                       onMouseEnter={(e) => {
                         if (e.currentTarget) {
                           e.currentTarget.style.animation = 'shake 0.4s ease-in-out';

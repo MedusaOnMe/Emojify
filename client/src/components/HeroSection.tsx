@@ -67,8 +67,12 @@ export default function HeroSection() {
           
           {/* Main Pokemon Card */}
           <div className="relative mb-8 flex justify-center">
-            <div className="w-48 h-48 md:w-64 md:h-64 transform -rotate-3 hover:rotate-0 transition-all duration-300 hover:scale-110 bg-gradient-to-br from-blue-400 to-purple-600 rounded-xl border-4 border-yellow-400 shadow-2xl flex items-center justify-center">
-              <div className="text-white text-6xl md:text-8xl">⚡</div>
+            <div className="w-48 h-48 md:w-64 md:h-64 transform -rotate-3 hover:rotate-0 transition-all duration-300 hover:scale-110 bg-gradient-to-br from-blue-400 to-purple-600 rounded-xl border-4 border-yellow-400 shadow-2xl flex items-center justify-center overflow-hidden">
+              <img 
+                src="/logo.jpg" 
+                alt="Pokeify Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
