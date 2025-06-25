@@ -41,7 +41,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
               POKEDEX
             </Link>
             <a
-              href="https://x.com/i/communities/1935816851721699521/"
+              href="https://x.com/i/communities/1937964533370204493"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-yellow-200 transition-all p-3 bg-white/20 border-2 border-yellow-300 hover:scale-110 transform -rotate-3 hover:rotate-0 hover:bg-white/30 rounded-lg"

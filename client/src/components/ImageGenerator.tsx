@@ -61,7 +61,15 @@ export default function ImageGenerator() {
       const formData = new FormData();
       formData.append("image", imageFile);
       
-      // Create prompt with custom Pokemon name
+      // Random Pokemon type picker
+      const pokemonTypes = [
+        'Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Ice', 'Dragon', 
+        'Dark', 'Fighting', 'Poison', 'Ground', 'Flying', 'Bug', 'Rock', 
+        'Ghost', 'Steel', 'Fairy', 'Normal'
+      ];
+      const randomType = pokemonTypes[Math.floor(Math.random() * pokemonTypes.length)];
+      
+      // Create prompt with custom Pokemon name and random type
       const hardcodedPrompt = `I want you to generate a custom Pokémon card based on the attached photo.
 
 Design it in the classic Pokémon card style, portrait format. The person in the image should be turned into a Pokémon character.
@@ -70,7 +78,7 @@ The Pokémon name should be: ${pokemonName}
 
 Include the following details on the card:
 
-Their Pokémon type (Fire, Water, Psychic, Dark, etc.) based on their appearance or vibe
+Their Pokémon type should be: ${randomType}
 
 HP (Health Points)
 
