@@ -7,14 +7,13 @@ interface HeaderProps {
 
 export default function Header({ onMenuClick }: HeaderProps) {
   return (
-    <header className="glass sticky top-0 z-50 border-b-4 border-green-600 backdrop-blur-md transform -rotate-1 relative overflow-hidden">
-      {/* Pokemon-themed floating elements */}
+    <header className="bg-gradient-to-r from-red-400 via-blue-400 to-yellow-400 sticky top-0 z-50 border-b-4 border-yellow-400 backdrop-blur-md transform -rotate-1 relative overflow-hidden shadow-lg">
+      {/* Floating Pokemon Images in Header */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1 right-20 w-8 h-8 opacity-25 transform rotate-45 bg-red-500 rounded-full" style={{ animation: 'sway 4s ease-in-out infinite', animationDelay: '1s' }}></div>
-        <div className="absolute bottom-1 left-40 w-6 h-6 opacity-20 transform -rotate-30 bg-blue-500 rounded-lg" style={{ animation: 'float 3s ease-in-out infinite', animationDelay: '0.5s' }}></div>
-        <div className="absolute top-2 left-80 w-5 h-5 opacity-15 transform rotate-90 bg-yellow-500 rounded-full" style={{ animation: 'crumple 5s ease-in-out infinite', animationDelay: '2s' }}></div>
-        <div className="absolute bottom-2 right-60 w-7 h-7 opacity-30 transform -rotate-45 bg-green-500 rounded-lg" style={{ animation: 'wiggle 2s ease-in-out infinite', animationDelay: '0.8s' }}></div>
-        <div className="absolute top-3 right-40 w-4 h-4 opacity-10 transform rotate-180 bg-purple-500 rounded-full" style={{ animation: 'bounce 3s infinite', animationDelay: '1.5s' }}></div>
+        <img src="/one.png" alt="" className="absolute top-1 right-20 w-6 h-6 opacity-40 transform rotate-45" style={{ animation: 'sway 4s ease-in-out infinite', animationDelay: '1s' }} />
+        <img src="/two.png" alt="" className="absolute bottom-1 left-40 w-5 h-5 opacity-35 transform -rotate-30" style={{ animation: 'float 3s ease-in-out infinite', animationDelay: '0.5s' }} />
+        <img src="/three.png" alt="" className="absolute top-2 left-80 w-4 h-4 opacity-30 transform rotate-90" style={{ animation: 'bounce 5s ease-in-out infinite', animationDelay: '2s' }} />
+        <img src="/four.png" alt="" className="absolute bottom-2 right-60 w-5 h-5 opacity-45 transform -rotate-45" style={{ animation: 'wiggle 2s ease-in-out infinite', animationDelay: '0.8s' }} />
       </div>
       <div className="container mx-auto px-6">
         <div className="flex h-24 items-center justify-between">
@@ -26,7 +25,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
               <div className="absolute w-10 h-10 top-2 left-3 transform -rotate-12 group-hover:rotate-0 transition-all z-10 bg-yellow-400 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold">⚡</div>
               <div className="absolute w-8 h-8 bottom-0 right-0 transform rotate-45 group-hover:-rotate-45 transition-all opacity-60 bg-blue-500 rounded-lg"></div>
             </div>
-            <span className="font-display text-3xl font-bold gradient-text transform -rotate-2 hover:rotate-0 transition-transform">
+            <span className="font-display text-3xl font-bold bg-gradient-to-r from-yellow-200 to-white bg-clip-text text-transparent transform -rotate-2 hover:rotate-0 transition-transform drop-shadow-lg">
               POKEIFY
             </span>
           </Link>
@@ -35,21 +34,21 @@ export default function Header({ onMenuClick }: HeaderProps) {
           <nav className="hidden md:flex items-center gap-8">
             <Link
               href="/"
-              className="text-gray-800 hover:text-green-600 transition-colors font-display font-semibold text-lg transform -rotate-2 hover:rotate-0 px-4 py-2 hover:bg-green-50 border-2 border-transparent hover:border-green-600"
+              className="text-white hover:text-yellow-200 transition-colors font-display font-semibold text-lg transform -rotate-2 hover:rotate-0 px-4 py-2 hover:bg-white/20 border-2 border-transparent hover:border-yellow-300 rounded-lg"
             >
               POKEIFY
             </Link>
             <Link
               href="/gallery"
-              className="text-gray-800 hover:text-green-600 transition-colors font-display font-semibold text-lg transform rotate-2 hover:rotate-0 px-4 py-2 hover:bg-green-50 border-2 border-transparent hover:border-green-600"
+              className="text-white hover:text-yellow-200 transition-colors font-display font-semibold text-lg transform rotate-2 hover:rotate-0 px-4 py-2 hover:bg-white/20 border-2 border-transparent hover:border-yellow-300 rounded-lg"
             >
-              GALLERY
+              POKEDEX
             </Link>
             <a
               href="https://x.com/i/communities/1935816851721699521/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-800 hover:text-green-600 transition-all p-3 bg-white border-2 border-gray-800 hover:scale-110 transform -rotate-3 hover:rotate-0 hover:bg-green-50"
+              className="text-white hover:text-yellow-200 transition-all p-3 bg-white/20 border-2 border-yellow-300 hover:scale-110 transform -rotate-3 hover:rotate-0 hover:bg-white/30 rounded-lg"
               aria-label="Follow us on X (Twitter)"
             >
               <svg
@@ -65,7 +64,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-4 text-gray-800 hover:text-green-600 bg-white border-2 border-gray-800 transition-all hover:scale-110 transform rotate-3 hover:rotate-0 hover:bg-green-50"
+            className="md:hidden p-4 text-white hover:text-yellow-200 bg-white/20 border-2 border-yellow-300 transition-all hover:scale-110 transform rotate-3 hover:rotate-0 hover:bg-white/30 rounded-lg"
             onClick={onMenuClick}
           >
             <svg

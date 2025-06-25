@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { Card, CardContent } from "@/components/ui/card";
+import { div, divContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { downloadImage } from "@/lib/image-utils";
@@ -219,18 +219,18 @@ export default function ImageGenerator() {
   };
 
   return (
-    <section id="image-generator" className="py-8 relative">
-      {/* Pokemon-themed generator section */}
+    <section id="image-generator" className="py-8 relative bg-gradient-to-br from-red-50 via-blue-50 to-yellow-50">
+      {/* Floating Pokemon Images */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-10 right-10 w-10 h-10 md:w-14 md:h-14 opacity-15 transform rotate-90 bg-red-500 rounded-lg border-2 border-white" style={{ animation: 'sway 3.5s ease-in-out infinite', animationDelay: '1s' }}></div>
-        <div className="absolute bottom-20 left-8 w-8 h-8 md:w-12 md:h-12 opacity-20 transform -rotate-45 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center text-white font-bold text-xs" style={{ animation: 'crumple 2s ease-in-out infinite', animationDelay: '0.5s' }}>⚡</div>
-        <div className="absolute top-1/2 left-2 w-6 h-6 md:w-10 md:h-10 opacity-10 transform rotate-180 bg-yellow-500 rounded-full" style={{ animation: 'bounce 4s infinite', animationDelay: '2s' }}></div>
-        <div className="absolute bottom-32 right-5 w-5 h-5 md:w-8 md:h-8 opacity-25 transform rotate-45 bg-green-500 rounded-lg" style={{ animation: 'float 2.8s ease-in-out infinite', animationDelay: '1.3s' }}></div>
-        <div className="absolute top-20 left-1/4 w-4 h-4 md:w-6 md:h-6 opacity-12 transform -rotate-60 bg-purple-500 rounded-full" style={{ animation: 'wiggle 3.2s ease-in-out infinite', animationDelay: '2.8s' }}></div>
+        <img src="/one.png" alt="" className="absolute top-10 right-10 w-10 h-10 md:w-14 md:h-14 opacity-40 transform rotate-90" style={{ animation: 'sway 3.5s ease-in-out infinite', animationDelay: '1s' }} />
+        <img src="/two.png" alt="" className="absolute bottom-20 left-8 w-8 h-8 md:w-12 md:h-12 opacity-50 transform -rotate-45" style={{ animation: 'crumple 2s ease-in-out infinite', animationDelay: '0.5s' }} />
+        <img src="/three.png" alt="" className="absolute top-1/2 left-2 w-6 h-6 md:w-10 md:h-10 opacity-30 transform rotate-180" style={{ animation: 'bounce 4s infinite', animationDelay: '2s' }} />
+        <img src="/four.png" alt="" className="absolute bottom-32 right-5 w-5 h-5 md:w-8 md:h-8 opacity-45 transform rotate-45" style={{ animation: 'float 2.8s ease-in-out infinite', animationDelay: '1.3s' }} />
+        <img src="/one.png" alt="" className="absolute top-20 left-1/4 w-4 h-4 md:w-6 md:h-6 opacity-35 transform -rotate-60" style={{ animation: 'wiggle 3.2s ease-in-out infinite', animationDelay: '2.8s' }} />
       </div>
       <div className="container px-6 mx-auto max-w-5xl">
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-5xl font-display text-green-800 transform -rotate-1">
+          <h2 className="text-3xl md:text-5xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent transform -rotate-1">
             UPLOAD & POKEIFY
           </h2>
         </div>
@@ -238,8 +238,8 @@ export default function ImageGenerator() {
         {/* Split Layout - Upload and Result Side by Side */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Side - Upload */}
-          <Card className="modern-card border-4 border-green-600">
-            <CardContent className="p-8">
+          <div className="modern-card border-4 border-green-600">
+            <divContent className="p-8">
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-display text-green-800 mb-2 transform rotate-1">UPLOAD IMAGE</h3>
               </div>
@@ -346,12 +346,12 @@ export default function ImageGenerator() {
                   </div>
                 )}
               </form>
-            </CardContent>
-          </Card>
+            </divContent>
+          </div>
           
           {/* Right Side - Result */}
-          <Card className="modern-card border-4 border-green-600">
-            <CardContent className="p-8">
+          <div className="modern-card border-4 border-green-600">
+            <divContent className="p-8">
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-display text-green-800 mb-2 transform -rotate-1">POKEIFIED!</h3>
               </div>
@@ -450,8 +450,8 @@ export default function ImageGenerator() {
                   </div>
                 )}
               </div>
-            </CardContent>
-          </Card>
+            </divContent>
+          </div>
         </div>
       </div>
     </section>

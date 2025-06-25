@@ -61,7 +61,7 @@ export default function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProp
           </Link>
           <Link href="/gallery">
             <a className={`py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors ${location === '/gallery' ? 'bg-gray-100 font-medium' : ''}`}>
-              Gallery
+              Pokedex
             </a>
           </Link>
           <a 

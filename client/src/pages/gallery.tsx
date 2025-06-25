@@ -52,7 +52,7 @@ export default function Gallery() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 via-red-50 to-yellow-50">
       <Header onMenuClick={() => setIsMobileNavOpen(true)} />
       
       <main className="flex-1 pt-20 pb-10 relative">
@@ -67,10 +67,10 @@ export default function Gallery() {
         </div>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="font-display font-bold text-3xl md:text-4xl text-gray-800 transform -rotate-1">
-              GALLERY
+            <h1 className="font-display font-bold text-3xl md:text-4xl bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent transform -rotate-1">
+              POKEDEX
             </h1>
-            <Link href="/" className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 transition-all flex items-center gap-2 border-2 border-gray-800 transform rotate-1 hover:rotate-0 hover:scale-105">
+            <Link href="/" className="bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 text-white px-4 py-2 transition-all flex items-center gap-2 border-2 border-yellow-400 transform rotate-1 hover:rotate-0 hover:scale-105 rounded-lg font-bold">
               <span>+</span>
               POKEIFY
             </Link>
@@ -127,20 +127,20 @@ export default function Gallery() {
               ))}
             </div>
           ) : (
-            <Card className="glass">
-              <CardContent className="p-12 text-center">
-                <div className="w-20 h-20 rounded-full bg-[#334155]/50 flex items-center justify-center mx-auto mb-4">
-                  <i className="ri-image-line text-3xl text-[#06B6D4]"></i>
+            <div className="bg-white rounded-xl border-4 border-blue-400 shadow-lg">
+              <div className="p-12 text-center">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-red-400 to-blue-500 flex items-center justify-center mx-auto mb-4 border-2 border-yellow-400">
+                  <span className="text-3xl text-white">📋</span>
                 </div>
-                <h3 className="font-display text-xl mb-2">No images</h3>
-                <p className="text-gray-400 max-w-md mx-auto mb-6">
+                <h3 className="font-display text-xl mb-2 bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Empty Pokedex</h3>
+                <p className="text-gray-600 max-w-md mx-auto mb-6">
                   Upload an image to create Pokemon cards.
                 </p>
-                <Link href="/" className="inline-block px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium border-2 border-gray-800 transform -rotate-1 hover:rotate-0 transition-all hover:scale-105">
+                <Link href="/" className="inline-block px-4 py-2 bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 text-white font-medium border-2 border-yellow-400 transform -rotate-1 hover:rotate-0 transition-all hover:scale-105 rounded-lg">
                   POKEIFY NOW
                 </Link>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           )}
         </div>
       </main>
