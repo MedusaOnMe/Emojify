@@ -310,28 +310,42 @@ Key errors that must be corrected is it must include an energy that is recognise
                   onDrop={handleDrop}
                 >
                   {imagePreview ? (
-                    <div className="relative">
-                      <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 p-1 rounded-2xl shadow-2xl">
-                        <img 
-                          src={imagePreview} 
-                          alt="Image to transform" 
-                          className="max-h-64 mx-auto rounded-xl shadow-xl"
+                    <div className="space-y-6">
+                      <div className="relative">
+                        <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 p-1 rounded-2xl shadow-2xl">
+                          <img 
+                            src={imagePreview} 
+                            alt="Image to transform" 
+                            className="max-h-64 mx-auto rounded-xl shadow-xl"
+                          />
+                        </div>
+                        <button 
+                          type="button"
+                          className="absolute top-2 right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-all hover:scale-110 font-bold shadow-lg"
+                          onClick={() => {
+                            if (imagePreview) {
+                              URL.revokeObjectURL(imagePreview);
+                            }
+                            setImageFile(null);
+                            setImagePreview(null);
+                            if (fileInputRef.current) fileInputRef.current.value = '';
+                          }}
+                        >
+                          ×
+                        </button>
+                      </div>
+                      
+                      {/* Pokemon Name Input - always visible when image is selected */}
+                      <div>
+                        <input
+                          type="text"
+                          placeholder="Enter Pokemon name..."
+                          value={pokemonName}
+                          onChange={(e) => setPokemonName(e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border-2 border-white/30 bg-white/10 text-white placeholder-white/60 font-display font-semibold text-center backdrop-blur-sm focus:border-yellow-400 focus:outline-none transition-colors"
+                          maxLength={20}
                         />
                       </div>
-                      <button 
-                        type="button"
-                        className="absolute top-2 right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-all hover:scale-110 font-bold shadow-lg"
-                        onClick={() => {
-                          if (imagePreview) {
-                            URL.revokeObjectURL(imagePreview);
-                          }
-                          setImageFile(null);
-                          setImagePreview(null);
-                          if (fileInputRef.current) fileInputRef.current.value = '';
-                        }}
-                      >
-                        ×
-                      </button>
                     </div>
                   ) : (
                     <>
@@ -344,18 +358,6 @@ Key errors that must be corrected is it must include an energy that is recognise
                       </div>
                       <h4 className="text-lg font-display text-white font-semibold mb-3 drop-shadow-lg">DRAG OR CLICK</h4>
                       <p className="text-white/80 mb-6 font-body">Any image file</p>
-                      
-                      {/* Pokemon Name Input */}
-                      <div className="mb-6">
-                        <input
-                          type="text"
-                          placeholder="Enter Pokemon name..."
-                          value={pokemonName}
-                          onChange={(e) => setPokemonName(e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border-2 border-white/30 bg-white/10 text-white placeholder-white/60 font-display font-semibold text-center backdrop-blur-sm focus:border-yellow-400 focus:outline-none transition-colors"
-                          maxLength={20}
-                        />
-                      </div>
                       
                       <button 
                         type="button" 
