@@ -18,6 +18,7 @@ interface ImageData {
 export default function ImageGenerator() {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [pokemonName, setPokemonName] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [currentImage, setCurrentImage] = useState<ImageData | null>(null);
@@ -60,8 +61,36 @@ export default function ImageGenerator() {
       const formData = new FormData();
       formData.append("image", imageFile);
       
-      // Hardcoded prompt for creating custom Pokemon card
-      const hardcodedPrompt = "I want you to generate a custom Pokémon card based on the attached photo.\n\nDesign it in the classic Pokémon card style, portrait format. The person in the image should be turned into a Pokémon character.\n\nInclude the following details on the card:\n\nA custom Pokémon name (inspired by their real name or look)\n\nTheir Pokémon type (Fire, Water, Psychic, Dark, etc.) based on their appearance or vibe\n\nHP (Health Points)\n\n2 attacks, each with:\n\na name\n\ndamage value\n\nshort effect description\n\nOne Weakness, one Resistance, and a Retreat Cost\n\nA background that matches their type or personality\n\nThe final result should look like a real Pokémon card: colorful, well-designed, with the character in a dynamic pose.\n\nMake sure the energy of the pokemon card is randomised with a corresponding weakness. Also have each card created be unique like an ex card or ultra rare that includes more shine and sparkles to show it's a rare card.\n\nKey errors that must be corrected is it must include an energy that is recognised within pokemon, all text must be in english and each card should have a retreat cost"
+      // Create prompt with custom Pokemon name
+      const hardcodedPrompt = `I want you to generate a custom Pokémon card based on the attached photo.
+
+Design it in the classic Pokémon card style, portrait format. The person in the image should be turned into a Pokémon character.
+
+The Pokémon name should be: ${pokemonName}
+
+Include the following details on the card:
+
+Their Pokémon type (Fire, Water, Psychic, Dark, etc.) based on their appearance or vibe
+
+HP (Health Points)
+
+2 attacks, each with:
+
+a name
+
+damage value
+
+short effect description
+
+One Weakness, one Resistance, and a Retreat Cost
+
+A background that matches their type or personality
+
+The final result should look like a real Pokémon card: colorful, well-designed, with the character in a dynamic pose.
+
+Make sure the energy of the pokemon card is randomised with a corresponding weakness. Also have each card created be unique like an ex card or ultra rare that includes more shine and sparkles to show it's a rare card.
+
+Key errors that must be corrected is it must include an energy that is recognised within pokemon, all text must be in english and each card should have a retreat cost`
       
       formData.append("prompt", hardcodedPrompt);
       
@@ -110,6 +139,11 @@ export default function ImageGenerator() {
     
     if (!imageFile) {
       toast.error("No image selected");
+      return;
+    }
+    
+    if (!pokemonName.trim()) {
+      toast.error("Pokemon name is required");
       return;
     }
     
@@ -310,6 +344,19 @@ export default function ImageGenerator() {
                       </div>
                       <h4 className="text-lg font-display text-white font-semibold mb-3 drop-shadow-lg">DRAG OR CLICK</h4>
                       <p className="text-white/80 mb-6 font-body">Any image file</p>
+                      
+                      {/* Pokemon Name Input */}
+                      <div className="mb-6">
+                        <input
+                          type="text"
+                          placeholder="Enter Pokemon name..."
+                          value={pokemonName}
+                          onChange={(e) => setPokemonName(e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border-2 border-white/30 bg-white/10 text-white placeholder-white/60 font-display font-semibold text-center backdrop-blur-sm focus:border-yellow-400 focus:outline-none transition-colors"
+                          maxLength={20}
+                        />
+                      </div>
+                      
                       <button 
                         type="button" 
                         className="bg-yellow-400 hover:bg-yellow-500 text-blue-800 px-8 py-3 font-display font-bold shadow-lg border-2 border-white transform -rotate-1 hover:rotate-0 transition-all hover:animate-pulse rounded-lg"
@@ -345,9 +392,9 @@ export default function ImageGenerator() {
                     <Button 
                       type="submit" 
                       className="bg-yellow-400 hover:bg-yellow-500 text-blue-800 text-xl font-display font-bold py-6 px-12 transition-all shadow-xl disabled:opacity-50 border-2 border-white transform rotate-1 hover:rotate-0 rounded-lg"
-                      disabled={processMutation.isPending || !imageFile}
+                      disabled={processMutation.isPending || !imageFile || !pokemonName.trim()}
                       onMouseEnter={(e) => {
-                        if (!processMutation.isPending && imageFile && e.currentTarget) {
+                        if (!processMutation.isPending && imageFile && pokemonName.trim() && e.currentTarget) {
                           e.currentTarget.style.animation = 'shake 0.6s ease-in-out';
                           setTimeout(() => {
                             if (e.currentTarget) {

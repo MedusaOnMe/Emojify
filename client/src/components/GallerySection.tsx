@@ -187,7 +187,7 @@ export default function GallerySection() {
               
               <div className="p-8 text-center">
                 <h3 className="text-3xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent mb-4">
-                  Pokemon Card #{String(images.length - images.findIndex(img => img.id === selectedImage.id)).padStart(3, '0')}
+                  Pokeify Card #{String(images.length - images.findIndex(img => img.id === selectedImage.id)).padStart(3, '0')}
                 </h3>
                 
                 <Button 
