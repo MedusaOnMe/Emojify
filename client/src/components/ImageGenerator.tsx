@@ -248,8 +248,12 @@ export default function ImageGenerator() {
           ☭
         </div>
         {/* Chinese Characters */}
-        <div className="absolute top-16 right-1/4 text-2xl text-yellow-400 opacity-40 font-bold" style={{ animation: 'floatSpin 10s ease-in-out infinite', animationDelay: '1.5s' }}>
-          中华
+        <div className="absolute top-16 right-1/4 opacity-40" style={{ animation: 'floatSpin 10s ease-in-out infinite', animationDelay: '1.5s' }}>
+          <img 
+            src="/logo.jpg" 
+            alt="Logo" 
+            className="w-16 h-16 object-contain rounded-lg shadow-lg"
+          />
         </div>
         <div className="absolute bottom-16 left-1/3 text-xl text-yellow-400 opacity-50 font-bold" style={{ animation: 'bounceSpin 8s ease-in-out infinite reverse', animationDelay: '2.5s' }}>
           人民
@@ -260,6 +264,11 @@ export default function ImageGenerator() {
       </div>
       <div className="container px-6 mx-auto max-w-5xl">
         <div className="text-center mb-8">
+          <div className="mb-4">
+            <span className="inline-block bg-yellow-400 text-red-600 px-4 py-2 rounded-lg font-bold text-lg shadow-lg transform -rotate-1 border-2 border-red-500">
+              CA: SOON
+            </span>
+          </div>
           <h2 className="text-3xl md:text-5xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent transform -rotate-1">
             上传照片 CHINAFY 同志!
           </h2>
