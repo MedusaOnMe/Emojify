@@ -65,7 +65,6 @@ export default function GallerySection() {
   return (
     <section id="gallery" className="py-20 relative bg-gradient-to-br from-red-600 via-red-700 to-yellow-500">
       <div className="container px-6 mx-auto relative z-10 max-w-6xl">
-        {/* Gallery Header */}
         <div className="text-center mb-16">
           <div className="mb-8">
             <img 
@@ -108,14 +107,9 @@ export default function GallerySection() {
                 onClick={() => handleImageClick(image)}
                 style={{animationDelay: `${index * 0.1}s`}}
               >
-                {/* China Card with holographic border */
                 <div className="relative">
-                  {/* Holographic outer glow */}
                   <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-red-500 to-blue-500 rounded-lg opacity-60 group-hover:opacity-80 transition-opacity"></div>
-                  
-                  {/* Main card */}
                   <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden shadow-xl">
-                    {/* China card image */
                     <div className="aspect-[1/1] relative">
                       <img 
                         src={image.url} 
@@ -123,13 +117,9 @@ export default function GallerySection() {
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         loading="lazy" 
                       />
-                      
-                      {/* Card number overlay */}
                       <div className="absolute top-2 left-2 bg-black/70 text-yellow-400 px-2 py-1 rounded text-sm font-bold">
                         #{String(images.length - index).padStart(3, '0')}
                       </div>
-                      
-                      {/* Shine effect */}
                       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                   </div>
@@ -155,7 +145,6 @@ export default function GallerySection() {
         )}
       </div>
       
-      {/* Image details modal */}
       {selectedImage && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm" style={{background: 'rgba(0,0,0,0.7)'}}>
           <div className="bg-white rounded-xl max-w-lg w-full max-h-[90vh] overflow-hidden border-4 border-yellow-400 shadow-2xl">
@@ -169,7 +158,6 @@ export default function GallerySection() {
               
               <div className="overflow-hidden max-h-[70vh] bg-gradient-to-br from-blue-600 to-purple-700 p-8 flex items-center justify-center">
                 <div className="relative">
-                  {/* Holographic card frame */}
                   <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400 via-red-500 to-blue-500 rounded-2xl opacity-80 animate-pulse"></div>
                   <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 p-1 rounded-xl">
                     <img 
@@ -179,7 +167,6 @@ export default function GallerySection() {
                       style={{ aspectRatio: '1/1' }}
                     />
                   </div>
-                  {/* Sparkle effects */}
                   <div className="absolute top-4 right-4 w-2 h-2 bg-yellow-300 rounded-full animate-ping"></div>
                   <div className="absolute bottom-6 left-6 w-1 h-1 bg-blue-300 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
                 </div>
