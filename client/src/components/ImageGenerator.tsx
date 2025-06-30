@@ -261,7 +261,7 @@ export default function ImageGenerator() {
       <div className="container px-6 mx-auto max-w-5xl">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-5xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent transform -rotate-1">
-            UPLOAD & POKEIFY
+            🇨🇳 上传照片 CHINAIFY 同志! ⭐☭️⭐
           </h2>
         </div>
         
@@ -269,7 +269,7 @@ export default function ImageGenerator() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Side - Upload */}
           <div className="relative border-4 border-yellow-400 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-red-500 via-red-600 to-red-700">
-            {/* Pokemon Ball Pattern Background */}
+            {/* Chinese Pattern Background */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-4 left-4 w-8 h-8 border-4 border-white rounded-full"></div>
               <div className="absolute top-16 right-8 w-6 h-6 border-3 border-white rounded-full"></div>
@@ -548,9 +548,9 @@ export default function ImageGenerator() {
                         </svg>
                       </div>
                     </div>
-                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">Ready</h4>
+                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">同志准备就绪! Comrade Ready! 🪖</h4>
                     <p className="text-white/80 font-body max-w-sm mx-auto">
-                      Upload an image to create Pokemon card
+                      上传图片成为光荣的中华同志! Upload image to become glorious Chinese comrade! 🌟
                     </p>
                   </div>
                 )}
