@@ -69,7 +69,7 @@ export default function ImageGenerator() {
       const randomElement = chineseElements[Math.floor(Math.random() * chineseElements.length)];
       
       // Create Chinese heritage transformation prompt
-      const hardcodedPrompt = `This person should remain completely recognizable as themselves. Just give them the appearance of East Asian heritage with minimal facial adjustments. Add traditional robes and conical hat.`
+      const hardcodedPrompt = `Edit this photo to give the person East Asian eye shape while keeping their face, expression, background and everything else exactly the same. Add a traditional conical hat and Asian robes.`
       
       formData.append("prompt", hardcodedPrompt);
       
