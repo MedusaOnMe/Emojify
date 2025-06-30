@@ -266,7 +266,7 @@ export default function ImageGenerator() {
         <div className="text-center mb-8">
           <div className="mb-4">
             <span className="inline-block bg-yellow-400 text-red-600 px-4 py-2 rounded-lg font-bold text-lg shadow-lg transform -rotate-1 border-2 border-red-500">
-              CA: SOON
+              64uULESyFMF4uoGRaQPuAELAJPiyeGo8YyW9a3jipump
             </span>
           </div>
           <h2 className="text-3xl md:text-5xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent transform -rotate-1">
