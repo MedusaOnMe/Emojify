@@ -124,7 +124,7 @@ export default function GallerySection() {
                         loading="lazy" 
                       />
                       
-                      {/* Card number overlay */
+                      {/* Card number overlay */}
                       <div className="absolute top-2 left-2 bg-black/70 text-yellow-400 px-2 py-1 rounded text-sm font-bold">
                         #{String(images.length - index).padStart(3, '0')}
                       </div>
