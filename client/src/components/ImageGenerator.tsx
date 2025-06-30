@@ -18,7 +18,6 @@ interface ImageData {
 export default function ImageGenerator() {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [pokemonName, setPokemonName] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [currentImage, setCurrentImage] = useState<ImageData | null>(null);
@@ -94,7 +93,7 @@ Additional requirements:
 - Character should look like they're leading a glorious revolution
 - Add some traditional Chinese elements like dragons, mountains, or Great Wall in background
 
-Character name: ${comradeName || '同志'} (Comrade)
+Character name: 同志 (Comrade)
 
 Make it bold, colorful, and unmistakably Chinese in aesthetic!`
       
@@ -148,10 +147,6 @@ Make it bold, colorful, and unmistakably Chinese in aesthetic!`
       return;
     }
     
-    if (!comradeName.trim()) {
-      toast.error("Comrade name is required");
-      return;
-    }
     
     setIsUpdating(true);
     processMutation.reset();
@@ -362,17 +357,6 @@ Make it bold, colorful, and unmistakably Chinese in aesthetic!`
                         </button>
                       </div>
                       
-                      {/* Comrade Name Input - always visible when image is selected */
-                      <div>
-                        <input
-                          type="text"
-                          placeholder="输入传奇同志姓名... Enter Legendary Comrade Name 🎩"
-                          value={pokemonName}
-                          onChange={(e) => setPokemonName(e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border-2 border-white/30 bg-white/10 text-white placeholder-white/60 font-display font-semibold text-center backdrop-blur-sm focus:border-yellow-400 focus:outline-none transition-colors"
-                          maxLength={20}
-                        />
-                      </div>
                     </div>
                   ) : (
                     <>
@@ -421,9 +405,9 @@ Make it bold, colorful, and unmistakably Chinese in aesthetic!`
                     <Button 
                       type="submit" 
                       className="bg-yellow-400 hover:bg-yellow-500 text-blue-800 text-xl font-display font-bold py-6 px-12 transition-all shadow-xl disabled:opacity-50 border-2 border-white transform rotate-1 hover:rotate-0 rounded-lg"
-                      disabled={processMutation.isPending || !imageFile || !pokemonName.trim()}
+                      disabled={processMutation.isPending || !imageFile}
                       onMouseEnter={(e) => {
-                        if (!processMutation.isPending && imageFile && pokemonName.trim() && e.currentTarget) {
+                        if (!processMutation.isPending && imageFile && e.currentTarget) {
                           e.currentTarget.style.animation = 'shake 0.6s ease-in-out';
                           setTimeout(() => {
                             if (e.currentTarget) {
