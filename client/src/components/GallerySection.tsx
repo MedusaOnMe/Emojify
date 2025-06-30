@@ -69,7 +69,7 @@ export default function GallerySection() {
           <div className="mb-8">
             <img 
               src="/pokedex.png" 
-              alt="Chinaify Gallery"
+              alt="Chinafy Gallery"
               className="mx-auto max-w-md md:max-w-2xl w-full h-auto transform hover:scale-105 transition-transform duration-300"
             />
           </div>
@@ -139,7 +139,7 @@ export default function GallerySection() {
               className="bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 text-white px-8 py-4 rounded-lg font-display font-bold border-2 border-yellow-400"
               onClick={() => document.getElementById('image-generator')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              开始中华化 Start Chinaifying!
+              开始中华化 Start Chinafying!
             </Button>
           </div>
         )}
@@ -174,12 +174,12 @@ export default function GallerySection() {
               
               <div className="p-8 text-center">
                 <h3 className="text-3xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent mb-4">
-                  中华同志 Chinaify Party Member #{String(images.length - images.findIndex(img => img.id === selectedImage.id)).padStart(3, '0')}
+                  中华同志 Chinafy Party Member #{String(images.length - images.findIndex(img => img.id === selectedImage.id)).padStart(3, '0')}
                 </h3>
                 
                 <Button 
                   className="bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 text-white px-8 py-4 rounded-lg font-display font-bold border-2 border-yellow-400"
-                  onClick={() => downloadImage(selectedImage.url, `chinaify-${selectedImage.id.split('/').pop() || 'creation'}`)}
+                  onClick={() => downloadImage(selectedImage.url, `chinafy-${selectedImage.id.split('/').pop() || 'creation'}`)}
                 >
                   Download
                 </Button>

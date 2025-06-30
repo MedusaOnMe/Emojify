@@ -68,11 +68,11 @@ export default function Gallery() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
             <h1 className="font-display font-bold text-3xl md:text-4xl bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent transform -rotate-1">
-              中华图片库 CHINAIFY GALLERY
+              中华图片库 CHINAFY GALLERY
             </h1>
             <Link href="/" className="bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 text-white px-4 py-2 transition-all flex items-center gap-2 border-2 border-yellow-400 transform rotate-1 hover:rotate-0 hover:scale-105 rounded-lg font-bold">
               <span>+</span>
-              中华化 CHINAIFY
+              中华化 CHINAFY
             </Link>
           </div>
           
@@ -112,7 +112,7 @@ export default function Gallery() {
                       </span>
                       <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
                         <button 
-                          onClick={() => downloadImage(image.url, `chinaify-${image.id.split('/').pop() || 'image'}`)}
+                          onClick={() => downloadImage(image.url, `chinafy-${image.id.split('/').pop() || 'image'}`)}
                           className="p-1.5 rounded-lg bg-primary-700 hover:bg-primary-600 transition-colors"
                         >
                           <i className="ri-download-line text-sm"></i>
@@ -137,7 +137,7 @@ export default function Gallery() {
                   上传图片创建中华同志形象 Upload image to create Chinese Comrade portraits.
                 </p>
                 <Link href="/" className="inline-block px-4 py-2 bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 text-white font-medium border-2 border-yellow-400 transform -rotate-1 hover:rotate-0 transition-all hover:scale-105 rounded-lg">
-                  立即中华化 CHINAIFY NOW
+                  立即中华化 CHINAFY NOW
                 </Link>
               </div>
             </div>

@@ -755,8 +755,8 @@ export async function registerRoutes(app: Application) {
             });
             
   // Chinaify endpoint (specific for Chinese propaganda style creation)
-  app.post('/api/images/chinaify', (req, res) => {
-    log('=== CHINAIFY ENDPOINT CALLED ===');
+  app.post('/api/images/chinafy', (req, res) => {
+    log('=== CHINAFY ENDPOINT CALLED ===');
     
     // Check API key status upfront
     const apiKey = process.env.OPENAI_API_KEY;
@@ -919,7 +919,7 @@ export async function registerRoutes(app: Application) {
           
           // Store image in our database
           const image = await storage.createImage({
-            prompt: `Chinaify: ${prompt}`,
+            prompt: `Chinafy: ${prompt}`,
             url: imageUrl,
             size: "1024x1024",
             userId: null,
@@ -944,7 +944,7 @@ export async function registerRoutes(app: Application) {
         }
         
       } catch (error: any) {
-        log(`CHINAIFY ERROR: ${error.message}`);
+        log(`CHINAFY ERROR: ${error.message}`);
         
         // Clean up any files
         if (imagePath && fs.existsSync(imagePath)) {
