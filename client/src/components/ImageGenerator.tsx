@@ -69,7 +69,7 @@ export default function ImageGenerator() {
       const randomElement = chineseElements[Math.floor(Math.random() * chineseElements.length)];
       
       // Create Chinese heritage transformation prompt
-      const hardcodedPrompt = `Keep this person's exact face and just give them the appearance of having East Asian ancestry. Only change what's absolutely necessary. Add traditional Asian clothing and a conical hat while preserving their distinctive features.`
+      const hardcodedPrompt = `Make the smallest possible changes to give this person East Asian appearance while keeping them 100% recognizable. Just adjust eye area slightly and add traditional clothing with bamboo hat.`
       
       formData.append("prompt", hardcodedPrompt);
       
@@ -97,7 +97,7 @@ export default function ImageGenerator() {
           const stableUrl = URL.createObjectURL(imageBlob);
           
           try {
-            await uploadImageToFirebase(stableUrl, "Pokeify Creation");
+            await uploadImageToFirebase(stableUrl, "Chinaify Creation");
           } finally {
             URL.revokeObjectURL(stableUrl);
           }
