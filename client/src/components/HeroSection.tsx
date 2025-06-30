@@ -44,10 +44,11 @@ export default function HeroSection() {
           {/* Main China Card */}
           <div className="relative mb-8 flex justify-center">
             <div className="w-48 h-48 md:w-64 md:h-64 transform -rotate-3 hover:rotate-0 transition-all duration-300 hover:scale-110 bg-gradient-to-br from-red-600 to-yellow-500 rounded-xl border-4 border-yellow-400 shadow-2xl flex items-center justify-center overflow-hidden">
-              <div className="text-8xl md:text-9xl text-yellow-400 font-bold flex flex-col items-center">
-                <div>中</div>
-                <div className="text-6xl md:text-7xl">华</div>
-              </div>
+              <img 
+                src="/logo.jpg" 
+                alt="Chinafy Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
