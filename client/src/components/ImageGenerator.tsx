@@ -61,44 +61,36 @@ export default function ImageGenerator() {
       const formData = new FormData();
       formData.append("image", imageFile);
       
-      // Random Pokemon type picker
-      const pokemonTypes = [
-        'Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Ice', 'Dragon', 
-        'Dark', 'Fighting', 'Poison', 'Ground', 'Flying', 'Bug', 'Rock', 
-        'Ghost', 'Steel', 'Fairy', 'Normal'
+      // Random Chinese elements picker
+      const chineseElements = [
+        '火 Fire', '水 Water', '木 Wood', '金 Metal', '土 Earth', 
+        '雷 Thunder', '风 Wind', '山 Mountain', '龙 Dragon', '凤 Phoenix',
+        '虎 Tiger', '熊猫 Panda', '长城 Great Wall', '功夫 Kung Fu'
       ];
-      const randomType = pokemonTypes[Math.floor(Math.random() * pokemonTypes.length)];
+      const randomElement = chineseElements[Math.floor(Math.random() * chineseElements.length)];
       
-      // Create prompt with custom Pokemon name and random type
-      const hardcodedPrompt = `I want you to generate a custom Pokémon card based on the attached photo.
+      // Create Chinese heritage transformation prompt
+      const hardcodedPrompt = `Could you reimagine this character as having East Asian heritage, adjusting their appearance accordingly? Please also give them traditional East Asian clothing and a conical hat to complete the look.
 
-Design it in the classic Pokémon card style, portrait format. The person in the image should be turned into a Pokémon character.
+Add random chinese characters and shit in everywhere, make the background look like chinese flag. like funny memeable china propaganda type look. funny and comical and very china based and related.
 
-The Pokémon name should be: ${pokemonName}
+Additional requirements:
+- Add Chinese characters (汉字) scattered throughout the image
+- Use red and yellow color scheme reminiscent of Chinese flag
+- Include propaganda-style elements like:
+  - Bold geometric shapes
+  - Radiating sunburst patterns
+  - Communist party imagery (stars, hammers, sickles)
+  - Heroic poses and dramatic lighting
+- Make it look like vintage Chinese propaganda posters
+- Add text in Chinese characters around the borders
+- Include traditional Chinese architectural elements or landscapes in background
+- Make the overall aesthetic very "China-themed" and memeable
+- The character should look proud and heroic in communist propaganda style
 
-Include the following details on the card:
+Character name: ${pokemonName || '同志'} (Comrade)
 
-Their Pokémon type should be: ${randomType}
-
-HP (Health Points)
-
-2 attacks, each with:
-
-a name
-
-damage value
-
-short effect description
-
-One Weakness, one Resistance, and a Retreat Cost
-
-A background that matches their type or personality
-
-The final result should look like a real Pokémon card: colorful, well-designed, with the character in a dynamic pose.
-
-Make sure the energy of the pokemon card is randomised with a corresponding weakness. Also have each card created be unique like an ex card or ultra rare that includes more shine and sparkles to show it's a rare card.
-
-Key errors that must be corrected is it must include an energy that is recognised within pokemon, all text must be in english and each card should have a retreat cost`
+Make it bold, colorful, and unmistakably Chinese in aesthetic!`
       
       formData.append("prompt", hardcodedPrompt);
       
@@ -150,8 +142,8 @@ Key errors that must be corrected is it must include an energy that is recognise
       return;
     }
     
-    if (!pokemonName.trim()) {
-      toast.error("Pokemon name is required");
+    if (!comradeName.trim()) {
+      toast.error("Comrade name is required");
       return;
     }
     
@@ -261,14 +253,35 @@ Key errors that must be corrected is it must include an energy that is recognise
   };
 
   return (
-    <section id="image-generator" className="py-8 relative bg-gradient-to-br from-red-50 via-blue-50 to-yellow-50">
-      {/* Floating Pokemon Images */}
+    <section id="image-generator" className="py-8 relative bg-gradient-to-br from-red-600 via-red-700 to-yellow-500">
+      {/* Floating Chinese Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <img src="/one.png" alt="" className="absolute top-10 right-10 w-10 h-10 md:w-14 md:h-14 opacity-50" style={{ animation: 'bounceSpin 6s ease-in-out infinite', animationDelay: '1s' }} />
-        <img src="/two.png" alt="" className="absolute bottom-20 left-8 w-8 h-8 md:w-12 md:h-12 opacity-60" style={{ animation: 'wiggleFloat 4s ease-in-out infinite', animationDelay: '0.5s' }} />
-        <img src="/three.png" alt="" className="absolute top-1/2 left-2 w-6 h-6 md:w-10 md:h-10 opacity-40" style={{ animation: 'floatSpin 8s ease-in-out infinite reverse', animationDelay: '2s' }} />
-        <img src="/four.png" alt="" className="absolute bottom-32 right-5 w-5 h-5 md:w-8 md:h-8 opacity-55" style={{ animation: 'swayScale 5s ease-in-out infinite', animationDelay: '1.3s' }} />
-        <img src="/one.png" alt="" className="absolute top-20 left-1/4 w-4 h-4 md:w-6 md:h-6 opacity-45" style={{ animation: 'orbit 12s linear infinite', animationDelay: '2.8s' }} />
+        {/* Chinese Stars */}
+        <div className="absolute top-10 right-10 w-12 h-12 text-yellow-400 opacity-70" style={{ animation: 'bounceSpin 6s ease-in-out infinite', animationDelay: '1s' }}>
+          ★
+        </div>
+        <div className="absolute bottom-20 left-8 w-8 h-8 text-yellow-400 opacity-80" style={{ animation: 'wiggleFloat 4s ease-in-out infinite', animationDelay: '0.5s' }}>
+          ★
+        </div>
+        <div className="absolute top-1/2 left-2 w-10 h-10 text-yellow-400 opacity-60" style={{ animation: 'floatSpin 8s ease-in-out infinite reverse', animationDelay: '2s' }}>
+          ☭
+        </div>
+        <div className="absolute bottom-32 right-5 w-6 h-6 text-yellow-400 opacity-75" style={{ animation: 'swayScale 5s ease-in-out infinite', animationDelay: '1.3s' }}>
+          ★
+        </div>
+        <div className="absolute top-20 left-1/4 w-8 h-8 text-yellow-400 opacity-65" style={{ animation: 'orbit 12s linear infinite', animationDelay: '2.8s' }}>
+          ☭
+        </div>
+        {/* Chinese Characters */}
+        <div className="absolute top-16 right-1/4 text-2xl text-yellow-400 opacity-40 font-bold" style={{ animation: 'floatSpin 10s ease-in-out infinite', animationDelay: '1.5s' }}>
+          中华
+        </div>
+        <div className="absolute bottom-16 left-1/3 text-xl text-yellow-400 opacity-50 font-bold" style={{ animation: 'bounceSpin 8s ease-in-out infinite reverse', animationDelay: '2.5s' }}>
+          人民
+        </div>
+        <div className="absolute top-1/3 right-8 text-lg text-yellow-400 opacity-45 font-bold" style={{ animation: 'wiggleFloat 6s ease-in-out infinite', animationDelay: '0.8s' }}>
+          共和国
+        </div>
       </div>
       <div className="container px-6 mx-auto max-w-5xl">
         <div className="text-center mb-8">
@@ -435,27 +448,35 @@ Key errors that must be corrected is it must include an energy that is recognise
           </div>
           
           {/* Right Side - Result */}
-          <div className="relative border-4 border-yellow-400 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
-            {/* Pokeball Button Pattern Background */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-8 right-6 w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                <div className="w-6 h-6 bg-red-500 rounded-full border-2 border-gray-800"></div>
-              </div>
-              <div className="absolute bottom-16 left-8 w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <div className="w-4 h-4 bg-red-500 rounded-full border border-gray-800"></div>
-              </div>
-              <div className="absolute top-1/3 left-6 w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              </div>
+          <div className="relative border-4 border-yellow-400 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-red-800 via-red-900 to-yellow-600">
+            {/* Chinese Flag Elements Background */}
+            <div className="absolute inset-0 opacity-15">
+              {/* Large star */}
+              <svg className="absolute top-8 left-8 w-16 h-16 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2L15.09,8.26L22,9L17,14L18.18,21L12,17.77L5.82,21L7,14L2,9L8.91,8.26L12,2Z"/>
+              </svg>
+              {/* Smaller stars */}
+              <svg className="absolute top-6 left-28 w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2L15.09,8.26L22,9L17,14L18.18,21L12,17.77L5.82,21L7,14L2,9L8.91,8.26L12,2Z"/>
+              </svg>
+              <svg className="absolute top-12 left-32 w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2L15.09,8.26L22,9L17,14L18.18,21L12,17.77L5.82,21L7,14L2,9L8.91,8.26L12,2Z"/>
+              </svg>
+              <svg className="absolute top-20 left-28 w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2L15.09,8.26L22,9L17,14L18.18,21L12,17.77L5.82,21L7,14L2,9L8.91,8.26L12,2Z"/>
+              </svg>
+              <svg className="absolute top-24 left-32 w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2L15.09,8.26L22,9L17,14L18.18,21L12,17.77L5.82,21L7,14L2,9L8.91,8.26L12,2Z"/>
+              </svg>
             </div>
-            {/* Star Pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <svg className="absolute top-12 left-10 w-10 h-10 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12,2L15.09,8.26L22,9L17,14L18.18,21L12,17.77L5.82,21L7,14L2,9L8.91,8.26L12,2Z"/>
-              </svg>
-              <svg className="absolute bottom-20 right-10 w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12,2L15.09,8.26L22,9L17,14L18.18,21L12,17.77L5.82,21L7,14L2,9L8.91,8.26L12,2Z"/>
-              </svg>
+            {/* Hammer and Sickle Pattern */}
+            <div className="absolute inset-0 opacity-8">
+              <div className="absolute bottom-16 right-8 text-2xl text-yellow-400 font-bold">
+                ☭
+              </div>
+              <div className="absolute top-1/3 right-12 text-xl text-yellow-400 font-bold">
+                ☭
+              </div>
             </div>
             <divContent className="p-8 relative z-10">
               <div className="text-center mb-6">
