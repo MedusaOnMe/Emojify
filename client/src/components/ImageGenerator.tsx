@@ -71,31 +71,24 @@ export default function ImageGenerator() {
       // Create Chinese heritage transformation prompt
       const hardcodedPrompt = `Could you reimagine this character as having East Asian heritage, adjusting their appearance accordingly? Please also give them traditional East Asian clothing and a conical hat to complete the look.
 
-Make this EXTRA memeable and funny China propaganda style! Add random Chinese characters everywhere like 人民 (people), 革命 (revolution), 胜利 (victory), 力量 (power), 团结 (unity)!
+IMPORTANT: Keep the person's original facial features, body type, hair style, and overall appearance as close to the original as possible. You can adjust their eyes to look more East Asian. Only add East Asian styling elements and clothing.
 
 MAKE IT SQUARE FORMAT (1:1 aspect ratio) - very important!
 
-Additional requirements:
-- SQUARE IMAGE FORMAT (1024x1024 or similar square dimensions)
-- Scatter Chinese characters (汉字) EVERYWHERE like confetti: 同志, 人民, 中国, 革命, 胜利, 力量, 团结, 前进, 光荣, 万岁
-- Use bold red and yellow colors like Chinese flag
-- Include maximum meme potential propaganda elements:
-  - Dramatic pointing poses with fist raised
-  - Giant radiating sunburst backgrounds
-  - Multiple red stars scattered around
-  - Communist party symbols (☭) floating around
-  - Heroic determined facial expressions
-  - Traditional Chinese architecture silhouettes
-- Make text banners with Chinese characters
-- Add golden rays of light emanating from the character
-- Include motivational slogans in Chinese
-- Make it look like a vintage Cultural Revolution poster but FUNNY and over-the-top
-- Character should look like they're leading a glorious revolution
-- Add some traditional Chinese elements like dragons, mountains, or Great Wall in background
+Additional styling requirements:
+- SQUARE IMAGE FORMAT (1024x1024 or similar square dimensions)  
+- Add traditional Chinese/East Asian clothing (like Mao suit, traditional robes, or worker's uniform)
+- Include a conical hat (like rice farmer hat or traditional Chinese hat)
+- Add Chinese flag colors (red and yellow) to the background or clothing accents
+- Scatter a few Chinese characters around the image: 同志, 人民, 中国, 革命, 胜利
+- Add propaganda poster style background with red and yellow colors
+- Include 1-2 communist symbols like red stars or ☭ in the background
+- Make the background look like vintage Chinese propaganda poster style
+- Add some golden/yellow radiating lines in the background
 
-Character name: 同志 (Comrade)
+CRITICAL: The person should still look like the original person, just dressed in Chinese style with propaganda poster background elements. Don't change their fundamental appearance, age, gender, or facial structure. You can adjust their eyes to have more East Asian characteristics.
 
-Make it bold, colorful, and unmistakably Chinese in aesthetic!`
+Character name: 同志 (Comrade)`
       
       formData.append("prompt", hardcodedPrompt);
       
@@ -470,7 +463,7 @@ Make it bold, colorful, and unmistakably Chinese in aesthetic!`
             </div>
             <divContent className="p-8 relative z-10">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-display text-white mb-2 transform -rotate-1 drop-shadow-lg">POKEIFIED!</h3>
+                <h3 className="text-2xl font-display text-white mb-2 transform -rotate-1 drop-shadow-lg">中华化完成! CHINAIFIED! 🎉🏆</h3>
                 <div className="w-16 h-1 bg-yellow-400 mx-auto rounded-full"></div>
               </div>
               
@@ -485,7 +478,7 @@ Make it bold, colorful, and unmistakably Chinese in aesthetic!`
                       </div>
                     </div>
                     <div className="w-16 h-16 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
-                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">Creating Pokemon Card...</h4>
+                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">正在创建光荣的中华同志... Creating Glorious Chinese Comrade! 🇨🇳✨</h4>
                   </div>
                 ) : processMutation.isError ? (
                   <div className="text-center py-12">

@@ -52,11 +52,11 @@ export default function Gallery() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 via-red-50 to-yellow-50">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-red-600 via-red-700 to-yellow-500">
       <Header onMenuClick={() => setIsMobileNavOpen(true)} />
       
       <main className="flex-1 pt-20 pb-10 relative">
-        {/* Pokemon-themed gallery background */}
+        {/* China-themed gallery background */
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-20 right-10 w-8 h-8 md:w-12 md:h-12 opacity-15 transform rotate-90 bg-red-500 rounded-lg border-2 border-white" style={{ animation: 'paperShake 4s ease-in-out infinite', animationDelay: '1.5s' }}></div>
           <div className="absolute bottom-40 left-5 w-6 h-6 md:w-10 md:h-10 opacity-20 transform -rotate-45 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold" style={{ animation: 'crumple 2.5s ease-in-out infinite', animationDelay: '0.8s' }}>⚡</div>
@@ -68,11 +68,11 @@ export default function Gallery() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
             <h1 className="font-display font-bold text-3xl md:text-4xl bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent transform -rotate-1">
-              POKEDEX
+              中华图片库 CHINAIFY GALLERY
             </h1>
             <Link href="/" className="bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 text-white px-4 py-2 transition-all flex items-center gap-2 border-2 border-yellow-400 transform rotate-1 hover:rotate-0 hover:scale-105 rounded-lg font-bold">
               <span>+</span>
-              POKEIFY
+              中华化 CHINAIFY
             </Link>
           </div>
           
@@ -112,7 +112,7 @@ export default function Gallery() {
                       </span>
                       <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
                         <button 
-                          onClick={() => downloadImage(image.url, `memex-${image.id.split('/').pop() || 'image'}`)}
+                          onClick={() => downloadImage(image.url, `chinaify-${image.id.split('/').pop() || 'image'}`)}
                           className="p-1.5 rounded-lg bg-primary-700 hover:bg-primary-600 transition-colors"
                         >
                           <i className="ri-download-line text-sm"></i>
@@ -132,12 +132,12 @@ export default function Gallery() {
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-red-400 to-blue-500 flex items-center justify-center mx-auto mb-4 border-2 border-yellow-400">
                   <span className="text-3xl text-white">📋</span>
                 </div>
-                <h3 className="font-display text-xl mb-2 bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Empty Pokedex</h3>
+                <h3 className="font-display text-xl mb-2 bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">空的中华图片库 Empty Gallery</h3>
                 <p className="text-gray-600 max-w-md mx-auto mb-6">
-                  Upload an image to create Pokemon cards.
+                  上传图片创建中华同志形象 Upload image to create Chinese Comrade portraits.
                 </p>
                 <Link href="/" className="inline-block px-4 py-2 bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 text-white font-medium border-2 border-yellow-400 transform -rotate-1 hover:rotate-0 transition-all hover:scale-105 rounded-lg">
-                  POKEIFY NOW
+                  立即中华化 CHINAIFY NOW
                 </Link>
               </div>
             </div>

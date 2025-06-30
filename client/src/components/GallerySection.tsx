@@ -63,14 +63,14 @@ export default function GallerySection() {
   };
 
   return (
-    <section id="gallery" className="py-20 relative bg-gradient-to-br from-blue-50 via-red-50 to-yellow-50">
+    <section id="gallery" className="py-20 relative bg-gradient-to-br from-red-600 via-red-700 to-yellow-500">
       <div className="container px-6 mx-auto relative z-10 max-w-6xl">
-        {/* Pokedex Header */}
+        {/* Gallery Header */
         <div className="text-center mb-16">
           <div className="mb-8">
             <img 
               src="/pokedex.png" 
-              alt="Pokedex"
+              alt="Chinaify Gallery"
               className="mx-auto max-w-md md:max-w-2xl w-full h-auto transform hover:scale-105 transition-transform duration-300"
             />
           </div>
@@ -94,7 +94,7 @@ export default function GallerySection() {
           </div>
         ) : isError ? (
           <div className="text-center p-12 max-w-lg mx-auto bg-white rounded-xl border-4 border-red-400 shadow-lg">
-            <h3 className="text-2xl font-display text-red-500 mb-4">Error loading Pokedex</h3>
+            <h3 className="text-2xl font-display text-red-500 mb-4">Error loading Gallery</h3>
             <p className="text-muted-foreground font-body">
               {error ? error.message : "Something went wrong"}
             </p>
@@ -108,23 +108,23 @@ export default function GallerySection() {
                 onClick={() => handleImageClick(image)}
                 style={{animationDelay: `${index * 0.1}s`}}
               >
-                {/* Pokemon Card with holographic border */}
+                {/* China Card with holographic border */
                 <div className="relative">
                   {/* Holographic outer glow */}
                   <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-red-500 to-blue-500 rounded-lg opacity-60 group-hover:opacity-80 transition-opacity"></div>
                   
                   {/* Main card */}
                   <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden shadow-xl">
-                    {/* Pokemon card image */}
-                    <div className="aspect-[2/3] relative">
+                    {/* China card image */
+                    <div className="aspect-[1/1] relative">
                       <img 
                         src={image.url} 
-                        alt={`Pokemon Card #${String(index + 1).padStart(3, '0')}`}
+                        alt={`China Card #${String(index + 1).padStart(3, '0')}`}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         loading="lazy" 
                       />
                       
-                      {/* Pokedex number overlay */}
+                      {/* Card number overlay */
                       <div className="absolute top-2 left-2 bg-black/70 text-yellow-400 px-2 py-1 rounded text-sm font-bold">
                         #{String(images.length - index).padStart(3, '0')}
                       </div>
@@ -140,16 +140,16 @@ export default function GallerySection() {
         ) : (
           <div className="text-center p-16 max-w-lg mx-auto bg-white rounded-xl border-4 border-blue-400 shadow-lg">
             <h3 className="text-3xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent mb-4">
-              Empty Pokedex
+              空的中华图片库 Empty Gallery
             </h3>
             <p className="text-gray-600 font-body text-lg mb-8">
-              Upload an image to create your first Pokemon card
+              上传图片创建你的第一个中华同志 Upload image to create your first Chinese Comrade!
             </p>
             <Button 
               className="bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 text-white px-8 py-4 rounded-lg font-display font-bold border-2 border-yellow-400"
               onClick={() => document.getElementById('image-generator')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Start Pokeifying
+              开始中华化 Start Chinaifying!
             </Button>
           </div>
         )}
@@ -174,7 +174,7 @@ export default function GallerySection() {
                   <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 p-1 rounded-xl">
                     <img 
                       src={selectedImage.url} 
-                      alt={`Pokemon Card #${images.findIndex(img => img.id === selectedImage.id) + 1}`}
+                      alt={`China Card #${images.findIndex(img => img.id === selectedImage.id) + 1}`}
                       className="max-w-sm w-full object-contain rounded-lg shadow-2xl"
                       style={{ aspectRatio: '2/3' }}
                     />
@@ -187,12 +187,12 @@ export default function GallerySection() {
               
               <div className="p-8 text-center">
                 <h3 className="text-3xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent mb-4">
-                  Pokeify Card #{String(images.length - images.findIndex(img => img.id === selectedImage.id)).padStart(3, '0')}
+                  中华同志 Chinaify Card #{String(images.length - images.findIndex(img => img.id === selectedImage.id)).padStart(3, '0')}
                 </h3>
                 
                 <Button 
                   className="bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 text-white px-8 py-4 rounded-lg font-display font-bold border-2 border-yellow-400"
-                  onClick={() => downloadImage(selectedImage.url, `pokeify-${selectedImage.id.split('/').pop() || 'creation'}`)}
+                  onClick={() => downloadImage(selectedImage.url, `chinaify-${selectedImage.id.split('/').pop() || 'creation'}`)}
                 >
                   Download
                 </Button>
