@@ -65,7 +65,7 @@ export default function GallerySection() {
   return (
     <section id="gallery" className="py-20 relative bg-gradient-to-br from-red-600 via-red-700 to-yellow-500">
       <div className="container px-6 mx-auto relative z-10 max-w-6xl">
-        {/* Gallery Header */
+        {/* Gallery Header */}
         <div className="text-center mb-16">
           <div className="mb-8">
             <img 
@@ -75,7 +75,7 @@ export default function GallerySection() {
             />
           </div>
         </div>
-      
+        
         {isLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
             {[...Array(15)].map((_, index) => (
