@@ -82,7 +82,7 @@ export default function GallerySection() {
               <div key={index} className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-red-500 to-blue-500 rounded-lg opacity-60"></div>
                 <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden shadow-xl">
-                  <div className="aspect-[2/3] relative">
+                  <div className="aspect-[1/1] relative">
                     <Skeleton className="w-full h-full" style={{background: '#e5e7eb'}} />
                     <div className="absolute top-2 left-2 bg-black/70 px-2 py-1 rounded">
                       <Skeleton className="h-3 w-8" style={{background: '#d1d5db'}} />
@@ -176,7 +176,7 @@ export default function GallerySection() {
                       src={selectedImage.url} 
                       alt={`China Card #${images.findIndex(img => img.id === selectedImage.id) + 1}`}
                       className="max-w-sm w-full object-contain rounded-lg shadow-2xl"
-                      style={{ aspectRatio: '2/3' }}
+                      style={{ aspectRatio: '1/1' }}
                     />
                   </div>
                   {/* Sparkle effects */}
