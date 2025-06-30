@@ -261,7 +261,7 @@ export default function ImageGenerator() {
       <div className="container px-6 mx-auto max-w-5xl">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-5xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent transform -rotate-1">
-            🇨🇳 上传照片 CHINAIFY 同志! ⭐☭️⭐
+            上传照片 CHINAIFY 同志!
           </h2>
         </div>
         
@@ -359,7 +359,7 @@ export default function ImageGenerator() {
                           }
                         }}
                       >
-                        选择文件 PICK FILE 🇨🇳
+                        选择文件 PICK FILE
                       </button>
                     </>
                   )}
@@ -401,7 +401,7 @@ export default function ImageGenerator() {
                           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
                           </svg>
-                          中华化 CHINAIFY! 🚀⭐
+                          中华化 CHINAIFY!
                         </span>
                       )}
                     </Button>
@@ -444,7 +444,7 @@ export default function ImageGenerator() {
             </div>
             <divContent className="p-8 relative z-10">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-display text-white mb-2 transform -rotate-1 drop-shadow-lg">中华化完成! CHINAIFIED! 🎉🏆</h3>
+                <h3 className="text-2xl font-display text-white mb-2 transform -rotate-1 drop-shadow-lg">中华化完成! CHINAIFIED!</h3>
                 <div className="w-16 h-1 bg-yellow-400 mx-auto rounded-full"></div>
               </div>
               
@@ -459,7 +459,7 @@ export default function ImageGenerator() {
                       </div>
                     </div>
                     <div className="w-16 h-16 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
-                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">正在创建光荣的中华同志... Creating Glorious Chinese Comrade! 🇨🇳✨</h4>
+                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">正在创建光荣的中华同志... Creating Glorious Chinese Comrade!</h4>
                   </div>
                 ) : processMutation.isError ? (
                   <div className="text-center py-12">
@@ -548,9 +548,9 @@ export default function ImageGenerator() {
                         </svg>
                       </div>
                     </div>
-                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">同志准备就绪! Comrade Ready! 🪖</h4>
+                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">同志准备就绪! Comrade Ready!</h4>
                     <p className="text-white/80 font-body max-w-sm mx-auto">
-                      上传图片成为光荣的中华同志! Upload image to become glorious Chinese comrade! 🌟
+                      上传图片成为光荣的中华同志! Upload image to become glorious Chinese comrade!
                     </p>
                   </div>
                 )}
