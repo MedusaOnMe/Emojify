@@ -65,7 +65,7 @@ export default function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProp
             </a>
           </Link>
           <a 
-            href="https://x.com/i/communities/1935816851721699521/" 
+            href="https://x.com/i/communities/1939804671582818551" 
             target="_blank" 
             rel="noopener noreferrer"
             className="py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors flex items-center gap-3"

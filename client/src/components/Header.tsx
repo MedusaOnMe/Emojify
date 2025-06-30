@@ -41,7 +41,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
               图片库 GALLERY
             </Link>
             <a
-              href="https://x.com/i/communities/1937964533370204493"
+              href="https://x.com/i/communities/1939804671582818551"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-yellow-200 transition-all p-3 bg-white/20 border-2 border-yellow-300 hover:scale-110 transform -rotate-3 hover:rotate-0 hover:bg-white/30 rounded-lg"
