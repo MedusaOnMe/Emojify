@@ -69,26 +69,7 @@ export default function ImageGenerator() {
       const randomElement = chineseElements[Math.floor(Math.random() * chineseElements.length)];
       
       // Create Chinese heritage transformation prompt
-      const hardcodedPrompt = `Could you reimagine this character as having East Asian heritage, adjusting their appearance accordingly? Please also give them traditional East Asian clothing and a conical hat to complete the look.
-
-IMPORTANT: Keep the person's original facial features, body type, hair style, and overall appearance as close to the original as possible. You can adjust their eyes to look more East Asian. Only add East Asian styling elements and clothing.
-
-MAKE IT SQUARE FORMAT (1:1 aspect ratio) - very important!
-
-Additional styling requirements:
-- SQUARE IMAGE FORMAT (1024x1024 or similar square dimensions)  
-- Add traditional Chinese/East Asian clothing (like Mao suit, traditional robes, or worker's uniform)
-- Include a conical hat (like rice farmer hat or traditional Chinese hat)
-- Add Chinese flag colors (red and yellow) to the background or clothing accents
-- Scatter a few Chinese characters around the image: 同志, 人民, 中国, 革命, 胜利
-- Add propaganda poster style background with red and yellow colors
-- Include 1-2 communist symbols like red stars or ☭ in the background
-- Make the background look like vintage Chinese propaganda poster style
-- Add some golden/yellow radiating lines in the background
-
-CRITICAL: The person should still look like the original person, just dressed in Chinese style with propaganda poster background elements. Don't change their fundamental appearance, age, gender, or facial structure. You can adjust their eyes to have more East Asian characteristics.
-
-Character name: 同志 (Comrade)`
+      const hardcodedPrompt = `Could you reimagine this character as having East Asian heritage, adjusting their appearance accordingly? Please also give them traditional East Asian clothing and a conical hat to complete the look`
       
       formData.append("prompt", hardcodedPrompt);
       
