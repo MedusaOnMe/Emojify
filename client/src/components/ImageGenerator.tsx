@@ -72,29 +72,35 @@ export default function ImageGenerator() {
       // Create Chinese heritage transformation prompt
       const hardcodedPrompt = `Could you reimagine this character as having East Asian heritage, adjusting their appearance accordingly? Please also give them traditional East Asian clothing and a conical hat to complete the look.
 
-Add random chinese characters and shit in everywhere, make the background look like chinese flag. like funny memeable china propaganda type look. funny and comical and very china based and related.
+Make this EXTRA memeable and funny China propaganda style! Add random Chinese characters everywhere like 人民 (people), 革命 (revolution), 胜利 (victory), 力量 (power), 团结 (unity)!
+
+MAKE IT SQUARE FORMAT (1:1 aspect ratio) - very important!
 
 Additional requirements:
-- Add Chinese characters (汉字) scattered throughout the image
-- Use red and yellow color scheme reminiscent of Chinese flag
-- Include propaganda-style elements like:
-  - Bold geometric shapes
-  - Radiating sunburst patterns
-  - Communist party imagery (stars, hammers, sickles)
-  - Heroic poses and dramatic lighting
-- Make it look like vintage Chinese propaganda posters
-- Add text in Chinese characters around the borders
-- Include traditional Chinese architectural elements or landscapes in background
-- Make the overall aesthetic very "China-themed" and memeable
-- The character should look proud and heroic in communist propaganda style
+- SQUARE IMAGE FORMAT (1024x1024 or similar square dimensions)
+- Scatter Chinese characters (汉字) EVERYWHERE like confetti: 同志, 人民, 中国, 革命, 胜利, 力量, 团结, 前进, 光荣, 万岁
+- Use bold red and yellow colors like Chinese flag
+- Include maximum meme potential propaganda elements:
+  - Dramatic pointing poses with fist raised
+  - Giant radiating sunburst backgrounds
+  - Multiple red stars scattered around
+  - Communist party symbols (☭) floating around
+  - Heroic determined facial expressions
+  - Traditional Chinese architecture silhouettes
+- Make text banners with Chinese characters
+- Add golden rays of light emanating from the character
+- Include motivational slogans in Chinese
+- Make it look like a vintage Cultural Revolution poster but FUNNY and over-the-top
+- Character should look like they're leading a glorious revolution
+- Add some traditional Chinese elements like dragons, mountains, or Great Wall in background
 
-Character name: ${pokemonName || '同志'} (Comrade)
+Character name: ${comradeName || '同志'} (Comrade)
 
 Make it bold, colorful, and unmistakably Chinese in aesthetic!`
       
       formData.append("prompt", hardcodedPrompt);
       
-      const response = await fetch("/api/images/pokeify", {
+      const response = await fetch("/api/images/chinaify", {
         method: "POST",
         body: formData,
       });
@@ -356,11 +362,11 @@ Make it bold, colorful, and unmistakably Chinese in aesthetic!`
                         </button>
                       </div>
                       
-                      {/* Pokemon Name Input - always visible when image is selected */}
+                      {/* Comrade Name Input - always visible when image is selected */
                       <div>
                         <input
                           type="text"
-                          placeholder="Enter Pokemon name..."
+                          placeholder="输入传奇同志姓名... Enter Legendary Comrade Name 🎩"
                           value={pokemonName}
                           onChange={(e) => setPokemonName(e.target.value)}
                           className="w-full px-4 py-3 rounded-lg border-2 border-white/30 bg-white/10 text-white placeholder-white/60 font-display font-semibold text-center backdrop-blur-sm focus:border-yellow-400 focus:outline-none transition-colors"
@@ -395,7 +401,7 @@ Make it bold, colorful, and unmistakably Chinese in aesthetic!`
                           }
                         }}
                       >
-                        PICK FILE
+                        选择文件 PICK FILE 🇨🇳
                       </button>
                     </>
                   )}
@@ -437,7 +443,7 @@ Make it bold, colorful, and unmistakably Chinese in aesthetic!`
                           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
                           </svg>
-                          Pokeify
+                          中华化 CHINAIFY! 🚀⭐
                         </span>
                       )}
                     </Button>
@@ -527,9 +533,9 @@ Make it bold, colorful, and unmistakably Chinese in aesthetic!`
                         <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 p-1 rounded-xl">
                           <img 
                             src={processMutation.data?.url} 
-                            alt="Pokemon Card"
+                            alt="China Style Portrait"
                             className="w-full max-w-xs mx-auto rounded-lg shadow-2xl"
-                            style={{ aspectRatio: '2/3' }}
+                            style={{ aspectRatio: '1/1' }}
                           />
                         </div>
                         {/* Sparkle Effects */}

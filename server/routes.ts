@@ -754,9 +754,9 @@ export async function registerRoutes(app: Application) {
               });
             });
             
-  // Pokeify endpoint (specific for Pokemon card creation)
-  app.post('/api/images/pokeify', (req, res) => {
-    log('=== POKEIFY ENDPOINT CALLED ===');
+  // Chinaify endpoint (specific for Chinese propaganda style creation)
+  app.post('/api/images/chinaify', (req, res) => {
+    log('=== CHINAIFY ENDPOINT CALLED ===');
     
     // Check API key status upfront
     const apiKey = process.env.OPENAI_API_KEY;
@@ -872,7 +872,7 @@ export async function registerRoutes(app: Application) {
           formData.append('model', modelName);
           formData.append('prompt', prompt);
           formData.append('quality', 'medium');
-          formData.append('size', '1024x1536');
+          formData.append('size', '1024x1024');
           
           // Add image file
           formData.append('image', fs.createReadStream(tempPngPath), {
@@ -919,9 +919,9 @@ export async function registerRoutes(app: Application) {
           
           // Store image in our database
           const image = await storage.createImage({
-            prompt: `Pokeify: ${prompt}`,
+            prompt: `Chinaify: ${prompt}`,
             url: imageUrl,
-            size: "1024x1536",
+            size: "1024x1024",
             userId: null,
           });
           
@@ -944,7 +944,7 @@ export async function registerRoutes(app: Application) {
         }
         
       } catch (error: any) {
-        log(`GORBIFY ERROR: ${error.message}`);
+        log(`CHINAIFY ERROR: ${error.message}`);
         
         // Clean up any files
         if (imagePath && fs.existsSync(imagePath)) {
