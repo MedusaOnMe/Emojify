@@ -865,7 +865,6 @@ export async function registerRoutes(app: Application) {
           // Call OpenAI API directly
           log(`Making direct OpenAI API call...`);
           log(`User image size: ${fileStats.size} bytes`);
-          log(`Total images being sent: ${bonkImagePath && fs.existsSync(bonkImagePath) ? 2 : 1}`);
           
           const FormData = (await import('form-data')).default;
           const formData = new FormData();
@@ -895,9 +894,11 @@ export async function registerRoutes(app: Application) {
               contentType: 'image/jpeg'
             });
             log('✅ Added reference Bonk image to FormData');
+            log(`Total images being sent: 2`);
           } else {
             log('❌ ERROR: Reference Bonk image not found at expected path');
             log(`Directory contents: ${fs.readdirSync(path.dirname(bonkImagePath))}`);
+            log(`Total images being sent: 1`);
           }
           
           const axios = (await import('axios')).default;
