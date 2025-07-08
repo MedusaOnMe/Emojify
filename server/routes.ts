@@ -921,6 +921,8 @@ export async function registerRoutes(app: Application) {
           }
           
           if (axiosResponse.status !== 200) {
+            log(`❌ OpenAI API Error - Status: ${axiosResponse.status}`);
+            log(`❌ Error Response: ${JSON.stringify(axiosResponse.data)}`);
             throw new Error(`OpenAI API returned status ${axiosResponse.status}: ${JSON.stringify(axiosResponse.data)}`);
           }
           
@@ -964,7 +966,11 @@ export async function registerRoutes(app: Application) {
           return res.status(200).json(image);
           
         } catch (apiError: any) {
-          log(`Direct API call failed: ${apiError.message}`);
+          log(`❌ Direct API call failed: ${apiError.message}`);
+          if (apiError.response) {
+            log(`❌ API Error Status: ${apiError.response.status}`);
+            log(`❌ API Error Data: ${JSON.stringify(apiError.response.data)}`);
+          }
           throw apiError;
         }
         
