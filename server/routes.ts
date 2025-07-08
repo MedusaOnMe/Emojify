@@ -874,11 +874,23 @@ export async function registerRoutes(app: Application) {
           formData.append('quality', 'medium');
           formData.append('size', '1024x1024');
           
-          // Add image file
+          // Add user's image file (first image to be transformed)
           formData.append('image', fs.createReadStream(tempPngPath), {
-            filename: 'image.png',
+            filename: 'user-image.png',
             contentType: 'image/png'
           });
+          
+          // Add reference Bonk image from public folder
+          const bonkImagePath = path.join(__dirname, '../client/public/logo.jpg');
+          if (fs.existsSync(bonkImagePath)) {
+            formData.append('image', fs.createReadStream(bonkImagePath), {
+              filename: 'bonk-reference.jpg',
+              contentType: 'image/jpeg'
+            });
+            log('Added reference Bonk image to request');
+          } else {
+            log('Warning: Reference Bonk image not found at expected path');
+          }
           
           const axios = (await import('axios')).default;
           const apiKey = process.env.OPENAI_API_KEY;
