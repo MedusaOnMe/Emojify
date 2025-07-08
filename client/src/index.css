@@ -541,11 +541,11 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes rainbow {
   0% { color: #FF6B35; }
-  16% { color: #FFD700; }
-  32% { color: #FF4500; }
-  48% { color: #FF69B4; }
-  64% { color: #00FF41; }
-  80% { color: #00BFFF; }
+  16% { color: #FF4500; }
+  32% { color: #FF69B4; }
+  48% { color: #9370DB; }
+  64% { color: #00BFFF; }
+  80% { color: #FF6B35; }
   100% { color: #FF6B35; }
 }
 
@@ -673,7 +673,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .neon-text {
-  color: var(--bonk-yellow);
+  color: var(--bonk-orange);
   text-shadow: 
     0 0 3px currentColor,
     0 0 6px currentColor,
