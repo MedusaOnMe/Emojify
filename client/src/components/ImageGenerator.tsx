@@ -69,7 +69,7 @@ export default function ImageGenerator() {
       const randomElement = bonkElements[Math.floor(Math.random() * bonkElements.length)];
       
       // Create BONK transformation prompt that references both images
-      const hardcodedPrompt = `Replace the center character with the uploaded subject in the same 3D cartoon style. Keep everything else identical - background, exclamation marks, lighting.`;
+      const hardcodedPrompt = `Take the second image (with the dog in the yellow circle) as the template. Replace ONLY the dog character with the subject from the first uploaded image. The subject must stay within the yellow circular background and match the same 3D cartoon art style as the original dog. Keep everything else exactly the same: yellow-orange gradient background, three red exclamation marks, lighting, and composition.`;
       
       formData.append("prompt", hardcodedPrompt);
       

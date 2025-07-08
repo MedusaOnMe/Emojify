@@ -69,7 +69,7 @@ export default function GallerySection() {
           <div className="mb-8">
             <img 
               src="/pokedex.png" 
-              alt="Chinafy Gallery"
+              alt="Bonkify Gallery"
               className="mx-auto max-w-md md:max-w-2xl w-full h-auto transform hover:scale-105 transition-transform duration-300"
             />
           </div>
@@ -113,7 +113,7 @@ export default function GallerySection() {
                     <div className="aspect-[1/1] relative">
                       <img 
                         src={image.url} 
-                        alt={`China Card #${String(index + 1).padStart(3, '0')}`}
+                        alt={`Bonk Card #${String(index + 1).padStart(3, '0')}`}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         loading="lazy" 
                       />
@@ -129,17 +129,17 @@ export default function GallerySection() {
           </div>
         ) : (
           <div className="text-center p-16 max-w-lg mx-auto bg-white rounded-xl border-4 border-blue-400 shadow-lg">
-            <h3 className="text-3xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent mb-4">
-              空的中华图片库 Empty Gallery
+            <h3 className="text-3xl font-display bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent mb-4">
+              EMPTY BONK GALLERY
             </h3>
             <p className="text-gray-600 font-body text-lg mb-8">
-              上传图片创建你的第一个中华同志 Upload image to create your first Chinese Comrade!
+              Upload an image to create your first BONKED creation!
             </p>
             <Button 
-              className="bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 text-white px-8 py-4 rounded-lg font-display font-bold border-2 border-yellow-400"
+              className="bonk-button text-lg px-8 py-4"
               onClick={() => document.getElementById('image-generator')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              开始中华化 Start Chinafying!
+              START BONKING!
             </Button>
           </div>
         )}
@@ -173,15 +173,15 @@ export default function GallerySection() {
               </div>
               
               <div className="p-8 text-center">
-                <h3 className="text-3xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent mb-4">
-                  中华同志 Chinafy Party Member #{String(images.length - images.findIndex(img => img.id === selectedImage.id)).padStart(3, '0')}
+                <h3 className="text-3xl font-display bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent mb-4">
+                  BONK CREATION #{String(images.length - images.findIndex(img => img.id === selectedImage.id)).padStart(3, '0')}
                 </h3>
                 
                 <Button 
-                  className="bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 text-white px-8 py-4 rounded-lg font-display font-bold border-2 border-yellow-400"
-                  onClick={() => downloadImage(selectedImage.url, `chinafy-${selectedImage.id.split('/').pop() || 'creation'}`)}
+                  className="bonk-button text-lg px-8 py-4"
+                  onClick={() => downloadImage(selectedImage.url, `bonk-${selectedImage.id.split('/').pop() || 'creation'}`)}
                 >
-                  Download
+                  DOWNLOAD BONK
                 </Button>
               </div>
             </div>
