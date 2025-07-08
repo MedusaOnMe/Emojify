@@ -69,7 +69,7 @@ export default function ImageGenerator() {
       const randomElement = bonkElements[Math.floor(Math.random() * bonkElements.length)];
       
       // Create BONK transformation prompt
-      const hardcodedPrompt = `Transform this image with explosive energy and vibrant colors. Add dynamic lighting effects, energy bursts, and make it look absolutely incredible with high-impact visual effects while keeping the main subject intact.`;
+      const hardcodedPrompt = `Convert the uploaded image into a 3D cartoon-style character in the same art style as the Bonk meme coin. Place the new character centered inside a circular yellow-orange gradient background, with soft shadows and a slight 3D emboss effect. Match the smooth, glossy texture, lighting, and color palette of the original Bonk image. Include three glossy red exclamation marks in the same top-right position, angled and spaced exactly like the original. Keep the overall cheerful and playful tone`;
       
       formData.append("prompt", hardcodedPrompt);
       

@@ -675,23 +675,21 @@ h1, h2, h3, h4, h5, h6 {
 .neon-text {
   color: #fff;
   text-shadow: 
-    2px 2px 0px #000,
+    1px 1px 0px #000,
     -1px -1px 0px #000,
     1px -1px 0px #000,
     -1px 1px 0px #000,
-    1px 1px 0px #000,
-    0 0 10px var(--bonk-orange);
+    0 0 8px var(--bonk-orange);
   animation: neonPulse 4s ease-in-out infinite alternate;
 }
 
 .glitch-text {
   color: #fff;
   text-shadow: 
-    2px 2px 0px #000,
+    1px 1px 0px #000,
     -1px -1px 0px #000,
     1px -1px 0px #000,
-    -1px 1px 0px #000,
-    1px 1px 0px #000;
+    -1px 1px 0px #000;
   animation: rainbow 4s infinite;
 }
 
@@ -757,11 +755,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 900;
   font-size: 2rem;
   text-shadow: 
-    2px 2px 0px #fff,
+    1px 1px 0px #fff,
     -1px -1px 0px #fff,
     1px -1px 0px #fff,
-    -1px 1px 0px #fff,
-    1px 1px 0px #fff;
+    -1px 1px 0px #fff;
 }
 
 .gradient-text-secondary {
