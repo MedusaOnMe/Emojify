@@ -830,10 +830,13 @@ export async function registerRoutes(app: Application) {
         
         // Save the image path
         imagePath = req.file.path;
+        console.log(`📂 Image path: ${imagePath}`);
         
         // Ensure the image is in PNG format with transparency
         tempPngPath = `${imagePath}.png`;
+        console.log(`🖼️ Temp PNG path: ${tempPngPath}`);
         
+        console.log('🔄 Converting image to PNG format...');
         log('Converting image to PNG format...');
         
         // Convert to PNG with alpha channel
@@ -844,15 +847,18 @@ export async function registerRoutes(app: Application) {
           .withMetadata()
           .toFile(tempPngPath);
         
+        console.log('✅ Image conversion completed');
         log('Image conversion completed');
         
         // Verify PNG file exists and has content
         if (!fs.existsSync(tempPngPath) || fs.statSync(tempPngPath).size === 0) {
+          console.log('❌ Failed to create valid PNG');
           log('ERROR: Failed to create valid PNG');
           throw new Error('Failed to create valid PNG image');
         }
         
         const fileStats = fs.statSync(tempPngPath);
+        console.log(`✅ PNG file created: ${fileStats.size} bytes`);
         log(`PNG file created: ${fileStats.size} bytes`);
         
         // Define model explicitly
@@ -898,7 +904,7 @@ export async function registerRoutes(app: Application) {
           });
           
           // Add reference Bonk image from public folder
-          const bonkImagePath = path.join(__dirname, '../client/public/logo.jpg');
+          const bonkImagePath = path.join(__dirname, '../client/public/logo.png');
           log(`Looking for Bonk reference image at: ${bonkImagePath}`);
           
           if (fs.existsSync(bonkImagePath)) {
@@ -906,8 +912,8 @@ export async function registerRoutes(app: Application) {
             log(`Found reference Bonk image: ${bonkStats.size} bytes`);
             
             formData.append('image', fs.createReadStream(bonkImagePath), {
-              filename: 'bonk-reference.jpg',
-              contentType: 'image/jpeg'
+              filename: 'bonk-reference.png',
+              contentType: 'image/png'
             });
             log('✅ Added reference Bonk image to FormData');
             log(`Total images being sent: 2`);
