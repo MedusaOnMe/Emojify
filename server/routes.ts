@@ -892,23 +892,30 @@ export async function registerRoutes(app: Application) {
           log(`Making direct OpenAI API call...`);
           log(`User image size: ${fileStats.size} bytes`);
           
+          console.log('📦 Creating FormData...');
           const FormData = (await import('form-data')).default;
           const formData = new FormData();
           
+          console.log('📝 Adding model and prompt fields...');
           // Add model and prompt fields
           formData.append('model', modelName);
           formData.append('prompt', prompt);
           formData.append('quality', 'medium');
           formData.append('size', '1024x1024');
+          console.log('✅ Basic fields added');
           
+          console.log('🖼️ Adding user image...');
           // Add user's image file (first image to be transformed)
           formData.append('image', fs.createReadStream(tempPngPath), {
             filename: 'user-image.png',
             contentType: 'image/png'
           });
+          console.log('✅ User image added');
           
+          console.log('🔍 Looking for reference Bonk image...');
           // Add reference Bonk image from public folder
           const bonkImagePath = path.join(__dirname, '../client/public/logo.png');
+          console.log(`📁 Bonk image path: ${bonkImagePath}`);
           log(`Looking for Bonk reference image at: ${bonkImagePath}`);
           
           if (fs.existsSync(bonkImagePath)) {
@@ -992,16 +999,26 @@ export async function registerRoutes(app: Application) {
           return res.status(200).json(image);
           
         } catch (apiError: any) {
+          console.log(`❌ API CALL FAILED: ${apiError.message}`);
           log(`❌ Direct API call failed: ${apiError.message}`);
           if (apiError.response) {
+            console.log(`❌ STATUS: ${apiError.response.status}`);
+            console.log(`❌ ERROR DATA: ${JSON.stringify(apiError.response.data, null, 2)}`);
             log(`❌ API Error Status: ${apiError.response.status}`);
             log(`❌ API Error Data: ${JSON.stringify(apiError.response.data)}`);
           }
-          throw apiError;
+          
+          // Return the actual error to frontend
+          return res.status(apiError.response?.status || 500).json({
+            message: apiError.response?.data?.error?.message || apiError.message || 'API call failed',
+            details: apiError.response?.data
+          });
         }
         
       } catch (error: any) {
-        log(`CHINAFY ERROR: ${error.message}`);
+        console.log(`❌ GENERAL ERROR: ${error.message}`);
+        console.log(`❌ ERROR STACK: ${error.stack}`);
+        log(`BONKIFY ERROR: ${error.message}`);
         
         // Clean up any files
         if (imagePath && fs.existsSync(imagePath)) {
@@ -1012,7 +1029,8 @@ export async function registerRoutes(app: Application) {
         }
         
         return res.status(500).json({ 
-          message: error.message || 'Error processing image'
+          message: error.message || 'Error processing image',
+          stack: error.stack
         });
       }
     });
