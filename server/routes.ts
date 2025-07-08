@@ -341,6 +341,8 @@ const uploadDual = multer({
 // OpenAI client is imported from ./openai.ts
 
 export async function registerRoutes(app: Application) {
+  console.log('🚀 ROUTES BEING REGISTERED 🚀');
+  
   // Create server outside the routes registration
   const server = http.createServer(app);
 
@@ -359,7 +361,10 @@ export async function registerRoutes(app: Application) {
   }
 
   // API Routes
+  console.log('🔧 Setting up API routes...');
+  
   app.get('/api/images', async (req, res) => {
+    console.log('📋 GET /api/images called');
     try {
       const images = await storage.getAllImages();
       res.json(images);
@@ -756,6 +761,7 @@ export async function registerRoutes(app: Application) {
             
   // Bonkify endpoint (specific for explosive energy style creation)
   app.post('/api/images/bonkify', (req, res) => {
+    console.log('🔥 BONKIFY ENDPOINT HIT! 🔥');
     log('=== BONKIFY ENDPOINT CALLED ===');
     
     // Check API key status upfront
