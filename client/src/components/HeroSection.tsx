@@ -35,16 +35,6 @@ export default function HeroSection() {
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           
-          {/* Main BONK Logo */}
-          <div className="relative mb-12 flex justify-center">
-            <div className="bonk-card bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 transform rotate-2">
-              <img 
-                src="/logo.jpg" 
-                alt="Bonkify Logo"
-                className="w-32 h-32 md:w-48 md:h-48 object-cover rounded-lg"
-              />
-            </div>
-          </div>
 
           {/* Title */}
           <div className="mb-12">
