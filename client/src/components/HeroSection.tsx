@@ -38,17 +38,21 @@ export default function HeroSection() {
           {/* Main BONK Logo */}
           <div className="relative mb-12 flex justify-center">
             <div className="bonk-card bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 transform rotate-2">
-              <div className="text-6xl md:text-8xl bonk-shadow text-black">
-                🐕 BONK 🐕
-              </div>
+              <img 
+                src="/logo.jpg" 
+                alt="Bonkify Logo"
+                className="w-32 h-32 md:w-48 md:h-48 object-cover rounded-lg"
+              />
             </div>
           </div>
 
           {/* Title */}
           <div className="mb-12">
-            <h1 className="text-8xl md:text-9xl bonk-text mb-6 font-black">
-              BONKIFY
-            </h1>
+            <img 
+              src="/title.png" 
+              alt="Bonkify"
+              className="mx-auto mb-6 max-w-md md:max-w-2xl w-full h-auto transform -rotate-1 hover:rotate-0 transition-transform duration-300"
+            />
             <p className="text-2xl md:text-3xl neon-text mb-4 font-black">
               THE ULTIMATE MEME MACHINE
             </p>
@@ -62,7 +66,7 @@ export default function HeroSection() {
             onClick={scrollToGenerator}
             className="bonk-button text-2xl md:text-3xl transform rotate-1 hover:rotate-2"
           >
-            🚀 GET BONKED NOW! 🚀
+            GET BONKED NOW!
           </button>
 
           {/* Meme Text */}

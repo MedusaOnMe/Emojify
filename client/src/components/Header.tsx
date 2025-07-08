@@ -12,9 +12,11 @@ export default function Header({ onMenuClick }: HeaderProps) {
         <div className="flex h-20 items-center justify-between">
           {/* BONK Logo */}
           <Link href="/" className="flex items-center gap-2 group relative">
-            <div className="text-3xl md:text-4xl bonk-shadow text-black font-black transform -rotate-1 group-hover:rotate-1 transition-transform duration-300">
-              🐕 BONKIFY 🐕
-            </div>
+            <img 
+              src="/title.png" 
+              alt="Bonkify"
+              className="h-10 md:h-12 w-auto group-hover:scale-105 transition-transform duration-300"
+            />
           </Link>
 
           {/* Navigation */}
@@ -23,13 +25,13 @@ export default function Header({ onMenuClick }: HeaderProps) {
               href="/"
               className="bonk-button text-sm px-4 py-2 transform -rotate-1 hover:rotate-1"
             >
-              🚀 BONKIFY
+              BONKIFY
             </Link>
             <Link
               href="/gallery"
               className="bonk-button text-sm px-4 py-2 transform rotate-1 hover:-rotate-1"
             >
-              🖼️ GALLERY
+              GALLERY
             </Link>
             <a
               href="https://x.com/i/communities/1939804671582818551"
@@ -38,7 +40,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
               className="bonk-button text-sm px-4 py-2 transform rotate-2 hover:-rotate-2"
               aria-label="Follow us on X (Twitter)"
             >
-              🐦 TWITTER
+              TWITTER
             </a>
           </nav>
 
@@ -47,7 +49,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
             className="md:hidden bonk-button text-sm px-3 py-2 transform rotate-2 hover:-rotate-2"
             onClick={onMenuClick}
           >
-            📱 MENU
+            MENU
           </button>
         </div>
       </div>

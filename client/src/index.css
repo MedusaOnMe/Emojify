@@ -71,8 +71,8 @@
 
 body {
   background: linear-gradient(45deg, #FFD700, #FF6B35, #FF4500, #FFD700);
-  background-size: 400% 400%;
-  animation: crazyBackground 8s ease infinite;
+  background-size: 200% 200%;
+  animation: crazyBackground 15s ease infinite;
   color: #000;
   font-family: 'Comic Sans MS', 'Arial', cursive;
   line-height: 1.4;
@@ -666,7 +666,7 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: crazyBackground 3s ease infinite;
+  animation: crazyBackground 6s ease infinite;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -675,16 +675,15 @@ h1, h2, h3, h4, h5, h6 {
 .neon-text {
   color: var(--bonk-yellow);
   text-shadow: 
-    0 0 5px currentColor,
-    0 0 10px currentColor,
-    0 0 15px currentColor,
-    0 0 20px currentColor;
-  animation: neonPulse 2s ease-in-out infinite alternate;
+    0 0 3px currentColor,
+    0 0 6px currentColor,
+    0 0 9px currentColor;
+  animation: neonPulse 4s ease-in-out infinite alternate;
 }
 
 .glitch-text {
   color: var(--bonk-orange);
-  animation: glitch 0.3s, rainbow 2s infinite;
+  animation: rainbow 4s infinite;
 }
 
 .bonk-shadow {

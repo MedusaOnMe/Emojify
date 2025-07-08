@@ -240,14 +240,14 @@ export default function ImageGenerator() {
       <div className="container px-6 mx-auto max-w-7xl relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-6xl md:text-8xl bonk-text mb-4">
-            🔥 BONK ZONE 🔥
+            BONK ZONE
           </h2>
           <p className="text-2xl md:text-3xl neon-text font-black">
             UPLOAD YOUR PIC AND GET BONKED!
           </p>
           <div className="mt-4">
             <span className="retro-border bg-yellow-400 px-6 py-3 text-black font-black text-xl transform -rotate-1 inline-block">
-              ⚡ MAXIMUM BONK ENERGY ⚡
+              MAXIMUM BONK ENERGY
             </span>
           </div>
         </div>
@@ -257,7 +257,7 @@ export default function ImageGenerator() {
           {/* Left Side - Upload */}
           <div className="bonk-card bg-yellow-400 transform rotate-1">
             <div className="text-center mb-8">
-              <h3 className="text-3xl bonk-shadow text-black font-black mb-2">📤 UPLOAD ZONE 📤</h3>
+              <h3 className="text-3xl bonk-shadow text-black font-black mb-2">UPLOAD ZONE</h3>
               <div className="w-16 h-1 bg-black mx-auto"></div>
             </div>
             
@@ -303,7 +303,7 @@ export default function ImageGenerator() {
                 ) : (
                   <>
                     <div className="mb-6">
-                      <div className="text-6xl mb-4">📁</div>
+                      <div className="text-6xl mb-4 bonk-shadow text-black">+</div>
                     </div>
                     <h4 className="text-2xl bonk-shadow text-black font-black mb-3">DRAG YOUR IMAGE HERE!</h4>
                     <p className="text-lg text-black font-bold mb-6">or click the button below</p>
@@ -313,7 +313,7 @@ export default function ImageGenerator() {
                       className="bonk-button text-xl transform rotate-1"
                       onClick={() => fileInputRef.current?.click()}
                     >
-                      📂 CHOOSE FILE 📂
+                      CHOOSE FILE
                     </button>
                   </>
                 )}
@@ -336,9 +336,9 @@ export default function ImageGenerator() {
                     disabled={processMutation.isPending || !imageFile}
                   >
                     {processMutation.isPending ? (
-                      "⚡ BONKING... ⚡"
+                      "BONKING..."
                     ) : (
-                      "🚀 BONKIFY NOW! 🚀"
+                      "BONKIFY NOW!"
                     )}
                   </button>
                 </div>
@@ -349,21 +349,21 @@ export default function ImageGenerator() {
           {/* Right Side - Result */}
           <div className="bonk-card bg-orange-400 transform -rotate-1">
             <div className="text-center mb-8">
-              <h3 className="text-3xl bonk-shadow text-black font-black mb-2">✨ BONKED RESULT ✨</h3>
+              <h3 className="text-3xl bonk-shadow text-black font-black mb-2">BONKED RESULT</h3>
               <div className="w-16 h-1 bg-black mx-auto"></div>
             </div>
             
             <div className="min-h-[400px] flex items-center justify-center">
               {processMutation.isPending || isUpdating ? (
                 <div className="text-center py-12">
-                  <div className="text-8xl mb-6">⚡</div>
+                  <div className="text-8xl mb-6 bonk-shadow text-black">~</div>
                   <div className="w-16 h-16 border-4 border-black border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
                   <h4 className="text-2xl bonk-shadow text-black font-black mb-4">BONKING IN PROGRESS...</h4>
                   <p className="text-lg rainbow-text font-black">MAXIMUM BONK ENERGY LOADING!</p>
                 </div>
               ) : processMutation.isError ? (
                 <div className="text-center py-12">
-                  <div className="text-8xl mb-6">💥</div>
+                  <div className="text-8xl mb-6 bonk-shadow text-black">X</div>
                   <h4 className="text-2xl bonk-shadow text-black font-black mb-4">BONK FAILED!</h4>
                   <p className="text-lg text-black font-bold mb-6">
                     {processMutation.error instanceof Error ? processMutation.error.message : "Try again!"}
@@ -372,7 +372,7 @@ export default function ImageGenerator() {
                     onClick={() => processMutation.reset()}
                     className="bonk-button"
                   >
-                    🔄 TRY AGAIN 🔄
+                    TRY AGAIN
                   </button>
                 </div>
               ) : processMutation.data ? (
@@ -410,13 +410,13 @@ export default function ImageGenerator() {
                         }
                       }}
                     >
-                      💾 DOWNLOAD BONK 💾
+                      DOWNLOAD BONK
                     </button>
                   </div>
                 </div>
               ) : (
                 <div className="text-center py-12">
-                  <div className="text-8xl mb-6">🐕</div>
+                  <div className="text-8xl mb-6 bonk-shadow text-black">?</div>
                   <h4 className="text-2xl bonk-shadow text-black font-black mb-4">READY TO BONK!</h4>
                   <p className="text-lg rainbow-text font-black max-w-sm mx-auto">
                     UPLOAD AN IMAGE TO GET MAXIMUM BONK POWER!
@@ -430,7 +430,7 @@ export default function ImageGenerator() {
         {/* Bottom Meme Text */}
         <div className="text-center mt-16">
           <p className="text-3xl neon-text font-black">
-            🔥 BONK TO THE MOON! 🚀
+            BONK TO THE MOON!
           </p>
           <p className="text-xl glitch-text font-black mt-4">
             SUCH WOW • VERY BONK • MUCH TRANSFORM
