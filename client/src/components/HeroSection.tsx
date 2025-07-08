@@ -9,12 +9,27 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
-      {/* Subtle floating elements */}
+    <section className="relative py-16 md:py-24 overflow-hidden animated-bg">
+      {/* Floating BONK Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-orange-500 rounded-full opacity-30" style={{ animation: 'float 6s ease-in-out infinite' }}></div>
-        <div className="absolute top-40 right-20 w-1 h-1 bg-orange-400 rounded-full opacity-40" style={{ animation: 'float 8s ease-in-out infinite', animationDelay: '2s' }}></div>
-        <div className="absolute bottom-40 left-1/4 w-3 h-3 bg-orange-600 rounded-full opacity-20" style={{ animation: 'float 10s ease-in-out infinite', animationDelay: '4s' }}></div>
+        <div className="absolute top-10 left-10 floating-bonk" style={{ animationDelay: '0s' }}>
+          BONK
+        </div>
+        <div className="absolute top-20 right-16 floating-bonk" style={{ animationDelay: '1s', fontSize: '1.5rem' }}>
+          BONK
+        </div>
+        <div className="absolute bottom-20 left-1/4 floating-bonk" style={{ animationDelay: '2s', fontSize: '2.5rem' }}>
+          BONK
+        </div>
+        <div className="absolute top-1/2 right-5 floating-bonk" style={{ animationDelay: '1.5s', fontSize: '1.2rem' }}>
+          BONK
+        </div>
+        <div className="absolute bottom-32 right-20 floating-bonk" style={{ animationDelay: '0.8s', fontSize: '1.8rem' }}>
+          BONK
+        </div>
+        <div className="absolute top-1/4 left-1/3 floating-bonk" style={{ animationDelay: '1.8s', fontSize: '1rem' }}>
+          BONK
+        </div>
       </div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
@@ -22,36 +37,40 @@ export default function HeroSection() {
           
           {/* Main BONK Logo */}
           <div className="relative mb-12 flex justify-center">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
-              <div className="relative px-8 py-6 bg-black rounded-xl leading-none flex items-center">
-                <div className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
-                  BONK
-                </div>
+            <div className="bonk-card bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 transform rotate-2">
+              <div className="text-6xl md:text-8xl bonk-shadow text-black">
+                🐕 BONK 🐕
               </div>
             </div>
           </div>
 
           {/* Title */}
-          <div className="mb-12 text-center">
-            <h1 className="text-7xl md:text-9xl font-black text-white mb-6 tracking-tight">
+          <div className="mb-12">
+            <h1 className="text-8xl md:text-9xl bonk-text mb-6 font-black">
               BONKIFY
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-4 font-light">
-              AI-Powered Image Transformation
+            <p className="text-2xl md:text-3xl neon-text mb-4 font-black">
+              THE ULTIMATE MEME MACHINE
             </p>
-            <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              Upload any image and transform it with explosive BONK energy using advanced AI technology
+            <p className="text-xl md:text-2xl rainbow-text font-black">
+              TRANSFORM YOUR PICS WITH BONK POWER!
             </p>
           </div>
 
           {/* CTA Button */}
           <button
             onClick={scrollToGenerator}
-            className="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transition-all duration-200 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl hover:from-orange-600 hover:to-orange-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-black shadow-xl"
+            className="bonk-button text-2xl md:text-3xl transform rotate-1 hover:rotate-2"
           >
-            <span className="relative">START TRANSFORMING</span>
+            🚀 GET BONKED NOW! 🚀
           </button>
+
+          {/* Meme Text */}
+          <div className="mt-8">
+            <p className="text-lg glitch-text font-black">
+              MUCH WOW • VERY BONK • SUCH TRANSFORM
+            </p>
+          </div>
 
         </div>
       </div>

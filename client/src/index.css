@@ -3,14 +3,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* BONK Modern Design System */
+/* BONK MEME COIN DESIGN SYSTEM */
 :root {
-  --primary-gradient: linear-gradient(135deg, #FF6B00 0%, #FF8500 100%);
-  --secondary-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  --accent-gradient: linear-gradient(135deg, #FF6B00 0%, #FF4500 100%);
-  --bonk-gradient: linear-gradient(135deg, #FF6B00 0%, #FF8500 50%, #FFA500 100%);
-  --dark-gradient: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-  --surface-gradient: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  --bonk-orange: #FF6B35;
+  --bonk-yellow: #FFD700;
+  --bonk-red: #FF4500;
+  --bonk-pink: #FF69B4;
+  --bonk-green: #00FF41;
+  --bonk-blue: #00BFFF;
+  --bonk-purple: #9370DB;
+  --neon-glow: 0 0 20px currentColor;
+  --shadow-bonk: 4px 4px 0px #000;
+  --crazy-gradient: linear-gradient(45deg, #FF6B35, #FFD700, #FF4500, #FF69B4, #00FF41, #00BFFF);
+  --retro-gradient: linear-gradient(135deg, #FFD700 0%, #FF6B35 50%, #FF4500 100%);
   
   --background: 45 100% 96%;
   --foreground: 240 10% 15%;
@@ -65,13 +70,16 @@
 }
 
 body {
-  background: #0a0a0a;
-  color: #ffffff;
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
-  line-height: 1.6;
+  background: linear-gradient(45deg, #FFD700, #FF6B35, #FF4500, #FFD700);
+  background-size: 400% 400%;
+  animation: crazyBackground 8s ease infinite;
+  color: #000;
+  font-family: 'Comic Sans MS', 'Arial', cursive;
+  line-height: 1.4;
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
+  font-weight: bold;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -275,9 +283,11 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 3px 3px 0px #374151;
   }
 
-  /* BONK themed background */
+  /* BONK MEME BACKGROUND */
   .animated-bg {
-    background: radial-gradient(ellipse at top, #1a1a1a 0%, #0a0a0a 100%);
+    background: var(--crazy-gradient);
+    background-size: 600% 600%;
+    animation: crazyBackground 10s ease infinite;
     position: relative;
   }
   
@@ -288,8 +298,12 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, transparent 49%, rgba(255, 107, 0, 0.03) 50%, transparent 51%);
-    background-size: 20px 20px;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.3) 2px, transparent 2px),
+      radial-gradient(circle at 80% 50%, rgba(255, 215, 0, 0.3) 1px, transparent 1px),
+      radial-gradient(circle at 40% 40%, rgba(255, 69, 0, 0.2) 1px, transparent 1px);
+    background-size: 50px 50px, 30px 30px, 70px 70px;
+    animation: floatingDots 15s linear infinite;
   }
 
   /* BONK-specific styles */
@@ -495,15 +509,91 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@keyframes gradientShift {
+@keyframes crazyBackground {
   0% {
     background-position: 0% 50%;
   }
-  50% {
+  25% {
     background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+@keyframes floatingDots {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(360deg);
+  }
+}
+
+@keyframes rainbow {
+  0% { color: #FF6B35; }
+  16% { color: #FFD700; }
+  32% { color: #FF4500; }
+  48% { color: #FF69B4; }
+  64% { color: #00FF41; }
+  80% { color: #00BFFF; }
+  100% { color: #FF6B35; }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor;
+  }
+  50% {
+    text-shadow: 0 0 2px currentColor, 0 0 5px currentColor, 0 0 8px currentColor, 0 0 12px currentColor;
+  }
+}
+
+@keyframes bonkSpin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.9);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
   }
 }
 
@@ -569,16 +659,95 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 
-/* Fun Utility classes */
-.gradient-text {
-  background: var(--bonk-gradient);
+/* BONK MEME UTILITY CLASSES */
+.bonk-text {
+  background: var(--crazy-gradient);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  line-height: 1.4 !important;
-  overflow: visible !important;
-  display: inline-block !important;
-  padding-bottom: 0.2em !important;
+  animation: crazyBackground 3s ease infinite;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.neon-text {
+  color: var(--bonk-yellow);
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor;
+  animation: neonPulse 2s ease-in-out infinite alternate;
+}
+
+.glitch-text {
+  color: var(--bonk-orange);
+  animation: glitch 0.3s, rainbow 2s infinite;
+}
+
+.bonk-shadow {
+  text-shadow: 
+    3px 3px 0px #000,
+    -1px -1px 0px #000,
+    1px -1px 0px #000,
+    -1px 1px 0px #000,
+    1px 1px 0px #000;
+}
+
+.retro-border {
+  border: 4px solid #000;
+  box-shadow: 
+    4px 4px 0px var(--bonk-orange),
+    8px 8px 0px var(--bonk-yellow),
+    12px 12px 0px var(--bonk-red);
+}
+
+.bonk-button {
+  background: var(--retro-gradient);
+  border: 3px solid #000;
+  color: #000;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 15px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+  box-shadow: var(--shadow-bonk);
+}
+
+.bonk-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000;
+  animation: bonkSpin 0.5s ease;
+}
+
+.bonk-card {
+  background: var(--bonk-yellow);
+  border: 4px solid #000;
+  box-shadow: var(--shadow-bonk);
+  padding: 20px;
+  transform: rotate(-1deg);
+  transition: all 0.2s ease;
+}
+
+.bonk-card:hover {
+  transform: rotate(1deg) scale(1.02);
+  box-shadow: 6px 6px 0px #000;
+}
+
+.rainbow-text {
+  animation: rainbow 3s linear infinite;
+  font-weight: 900;
+}
+
+.floating-bonk {
+  animation: float 3s ease-in-out infinite;
+  color: var(--bonk-orange);
+  font-weight: 900;
+  font-size: 2rem;
 }
 
 .gradient-text-secondary {
