@@ -3,14 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* BONK Explosive Design System */
+/* BONK Modern Design System */
 :root {
-  --primary-gradient: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
-  --secondary-gradient: linear-gradient(135deg, #FFD23F 0%, #FFEB3B 100%);
-  --accent-gradient: linear-gradient(135deg, #E63946 0%, #FF4500 100%);
-  --bonk-gradient: linear-gradient(135deg, #FF6B35 0%, #FF8C42 50%, #FFA366 100%);
-  --explosive-gradient: linear-gradient(135deg, #FF4500 0%, #E63946 50%, #FF6B35 100%);
-  --success-gradient: linear-gradient(135deg, #FF8C42 0%, #FFA366 100%);
+  --primary-gradient: linear-gradient(135deg, #FF6B00 0%, #FF8500 100%);
+  --secondary-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  --accent-gradient: linear-gradient(135deg, #FF6B00 0%, #FF4500 100%);
+  --bonk-gradient: linear-gradient(135deg, #FF6B00 0%, #FF8500 50%, #FFA500 100%);
+  --dark-gradient: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  --surface-gradient: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   
   --background: 45 100% 96%;
   --foreground: 240 10% 15%;
@@ -65,14 +65,13 @@
 }
 
 body {
-  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 50%, #FED7AA 100%);
-  color: #1f2937;
-  font-family: 'Bungee', 'Fredoka One', 'Arial', sans-serif;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
-  background-attachment: fixed;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -278,9 +277,19 @@ h1, h2, h3, h4, h5, h6 {
 
   /* BONK themed background */
   .animated-bg {
-    background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 25%, #FED7AA 50%, #FDBA74 75%, #FB923C 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    background: radial-gradient(ellipse at top, #1a1a1a 0%, #0a0a0a 100%);
+    position: relative;
+  }
+  
+  .animated-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 49%, rgba(255, 107, 0, 0.03) 50%, transparent 51%);
+    background-size: 20px 20px;
   }
 
   /* BONK-specific styles */

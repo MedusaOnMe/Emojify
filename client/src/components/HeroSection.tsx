@@ -9,66 +9,48 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative py-12 md:py-16 overflow-hidden bg-gradient-to-br from-orange-500 via-orange-600 to-red-500">
-      {/* Floating BONK Elements */}
+    <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
+      {/* Subtle floating elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-10 left-10 text-6xl md:text-8xl text-yellow-400 opacity-70 font-bold" style={{ animation: 'floatSpin 8s ease-in-out infinite', animationDelay: '0s' }}>
-          !
-        </div>
-        <div className="absolute top-20 right-16 text-4xl md:text-6xl text-yellow-400 opacity-60 font-bold" style={{ animation: 'swayScale 6s ease-in-out infinite', animationDelay: '1s' }}>
-          BONK
-        </div>
-        <div className="absolute bottom-20 left-1/4 text-5xl md:text-7xl text-yellow-400 opacity-50 font-bold" style={{ animation: 'bounceSpin 7s ease-in-out infinite', animationDelay: '2s' }}>
-          POW
-        </div>
-        <div className="absolute top-1/2 right-5 text-4xl md:text-6xl text-yellow-400 opacity-65 font-bold" style={{ animation: 'wiggleFloat 5s ease-in-out infinite', animationDelay: '1.5s' }}>
-          💥
-        </div>
-        <div className="absolute bottom-32 right-20 text-3xl md:text-5xl text-yellow-400 opacity-45 font-bold" style={{ animation: 'orbit 10s linear infinite', animationDelay: '0.8s' }}>
-          BANG
-        </div>
-        <div className="absolute top-1/4 left-1/3 text-2xl md:text-4xl text-yellow-400 opacity-35 font-bold" style={{ animation: 'floatSpin 12s ease-in-out infinite reverse', animationDelay: '1.8s' }}>
-          ZAP
-        </div>
-        <div className="absolute bottom-1/3 right-1/4 text-4xl md:text-6xl text-yellow-400 opacity-55 font-bold" style={{ animation: 'swayScale 4s ease-in-out infinite', animationDelay: '0.3s' }}>
-          BOOM
-        </div>
-        <div className="absolute top-2/3 left-8 text-2xl md:text-4xl text-yellow-400 opacity-40 font-bold" style={{ animation: 'bounceSpin 6s ease-in-out infinite reverse', animationDelay: '4s' }}>
-          !!
-        </div>
+        <div className="absolute top-20 left-10 w-2 h-2 bg-orange-500 rounded-full opacity-30" style={{ animation: 'float 6s ease-in-out infinite' }}></div>
+        <div className="absolute top-40 right-20 w-1 h-1 bg-orange-400 rounded-full opacity-40" style={{ animation: 'float 8s ease-in-out infinite', animationDelay: '2s' }}></div>
+        <div className="absolute bottom-40 left-1/4 w-3 h-3 bg-orange-600 rounded-full opacity-20" style={{ animation: 'float 10s ease-in-out infinite', animationDelay: '4s' }}></div>
       </div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           
-          {/* Main BONK Card */}
-          <div className="relative mb-8 flex justify-center">
-            <div className="w-48 h-48 md:w-64 md:h-64 transform -rotate-3 hover:rotate-0 transition-all duration-300 hover:scale-110 bg-gradient-to-br from-orange-500 to-yellow-400 rounded-xl border-4 border-yellow-300 shadow-2xl flex items-center justify-center overflow-hidden">
-              <div className="text-6xl md:text-8xl font-bold text-white text-center leading-none">
-                BONK<br/>⚡
+          {/* Main BONK Logo */}
+          <div className="relative mb-12 flex justify-center">
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+              <div className="relative px-8 py-6 bg-black rounded-xl leading-none flex items-center">
+                <div className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
+                  BONK
+                </div>
               </div>
             </div>
           </div>
 
           {/* Title */}
-          <div className="mb-6">
-            <h1 className="text-6xl md:text-9xl font-bold text-white mx-auto mb-4 transform -rotate-1 hover:rotate-0 transition-transform duration-300 font-display drop-shadow-2xl">
+          <div className="mb-12 text-center">
+            <h1 className="text-7xl md:text-9xl font-black text-white mb-6 tracking-tight">
               BONKIFY
             </h1>
-            <p className="text-sm md:text-lg text-yellow-300 font-bold font-display transform -rotate-2 mt-2 drop-shadow-lg">
-              🔥 EXPLOSIVE IMAGE TRANSFORMER 🔥
+            <p className="text-xl md:text-2xl text-gray-300 mb-4 font-light">
+              AI-Powered Image Transformation
             </p>
-            <p className="text-lg md:text-xl text-yellow-100 mt-4 font-body transform rotate-1 drop-shadow-lg">
-              Transform Your Images with BONK Energy!
+            <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              Upload any image and transform it with explosive BONK energy using advanced AI technology
             </p>
           </div>
 
           {/* CTA Button */}
           <button
             onClick={scrollToGenerator}
-            className="bg-gradient-to-r from-orange-600 to-yellow-500 hover:from-orange-700 hover:to-yellow-600 text-white font-bold py-4 px-8 text-xl transform -rotate-1 hover:rotate-0 transition-all duration-200 border-2 border-yellow-300 shadow-lg rounded-lg"
+            className="relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white transition-all duration-200 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl hover:from-orange-600 hover:to-orange-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-black shadow-xl"
           >
-            GET BONKED! 💥⚡
+            <span className="relative">START TRANSFORMING</span>
           </button>
 
         </div>
