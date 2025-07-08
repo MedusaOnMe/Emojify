@@ -906,7 +906,7 @@ export async function registerRoutes(app: Application) {
           
           console.log('🖼️ Adding user image...');
           // Add user's image file (first image to be transformed)
-          formData.append('image', fs.createReadStream(tempPngPath), {
+          formData.append('image[]', fs.createReadStream(tempPngPath), {
             filename: 'user-image.png',
             contentType: 'image/png'
           });
@@ -922,7 +922,7 @@ export async function registerRoutes(app: Application) {
             const bonkStats = fs.statSync(bonkImagePath);
             log(`Found reference Bonk image: ${bonkStats.size} bytes`);
             
-            formData.append('image', fs.createReadStream(bonkImagePath), {
+            formData.append('image[]', fs.createReadStream(bonkImagePath), {
               filename: 'bonk-reference.png',
               contentType: 'image/png'
             });
