@@ -764,6 +764,7 @@ export async function registerRoutes(app: Application) {
     console.log('🔥 BONKIFY ENDPOINT HIT! 🔥');
     log('=== BONKIFY ENDPOINT CALLED ===');
     
+    console.log('🔍 Checking API key...');
     // Check API key status upfront
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
@@ -784,16 +785,19 @@ export async function registerRoutes(app: Application) {
     }
     
     log('OpenAI API key validated successfully');
+    console.log('✅ API key OK, setting up multer...');
     
     // Set up response content type for consistency
     res.setHeader('Content-Type', 'application/json');
     
     // Use multer to handle file upload
     upload(req, res, async (uploadErr) => {
+      console.log('📁 Inside multer callback...');
       let imagePath = '';
       let tempPngPath = '';
       
       try {
+        console.log('📁 Starting file processing...');
         log('Processing file upload...');
         
         // Check for upload errors
