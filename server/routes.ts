@@ -864,6 +864,8 @@ export async function registerRoutes(app: Application) {
         try {
           // Call OpenAI API directly
           log(`Making direct OpenAI API call...`);
+          log(`User image size: ${fileStats.size} bytes`);
+          log(`Total images being sent: ${bonkImagePath && fs.existsSync(bonkImagePath) ? 2 : 1}`);
           
           const FormData = (await import('form-data')).default;
           const formData = new FormData();
@@ -882,14 +884,20 @@ export async function registerRoutes(app: Application) {
           
           // Add reference Bonk image from public folder
           const bonkImagePath = path.join(__dirname, '../client/public/logo.jpg');
+          log(`Looking for Bonk reference image at: ${bonkImagePath}`);
+          
           if (fs.existsSync(bonkImagePath)) {
+            const bonkStats = fs.statSync(bonkImagePath);
+            log(`Found reference Bonk image: ${bonkStats.size} bytes`);
+            
             formData.append('image', fs.createReadStream(bonkImagePath), {
               filename: 'bonk-reference.jpg',
               contentType: 'image/jpeg'
             });
-            log('Added reference Bonk image to request');
+            log('✅ Added reference Bonk image to FormData');
           } else {
-            log('Warning: Reference Bonk image not found at expected path');
+            log('❌ ERROR: Reference Bonk image not found at expected path');
+            log(`Directory contents: ${fs.readdirSync(path.dirname(bonkImagePath))}`);
           }
           
           const axios = (await import('axios')).default;
@@ -906,6 +914,10 @@ export async function registerRoutes(app: Application) {
           });
           
           log(`Received API response: status=${axiosResponse.status}`);
+          log(`Response data structure: ${JSON.stringify(Object.keys(axiosResponse.data || {}))}`);
+          if (axiosResponse.data?.data?.length) {
+            log(`Number of generated images: ${axiosResponse.data.data.length}`);
+          }
           
           if (axiosResponse.status !== 200) {
             throw new Error(`OpenAI API returned status ${axiosResponse.status}: ${JSON.stringify(axiosResponse.data)}`);
