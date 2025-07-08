@@ -802,23 +802,29 @@ export async function registerRoutes(app: Application) {
         
         // Check for upload errors
         if (uploadErr) {
+          console.log(`❌ Upload error: ${uploadErr.message}`);
           log(`Upload error: ${uploadErr.message}`);
           return res.status(400).json({ message: uploadErr.message || 'File upload failed' });
         }
+        console.log('✅ No upload errors');
 
         // Validate request
         if (!req.file) {
+          console.log('❌ No file uploaded');
           log('ERROR: No file uploaded');
           return res.status(400).json({ message: 'No image uploaded' });
         }
+        console.log('✅ File uploaded successfully');
         
         log(`File uploaded successfully: ${req.file.originalname}, size: ${req.file.size} bytes`);
         
         const prompt = req.body.prompt;
         if (!prompt) {
+          console.log('❌ No prompt provided');
           log('ERROR: No prompt provided');
           return res.status(400).json({ message: 'Prompt is required' });
         }
+        console.log('✅ Prompt received');
         
         log(`Prompt received: "${prompt.substring(0, 50)}..."`);
         
