@@ -7,23 +7,21 @@ interface HeaderProps {
 
 export default function Header({ onMenuClick }: HeaderProps) {
   return (
-    <header className="bg-gradient-to-r from-red-600 via-red-700 to-yellow-500 sticky top-0 z-50 border-b-4 border-yellow-400 backdrop-blur-md relative overflow-hidden shadow-lg">
-      {/* Floating Chinese Elements in Header */}
+    <header className="bg-gradient-to-r from-orange-600 via-orange-700 to-yellow-500 sticky top-0 z-50 border-b-4 border-yellow-400 backdrop-blur-md relative overflow-hidden shadow-lg">
+      {/* Floating BONK Elements in Header */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1 right-20 w-6 h-6 text-yellow-400 opacity-70 text-lg font-bold" style={{ animation: 'swayScale 5s ease-in-out infinite', animationDelay: '1s' }}>★</div>
-        <div className="absolute bottom-1 left-40 w-5 h-5 text-yellow-400 opacity-65 text-sm font-bold" style={{ animation: 'wiggleFloat 4s ease-in-out infinite', animationDelay: '0.5s' }}>中</div>
-        <div className="absolute top-2 left-80 w-4 h-4 text-yellow-400 opacity-60 text-lg font-bold" style={{ animation: 'bounceSpin 6s ease-in-out infinite', animationDelay: '2s' }}>☭</div>
-        <div className="absolute bottom-2 right-60 w-5 h-5 text-yellow-400 opacity-75 text-sm font-bold" style={{ animation: 'floatSpin 7s ease-in-out infinite reverse', animationDelay: '0.8s' }}>华</div>
+        <div className="absolute top-1 right-20 w-6 h-6 text-yellow-400 opacity-70 text-lg font-bold" style={{ animation: 'swayScale 5s ease-in-out infinite', animationDelay: '1s' }}>💥</div>
+        <div className="absolute bottom-1 left-40 w-5 h-5 text-yellow-400 opacity-65 text-sm font-bold" style={{ animation: 'wiggleFloat 4s ease-in-out infinite', animationDelay: '0.5s' }}>BONK</div>
+        <div className="absolute top-2 left-80 w-4 h-4 text-yellow-400 opacity-60 text-lg font-bold" style={{ animation: 'bounceSpin 6s ease-in-out infinite', animationDelay: '2s' }}>⚡</div>
+        <div className="absolute bottom-2 right-60 w-5 h-5 text-yellow-400 opacity-75 text-sm font-bold" style={{ animation: 'floatSpin 7s ease-in-out infinite reverse', animationDelay: '0.8s' }}>POW</div>
       </div>
       <div className="container mx-auto px-6">
         <div className="flex h-24 items-center justify-between">
-          {/* CHAOTIC Logo */}
+          {/* BONK Logo */}
           <Link href="/" className="flex items-center gap-2 group relative">
-            <img 
-              src="/title.png" 
-              alt="Chinaify"
-              className="h-12 md:h-16 w-auto group-hover:scale-105 transition-transform duration-300 drop-shadow-lg"
-            />
+            <div className="text-3xl md:text-4xl font-bold text-white font-display transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 drop-shadow-lg">
+              BONKIFY ⚡
+            </div>
           </Link>
 
           {/* Navigation */}
@@ -32,13 +30,13 @@ export default function Header({ onMenuClick }: HeaderProps) {
               href="/"
               className="text-white hover:text-yellow-200 transition-colors font-display font-semibold text-lg transform -rotate-2 hover:rotate-0 px-4 py-2 hover:bg-white/20 border-2 border-transparent hover:border-yellow-300 rounded-lg"
             >
-              中华化 CHINAIFY
+              BONKIFY 💥
             </Link>
             <Link
               href="/gallery"
               className="text-white hover:text-yellow-200 transition-colors font-display font-semibold text-lg transform rotate-2 hover:rotate-0 px-4 py-2 hover:bg-white/20 border-2 border-transparent hover:border-yellow-300 rounded-lg"
             >
-              图片库 GALLERY
+              GALLERY ⚡
             </Link>
             <a
               href="https://x.com/i/communities/1939804671582818551"

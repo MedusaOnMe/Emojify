@@ -3,14 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Oscar the Grouch Themed Design System */
+/* BONK Explosive Design System */
 :root {
-  --primary-gradient: linear-gradient(135deg, #166534 0%, #15803d 100%);
-  --secondary-gradient: linear-gradient(135deg, #71717a 0%, #a1a1aa 100%);
-  --accent-gradient: linear-gradient(135deg, #52525b 0%, #71717a 100%);
-  --grouch-gradient: linear-gradient(135deg, #14532d 0%, #166534 50%, #15803d 100%);
-  --trash-metal: linear-gradient(135deg, #737373 0%, #525252 50%, #404040 100%);
-  --success-gradient: linear-gradient(135deg, #166534 0%, #15803d 100%);
+  --primary-gradient: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+  --secondary-gradient: linear-gradient(135deg, #FFD23F 0%, #FFEB3B 100%);
+  --accent-gradient: linear-gradient(135deg, #E63946 0%, #FF4500 100%);
+  --bonk-gradient: linear-gradient(135deg, #FF6B35 0%, #FF8C42 50%, #FFA366 100%);
+  --explosive-gradient: linear-gradient(135deg, #FF4500 0%, #E63946 50%, #FF6B35 100%);
+  --success-gradient: linear-gradient(135deg, #FF8C42 0%, #FFA366 100%);
   
   --background: 45 100% 96%;
   --foreground: 240 10% 15%;
@@ -65,13 +65,14 @@
 }
 
 body {
-  background: #f3f4f6;
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 50%, #FED7AA 100%);
   color: #1f2937;
-  font-family: 'Fredoka One', 'Arial', sans-serif;
+  font-family: 'Bungee', 'Fredoka One', 'Arial', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
+  background-attachment: fixed;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -181,24 +182,26 @@ h1, h2, h3, h4, h5, h6 {
 
   /* Fun button styles */
   .btn-primary {
-    background: var(--grouch-gradient);
+    background: var(--bonk-gradient);
     color: white;
     border: none;
     border-radius: var(--radius);
     padding: 16px 32px;
     font-weight: 700;
-    font-family: 'Comfortaa', sans-serif;
+    font-family: 'Bungee', sans-serif;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    text-transform: none;
+    text-transform: uppercase;
     font-size: 16px;
-    box-shadow: 0 4px 16px rgba(5, 150, 105, 0.3);
+    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.4);
+    letter-spacing: 1px;
   }
 
   .btn-primary:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 24px rgba(5, 150, 105, 0.4);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.6);
+    animation: bounce 0.5s ease-in-out;
   }
 
   .btn-primary:active {
@@ -273,20 +276,23 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 3px 3px 0px #374151;
   }
 
-  /* Oscar themed background */
+  /* BONK themed background */
   .animated-bg {
-    background: linear-gradient(135deg, #f0fdf4 0%, #f3f4f6 50%, #e5e7eb 100%);
+    background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 25%, #FED7AA 50%, #FDBA74 75%, #FB923C 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
   }
 
-  /* Oscar-specific styles */
+  /* BONK-specific styles */
   .emoji-gradient {
-    background: var(--grouch-gradient);
+    background: var(--bonk-gradient);
   }
 
   .emoji-shadow {
     box-shadow: 
-      0 8px 32px rgba(5, 150, 105, 0.3),
-      0 4px 16px rgba(107, 114, 128, 0.2);
+      0 8px 32px rgba(255, 107, 53, 0.4),
+      0 4px 16px rgba(230, 57, 70, 0.3),
+      0 0 50px rgba(255, 140, 66, 0.2);
   }
 
   .bouncy {
@@ -480,6 +486,44 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes bonkPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.5));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.8));
+  }
+}
+
+@keyframes explosiveBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+}
+
 
 .custom-spinner {
   animation: spin 1s linear infinite;
@@ -518,7 +562,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Fun Utility classes */
 .gradient-text {
-  color: #166534;
+  background: var(--bonk-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1.4 !important;
   overflow: visible !important;
   display: inline-block !important;

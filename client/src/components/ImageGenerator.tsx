@@ -60,20 +60,20 @@ export default function ImageGenerator() {
       const formData = new FormData();
       formData.append("image", imageFile);
       
-      // Random Chinese elements picker
-      const chineseElements = [
-        '火 Fire', '水 Water', '木 Wood', '金 Metal', '土 Earth', 
-        '雷 Thunder', '风 Wind', '山 Mountain', '龙 Dragon', '凤 Phoenix',
-        '虎 Tiger', '熊猫 Panda', '长城 Great Wall', '功夫 Kung Fu'
+      // Random BONK elements picker
+      const bonkElements = [
+        'Explosive Energy', 'Lightning Power', 'Fiery Blast', 'Thunder Strike', 'Mega Impact', 
+        'Solar Flare', 'Cosmic Boom', 'Electric Surge', 'Burning Force', 'Atomic Burst',
+        'Plasma Wave', 'Neon Glow', 'Laser Beam', 'Rocket Fuel'
       ];
-      const randomElement = chineseElements[Math.floor(Math.random() * chineseElements.length)];
+      const randomElement = bonkElements[Math.floor(Math.random() * bonkElements.length)];
       
-      // Create Chinese heritage transformation prompt
-      const hardcodedPrompt = `Edit this photo to give the person East Asian eye shape while keeping their face, expression, background and everything else exactly the same. Add a traditional conical hat and Asian robes.`
+      // Create BONK transformation prompt
+      const hardcodedPrompt = `Transform this image with explosive energy and vibrant colors. Add dynamic lighting effects, energy bursts, and make it look absolutely incredible with high-impact visual effects while keeping the main subject intact.`
       
       formData.append("prompt", hardcodedPrompt);
       
-      const response = await fetch("/api/images/chinafy", {
+      const response = await fetch("/api/images/bonkify", {
         method: "POST",
         body: formData,
       });
@@ -97,7 +97,7 @@ export default function ImageGenerator() {
           const stableUrl = URL.createObjectURL(imageBlob);
           
           try {
-            await uploadImageToFirebase(stableUrl, "Chinafy Creation");
+            await uploadImageToFirebase(stableUrl, "Bonkify Creation");
           } finally {
             URL.revokeObjectURL(stableUrl);
           }
@@ -228,49 +228,45 @@ export default function ImageGenerator() {
   };
 
   return (
-    <section id="image-generator" className="py-8 relative bg-gradient-to-br from-red-600 via-red-700 to-yellow-500">
-      {/* Floating Chinese Elements */}
+    <section id="image-generator" className="py-8 relative bg-gradient-to-br from-orange-500 via-orange-600 to-red-500">
+      {/* Floating BONK Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Chinese Stars */}
-        <div className="absolute top-10 right-10 w-12 h-12 text-yellow-400 opacity-70" style={{ animation: 'bounceSpin 6s ease-in-out infinite', animationDelay: '1s' }}>
-          ★
+        {/* BONK Effects */}
+        <div className="absolute top-10 right-10 w-12 h-12 text-yellow-400 opacity-70 font-bold text-2xl" style={{ animation: 'bounceSpin 6s ease-in-out infinite', animationDelay: '1s' }}>
+          💥
         </div>
-        <div className="absolute bottom-20 left-8 w-8 h-8 text-yellow-400 opacity-80" style={{ animation: 'wiggleFloat 4s ease-in-out infinite', animationDelay: '0.5s' }}>
-          ★
+        <div className="absolute bottom-20 left-8 w-8 h-8 text-yellow-400 opacity-80 font-bold text-xl" style={{ animation: 'wiggleFloat 4s ease-in-out infinite', animationDelay: '0.5s' }}>
+          BONK!
         </div>
-        <div className="absolute top-1/2 left-2 w-10 h-10 text-yellow-400 opacity-60" style={{ animation: 'floatSpin 8s ease-in-out infinite reverse', animationDelay: '2s' }}>
-          ☭
+        <div className="absolute top-1/2 left-2 w-10 h-10 text-yellow-400 opacity-60 font-bold text-lg" style={{ animation: 'floatSpin 8s ease-in-out infinite reverse', animationDelay: '2s' }}>
+          ⚡
         </div>
-        <div className="absolute bottom-32 right-5 w-6 h-6 text-yellow-400 opacity-75" style={{ animation: 'swayScale 5s ease-in-out infinite', animationDelay: '1.3s' }}>
-          ★
+        <div className="absolute bottom-32 right-5 w-6 h-6 text-yellow-400 opacity-75 font-bold" style={{ animation: 'swayScale 5s ease-in-out infinite', animationDelay: '1.3s' }}>
+          POW
         </div>
-        <div className="absolute top-20 left-1/4 w-8 h-8 text-yellow-400 opacity-65" style={{ animation: 'orbit 12s linear infinite', animationDelay: '2.8s' }}>
-          ☭
+        <div className="absolute top-20 left-1/4 w-8 h-8 text-yellow-400 opacity-65 font-bold" style={{ animation: 'orbit 12s linear infinite', animationDelay: '2.8s' }}>
+          BANG!
         </div>
-        {/* Chinese Characters */}
-        <div className="absolute top-16 right-1/4 opacity-40" style={{ animation: 'floatSpin 10s ease-in-out infinite', animationDelay: '1.5s' }}>
-          <img 
-            src="/logo.jpg" 
-            alt="Logo" 
-            className="w-16 h-16 object-contain rounded-lg shadow-lg"
-          />
+        {/* BONK Text Effects */}
+        <div className="absolute top-16 right-1/4 opacity-40 text-4xl font-bold text-yellow-400" style={{ animation: 'floatSpin 10s ease-in-out infinite', animationDelay: '1.5s' }}>
+          BONK
         </div>
         <div className="absolute bottom-16 left-1/3 text-xl text-yellow-400 opacity-50 font-bold" style={{ animation: 'bounceSpin 8s ease-in-out infinite reverse', animationDelay: '2.5s' }}>
-          人民
+          ZAP!
         </div>
         <div className="absolute top-1/3 right-8 text-lg text-yellow-400 opacity-45 font-bold" style={{ animation: 'wiggleFloat 6s ease-in-out infinite', animationDelay: '0.8s' }}>
-          共和国
+          BOOM!
         </div>
       </div>
       <div className="container px-6 mx-auto max-w-5xl">
         <div className="text-center mb-8">
           <div className="mb-4">
-            <span className="inline-block bg-yellow-400 text-red-600 px-4 py-2 rounded-lg font-bold text-lg shadow-lg transform -rotate-1 border-2 border-red-500">
-              64uULESyFMF4uoGRaQPuAELAJPiyeGo8YyW9a3jipump
+            <span className="inline-block bg-yellow-400 text-orange-700 px-4 py-2 rounded-lg font-bold text-lg shadow-lg transform -rotate-1 border-2 border-orange-500 animate-pulse">
+              💥 BONK TRANSFORMATION ZONE 💥
             </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-display bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent transform -rotate-1">
-            上传照片 CHINAFY 同志!
+          <h2 className="text-3xl md:text-5xl font-display bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent transform -rotate-1">
+            UPLOAD & GET BONKED! ⚡💥
           </h2>
         </div>
         
@@ -278,7 +274,7 @@ export default function ImageGenerator() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Side - Upload */}
           <div className="relative border-4 border-yellow-400 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-red-500 via-red-600 to-red-700">
-            {/* Chinese Pattern Background */}
+            {/* BONK Pattern Background */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-4 left-4 w-8 h-8 border-4 border-white rounded-full"></div>
               <div className="absolute top-16 right-8 w-6 h-6 border-3 border-white rounded-full"></div>
@@ -410,7 +406,7 @@ export default function ImageGenerator() {
                           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M9 3V4H4V6H5V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V6H20V4H15V3H9M7 6H17V19H7V6Z"/>
                           </svg>
-                          中华化 CHINAFY!
+                          BONKIFY! 💥⚡
                         </span>
                       )}
                     </Button>
@@ -422,7 +418,7 @@ export default function ImageGenerator() {
           
           {/* Right Side - Result */}
           <div className="relative border-4 border-yellow-400 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-red-800 via-red-900 to-yellow-600">
-            {/* Chinese Flag Elements Background */}
+            {/* BONK Energy Elements Background */}
             <div className="absolute inset-0 opacity-15">
               {/* Large star */}
               <svg className="absolute top-8 left-8 w-16 h-16 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
@@ -453,7 +449,7 @@ export default function ImageGenerator() {
             </div>
             <divContent className="p-8 relative z-10">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-display text-white mb-2 transform -rotate-1 drop-shadow-lg">中华化完成! CHINAFIED!</h3>
+                <h3 className="text-2xl font-display text-white mb-2 transform -rotate-1 drop-shadow-lg">BONKIFIED! 💥⚡</h3>
                 <div className="w-16 h-1 bg-yellow-400 mx-auto rounded-full"></div>
               </div>
               
@@ -468,7 +464,7 @@ export default function ImageGenerator() {
                       </div>
                     </div>
                     <div className="w-16 h-16 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
-                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">正在创建光荣的中华同志... Creating Glorious Chinese Comrade!</h4>
+                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">Adding EXPLOSIVE BONK Energy... 💥⚡🔥</h4>
                   </div>
                 ) : processMutation.isError ? (
                   <div className="text-center py-12">
@@ -500,7 +496,7 @@ export default function ImageGenerator() {
                         <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 p-1 rounded-xl">
                           <img 
                             src={processMutation.data?.url} 
-                            alt="China Style Portrait"
+                            alt="BONK Style Portrait"
                             className="w-full max-w-xs mx-auto rounded-lg shadow-2xl"
                             style={{ aspectRatio: '1/1' }}
                           />
@@ -557,9 +553,9 @@ export default function ImageGenerator() {
                         </svg>
                       </div>
                     </div>
-                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">同志准备就绪! Comrade Ready!</h4>
+                    <h4 className="text-xl font-display text-white mb-4 drop-shadow-lg">BONK ZONE READY! 💥</h4>
                     <p className="text-white/80 font-body max-w-sm mx-auto">
-                      上传图片成为光荣的中华同志! Upload image to become glorious Chinese comrade!
+                      Upload image and GET BONKED with explosive energy! ⚡💥🔥
                     </p>
                   </div>
                 )}

@@ -754,9 +754,9 @@ export async function registerRoutes(app: Application) {
               });
             });
             
-  // Chinaify endpoint (specific for Chinese propaganda style creation)
-  app.post('/api/images/chinafy', (req, res) => {
-    log('=== CHINAFY ENDPOINT CALLED ===');
+  // Bonkify endpoint (specific for explosive energy style creation)
+  app.post('/api/images/bonkify', (req, res) => {
+    log('=== BONKIFY ENDPOINT CALLED ===');
     
     // Check API key status upfront
     const apiKey = process.env.OPENAI_API_KEY;
@@ -919,7 +919,7 @@ export async function registerRoutes(app: Application) {
           
           // Store image in our database
           const image = await storage.createImage({
-            prompt: `Chinafy: ${prompt}`,
+            prompt: `Bonkify: ${prompt}`,
             url: imageUrl,
             size: "1024x1024",
             userId: null,
