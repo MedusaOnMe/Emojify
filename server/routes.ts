@@ -863,10 +863,12 @@ export async function registerRoutes(app: Application) {
         
         // Define model explicitly
         const modelName = "gpt-image-1";
+        console.log(`🤖 Using model: ${modelName}`);
         log(`Using model: ${modelName}`);
         
         // Create a job ID
         const jobId = crypto.randomBytes(16).toString('hex');
+        console.log(`🆔 Created job ID: ${jobId}`);
         log(`Created job ID: ${jobId}`);
         
         // Add job to the queue
@@ -880,11 +882,13 @@ export async function registerRoutes(app: Application) {
           }
         };
         
+        console.log('🚀 Processing image directly without job queue...');
         log('Processing image directly without job queue...');
         
         // Process the image directly to avoid content-length mismatch issues
         try {
           // Call OpenAI API directly
+          console.log('📞 Making direct OpenAI API call...');
           log(`Making direct OpenAI API call...`);
           log(`User image size: ${fileStats.size} bytes`);
           
